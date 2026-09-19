@@ -144,6 +144,7 @@
       border: 1px solid rgba(255,255,255,0.08);
       user-select: none;
       touch-action: pan-y;
+      cursor: ew-resize;
     }
 
     .comp-video {
@@ -201,8 +202,12 @@
       height: 100%;
       background: linear-gradient(180deg, transparent 0%, #fff 20%, #fff 80%, transparent 100%);
       transform: translateX(-50%);
-      cursor: ew-resize;
       z-index: 20;
+    }
+
+    /* Smooth snapping transition back to center */
+    .is-snapping {
+      transition: left 0.45s cubic-bezier(0.25, 1, 0.5, 1), clip-path 0.45s cubic-bezier(0.25, 1, 0.5, 1);
     }
 
     /* Glowing Pulse Handle */
@@ -211,10 +216,10 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 46px;
-      height: 46px;
+      width: 48px;
+      height: 48px;
       border-radius: 50%;
-      background: rgba(16, 19, 26, 0.85);
+      background: rgba(16, 19, 26, 0.9);
       border: 1.5px solid var(--gold-primary);
       display: flex;
       align-items: center;
@@ -224,10 +229,9 @@
     }
 
     .slider-handle svg {
-      width: 22px;
-      height: 22px;
+      width: 24px;
+      height: 24px;
       fill: var(--gold-primary);
-      animation: nudgeHorizontal 2s infinite ease-in-out;
     }
 
     @keyframes pulseAttention {
@@ -237,11 +241,6 @@
       50% {
         box-shadow: 0 0 35px var(--gold-glow), 0 0 0 12px rgba(212,175,55,0);
       }
-    }
-
-    @keyframes nudgeHorizontal {
-      0%, 100% { transform: translateX(0); }
-      50% { transform: translateX(4px); }
     }
 
     /* Trust Logos Section */
@@ -343,8 +342,9 @@
 
       <div class="slider-divider" id="sliderDivider">
         <div class="slider-handle" id="sliderHandle">
+          <!-- উভয় দিকে নির্দেশকারী ডাবল অ্যারো -->
           <svg viewBox="0 0 24 24">
-            <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
+            <path d="M8 7l-5 5 5 5V7zm8 10l5-5-5-5v10z"/>
           </svg>
         </div>
       </div>
@@ -376,20 +376,28 @@
     const clipper = document.getElementById('videoClipper');
     const divider = document.getElementById('sliderDivider');
 
-    // মুখে হাত দেওয়ার আগের সেকেন্ড (লুপ পয়েন্ট)
-    const LOOP_THRESHOLD = 2.4; 
-    let hasInteracted = false;
+    // মুখে হাত তোলার পূর্ববর্তী নির্ভুল সময় (ক্যাপকাটের ৩:০২ ফ্রেম অনুসারে)
+    const LOOP_THRESHOLD = 3.05; 
+    let isInteracting = false;
     let isDragging = false;
+    let lastVibratedPosition = 50;
 
-    // ১. ভিডিও যুগলকে একই সাথে চালু করা
+    // ট্যাকটাইল ভাইব্রেশন ট্রিগার ফাংশন (মোবাইল সাপোর্টেড)
+    function triggerHaptic(duration = 10) {
+      if (navigator.vibrate) {
+        navigator.vibrate(duration);
+      }
+    }
+
+    // ১. ভিডিও দুটিকে একসাথে শুরু করা
     function startSyncedPlayback() {
       beforeVideo.play().catch(() => {});
       afterVideo.play().catch(() => {});
     }
 
-    // ২. স্পর্শ করার আগ পর্যন্ত মুখে হাত দেওয়া ব্যতীত লুপ চালানো
+    // ২. স্পর্শ না করা পর্যন্ত মুখে হাত তোলার ঠিক আগ মুহূর্তে লুপ রাখা
     function enforceIdleLoop() {
-      if (!hasInteracted) {
+      if (!isInteracting) {
         if (beforeVideo.currentTime >= LOOP_THRESHOLD) {
           beforeVideo.currentTime = 0;
           afterVideo.currentTime = 0;
@@ -398,7 +406,7 @@
       requestAnimationFrame(enforceIdleLoop);
     }
 
-    // ৩. মেটাডাটা লোড হলে অটোমেটিক সিঙ্ক প্লে শুরু
+    // মেটাডাটা লোড হলে সিঙ্ক প্লে ও লুপ সক্রিয়
     beforeVideo.addEventListener('loadedmetadata', () => {
       startSyncedPlayback();
       requestAnimationFrame(enforceIdleLoop);
@@ -415,38 +423,57 @@
       divider.style.left = `${pos}%`;
       clipper.style.clipPath = `polygon(0 0, ${pos}% 0, ${pos}% 100%, 0 100%)`;
 
-      // ইউজার স্পর্শ করা মাত্রই সম্পূর্ণ ভিডিও প্লে হবে
-      if (!hasInteracted) {
-        hasInteracted = true;
-        beforeVideo.loop = true;
-        afterVideo.loop = true;
+      // স্লাইড সরানোর সাথে সাথে হালকা ভাইব্রেশন (ডায়াল ট্যাকটাইল ফিডব্যাক)
+      if (Math.abs(pos - lastVibratedPosition) >= 7) {
+        triggerHaptic(8);
+        lastVibratedPosition = pos;
+      }
+
+      // স্পর্শ পাওয়া মাত্রই ভিডিও পূর্ণ মোশনে ছেড়ে দেওয়া (মুখে হাত উঠবে)
+      if (!isInteracting) {
+        isInteracting = true;
       }
     }
 
-    // মাউস ইভেন্ট
-    stage.addEventListener('mousedown', (e) => {
+    // ড্র্যাগ শুরু
+    function startDrag(clientX) {
       isDragging = true;
-      handleMove(e.clientX);
-    });
+      triggerHaptic(15); // স্পর্শ করামাত্র ওয়েলকাম ভাইব্রেশন
+      divider.classList.remove('is-snapping');
+      clipper.classList.remove('is-snapping');
+      handleMove(clientX);
+    }
 
-    window.addEventListener('mouseup', () => {
+    // ড্র্যাগ ছেড়ে দেওয়া মাত্রই সেন্টারে ফিরে আসা (Snap back to 50%)
+    function stopDrag() {
+      if (!isDragging) return;
       isDragging = false;
-    });
+      isInteracting = false;
+      triggerHaptic(12); // সেন্টারে আসার সময় ফিডব্যাক
 
+      // সেন্টারে ফেরার মসৃণ ট্রানজিশন
+      divider.classList.add('is-snapping');
+      clipper.classList.add('is-snapping');
+
+      divider.style.left = '50%';
+      clipper.style.clipPath = 'polygon(0 0, 50% 0, 50% 100%, 0 100%)';
+      lastVibratedPosition = 50;
+
+      // ভিডিও শুরুর সীমানায় ফিরিয়ে পুনরায় হাত তোলার আগের লুপে নেওয়া
+      beforeVideo.currentTime = 0;
+      afterVideo.currentTime = 0;
+    }
+
+    // মাউস ইভেন্ট
+    stage.addEventListener('mousedown', (e) => startDrag(e.clientX));
+    window.addEventListener('mouseup', stopDrag);
     window.addEventListener('mousemove', (e) => {
       if (isDragging) handleMove(e.clientX);
     });
 
     // মোবাইল টাচ ইভেন্ট
-    stage.addEventListener('touchstart', (e) => {
-      isDragging = true;
-      handleMove(e.touches[0].clientX);
-    }, { passive: true });
-
-    window.addEventListener('touchend', () => {
-      isDragging = false;
-    });
-
+    stage.addEventListener('touchstart', (e) => startDrag(e.touches[0].clientX), { passive: true });
+    window.addEventListener('touchend', stopDrag);
     window.addEventListener('touchmove', (e) => {
       if (isDragging) handleMove(e.touches[0].clientX);
     }, { passive: true });
