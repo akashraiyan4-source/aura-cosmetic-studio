@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AURA Beverly Hills | Masterwork Aesthetics</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-dark: #08090C;
+      --bg-card: #10131A;
+      --gold-primary: #D4AF37;
+      --gold-glow: rgba(212, 175, 55, 0.35);
+      --text-main: #FFFFFF;
+      --text-muted: #9CA3AF;
+      --border-line: rgba(212, 175, 55, 0.2);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, .serif-font {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+    }
+
+    /* Navigation */
+    header {
+      width: 100%;
+      padding: 24px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 50;
+      background: linear-gradient(180deg, rgba(8,9,12,0.9) 0%, transparent 100%);
+    }
+
+    .brand-logo {
+      font-size: 24px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: #fff;
+    }
+    .brand-logo span {
+      color: var(--gold-primary);
+      font-weight: 300;
+      font-size: 14px;
+      display: block;
+      letter-spacing: 3px;
+    }
+
+    .nav-cta {
+      padding: 10px 24px;
+      border: 1px solid var(--gold-primary);
+      color: var(--gold-primary);
+      text-decoration: none;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      border-radius: 40px;
+      transition: all 0.3s ease;
+    }
+    .nav-cta:hover {
+      background: var(--gold-primary);
+      color: #000;
+      box-shadow: 0 0 20px var(--gold-glow);
+    }
+
+    /* Hero Section */
+    .hero-section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 120px 20px 60px;
+      position: relative;
+    }
+
+    .hero-title-wrap {
+      text-align: center;
+      max-width: 800px;
+      margin-bottom: 40px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--gold-primary);
+      margin-bottom: 12px;
+      border-bottom: 1px solid var(--border-line);
+      padding-bottom: 4px;
+    }
+
+    .hero-title {
+      font-size: clamp(38px, 6vw, 64px);
+      line-height: 1.15;
+      font-weight: 300;
+      margin-bottom: 16px;
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--gold-primary);
+    }
+
+    .hero-sub {
+      color: var(--text-muted);
+      font-size: 15px;
+      max-width: 540px;
+      margin: 0 auto;
+      font-weight: 300;
+    }
+
+    /* Comparison Slider Wrapper */
+    .slider-stage {
+      position: relative;
+      width: 100%;
+      max-width: 380px;
+      aspect-ratio: 9 / 16;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.8), 0 0 40px rgba(212,175,55,0.15);
+      border: 1px solid rgba(255,255,255,0.08);
+      user-select: none;
+      touch-action: pan-y;
+    }
+
+    .comp-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .video-clipper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
+      will-change: clip-path;
+    }
+
+    /* Floating Labels */
+    .badge-label {
+      position: absolute;
+      bottom: 24px;
+      padding: 6px 14px;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      border-radius: 20px;
+      backdrop-filter: blur(8px);
+      z-index: 15;
+      pointer-events: none;
+    }
+    .badge-before {
+      left: 20px;
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: #ccc;
+    }
+    .badge-after {
+      right: 20px;
+      background: rgba(212, 175, 55, 0.25);
+      border: 1px solid var(--gold-primary);
+      color: #fff;
+    }
+
+    /* Animated Slider Divider */
+    .slider-divider {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 2px;
+      height: 100%;
+      background: linear-gradient(180deg, transparent 0%, #fff 20%, #fff 80%, transparent 100%);
+      transform: translateX(-50%);
+      cursor: ew-resize;
+      z-index: 20;
+    }
+
+    /* Glowing Pulse Handle */
+    .slider-handle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: rgba(16, 19, 26, 0.85);
+      border: 1.5px solid var(--gold-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 25px var(--gold-glow);
+      animation: pulseAttention 2.4s infinite ease-in-out;
+    }
+
+    .slider-handle svg {
+      width: 22px;
+      height: 22px;
+      fill: var(--gold-primary);
+      animation: nudgeHorizontal 2s infinite ease-in-out;
+    }
+
+    @keyframes pulseAttention {
+      0%, 100% {
+        box-shadow: 0 0 15px var(--gold-glow), 0 0 0 0 rgba(212,175,55,0.4);
+      }
+      50% {
+        box-shadow: 0 0 35px var(--gold-glow), 0 0 0 12px rgba(212,175,55,0);
+      }
+    }
+
+    @keyframes nudgeHorizontal {
+      0%, 100% { transform: translateX(0); }
+      50% { transform: translateX(4px); }
+    }
+
+    /* Trust Logos Section */
+    .trust-section {
+      border-top: 1px solid rgba(255,255,255,0.05);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      padding: 40px 20px;
+      text-align: center;
+      background: #0b0d12;
+    }
+    .trust-title {
+      font-size: 11px;
+      letter-spacing: 3px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .trust-logos {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+      opacity: 0.6;
+      font-size: 18px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+    }
+
+    /* Concierge Booking Footer CTA */
+    .booking-section {
+      padding: 100px 20px;
+      text-align: center;
+      background: radial-gradient(circle at 50% 50%, #151821 0%, var(--bg-dark) 100%);
+    }
+    .booking-card {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 48px 32px;
+      border: 1px solid var(--border-line);
+      border-radius: 24px;
+      background: rgba(16, 19, 26, 0.5);
+      backdrop-filter: blur(20px);
+    }
+    .booking-card h2 {
+      font-size: 38px;
+      margin-bottom: 12px;
+    }
+    .booking-card p {
+      color: var(--text-muted);
+      font-size: 14px;
+      margin-bottom: 32px;
+    }
+    .vip-button {
+      display: inline-block;
+      padding: 16px 40px;
+      background: linear-gradient(135deg, #D4AF37 0%, #B89628 100%);
+      color: #000;
+      font-weight: 600;
+      text-decoration: none;
+      letter-spacing: 2px;
+      font-size: 13px;
+      text-transform: uppercase;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+    }
+    .vip-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px var(--gold-glow);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="brand-logo">
+      AURA
+      <span>BEVERLY HILLS</span>
+    </div>
+    <a href="#consultation" class="nav-cta">Concierge</a>
+  </header>
+
+  <main class="hero-section">
+    <div class="hero-title-wrap">
+      <span class="hero-badge">Aesthetic Surgery & Architectural Contouring</span>
+      <h1 class="hero-title">Timeless Natural Grace, <em>Elevated.</em></h1>
+      <p class="hero-sub">Dr. Harrison Vance, M.D., FACS — Beverly Hills Surgical Suites. Slide below to witness the cellular micro-sculpting transformation.</p>
+    </div>
+
+    <div class="slider-stage" id="sliderStage">
+      <!-- Right/Underneath Layer: After Video -->
+      <video id="afterVideo" class="comp-video" src="cosmetic after.mp4" playsinline muted loop></video>
+      <div class="badge-label badge-after">After Treatment</div>
+
+      <!-- Left/Top Layer: Before Video -->
+      <div class="video-clipper" id="videoClipper">
+        <video id="beforeVideo" class="comp-video" src="cosmetic before.mp4" playsinline muted loop></video>
+        <div class="badge-label badge-before">Pre-Procedure</div>
+      </div>
+
+      <div class="slider-divider" id="sliderDivider">
+        <div class="slider-handle" id="sliderHandle">
+          <svg viewBox="0 0 24 24">
+            <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <section class="trust-section">
+    <div class="trust-title">Recognized & Accredited By</div>
+    <div class="trust-logos">
+      <span>Vogue</span>
+      <span>Harper's Bazaar</span>
+      <span>ABPS Certified</span>
+      <span>Vanity Fair</span>
+    </div>
+  </section>
+
+  <section class="booking-section" id="consultation">
+    <div class="booking-card">
+      <h2>Private VIP Consultation</h2>
+      <p>Reserve your discrete, in-depth anatomical evaluation at our Rodeo Drive clinic or via ultra-secure virtual suite.</p>
+      <a href="https://wa.me/" class="vip-button">Request Evaluation</a>
+    </div>
+  </section>
+
+  <script>
+    const stage = document.getElementById('sliderStage');
+    const beforeVideo = document.getElementById('beforeVideo');
+    const afterVideo = document.getElementById('afterVideo');
+    const clipper = document.getElementById('videoClipper');
+    const divider = document.getElementById('sliderDivider');
+
+    // মুখে হাত দেওয়ার আগের সেকেন্ড (লুপ পয়েন্ট)
+    const LOOP_THRESHOLD = 2.4; 
+    let hasInteracted = false;
+    let isDragging = false;
+
+    // ১. ভিডিও যুগলকে একই সাথে চালু করা
+    function startSyncedPlayback() {
+      beforeVideo.play().catch(() => {});
+      afterVideo.play().catch(() => {});
+    }
+
+    // ২. স্পর্শ করার আগ পর্যন্ত মুখে হাত দেওয়া ব্যতীত লুপ চালানো
+    function enforceIdleLoop() {
+      if (!hasInteracted) {
+        if (beforeVideo.currentTime >= LOOP_THRESHOLD) {
+          beforeVideo.currentTime = 0;
+          afterVideo.currentTime = 0;
+        }
+      }
+      requestAnimationFrame(enforceIdleLoop);
+    }
+
+    // ৩. মেটাডাটা লোড হলে অটোমেটিক সিঙ্ক প্লে শুরু
+    beforeVideo.addEventListener('loadedmetadata', () => {
+      startSyncedPlayback();
+      requestAnimationFrame(enforceIdleLoop);
+    });
+
+    // স্লাইডার সরানোর ক্যালকুলেশন
+    function handleMove(clientX) {
+      const rect = stage.getBoundingClientRect();
+      let pos = ((clientX - rect.left) / rect.width) * 100;
+
+      if (pos < 0) pos = 0;
+      if (pos > 100) pos = 100;
+
+      divider.style.left = `${pos}%`;
+      clipper.style.clipPath = `polygon(0 0, ${pos}% 0, ${pos}% 100%, 0 100%)`;
+
+      // ইউজার স্পর্শ করা মাত্রই সম্পূর্ণ ভিডিও প্লে হবে
+      if (!hasInteracted) {
+        hasInteracted = true;
+        beforeVideo.loop = true;
+        afterVideo.loop = true;
+      }
+    }
+
+    // মাউস ইভেন্ট
+    stage.addEventListener('mousedown', (e) => {
+      isDragging = true;
+      handleMove(e.clientX);
+    });
+
+    window.addEventListener('mouseup', () => {
+      isDragging = false;
+    });
+
+    window.addEventListener('mousemove', (e) => {
+      if (isDragging) handleMove(e.clientX);
+    });
+
+    // মোবাইল টাচ ইভেন্ট
+    stage.addEventListener('touchstart', (e) => {
+      isDragging = true;
+      handleMove(e.touches[0].clientX);
+    }, { passive: true });
+
+    window.addEventListener('touchend', () => {
+      isDragging = false;
+    });
+
+    window.addEventListener('touchmove', (e) => {
+      if (isDragging) handleMove(e.touches[0].clientX);
+    }, { passive: true });
+  </script>
+</body>
+</html>
