@@ -112,7 +112,7 @@
       text-shadow: 0 2px 15px rgba(0,0,0,0.9);
     }
 
-    /* DUAL INTERACTIVE VIDEO SLIDER */
+    /* CLIP-PATH SLIDER FIX */
     .slider-wrapper {
       position: relative;
       width: 100%;
@@ -130,42 +130,27 @@
       position: absolute;
       top: 0;
       left: 0;
+      width: 100%;
       height: 100%;
-      overflow: hidden;
     }
 
     .video-pane video {
-      position: absolute;
-      top: 0;
-      left: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
       pointer-events: none;
     }
 
-    /* AFTER LAYER IS BASE FULL (RIGHT SIDE) */
+    /* Base Layer: AFTER Video (Always underneath) */
     .pane-after-base {
-      width: 100%;
       z-index: 1;
     }
 
-    /* BEFORE LAYER CLIPS FROM LEFT */
+    /* Top Layer: BEFORE Video (Clipped to show only left side initially) */
     .pane-before-clip {
-      top: 0;
-      left: 0;
-      width: 50%;
       z-index: 2;
+      clip-path: inset(0 50% 0 0); /* Shows left 50% */
       border-right: 2px solid var(--gold-primary);
-      box-shadow: 8px 0 30px rgba(0,0,0,0.6);
-    }
-
-    .pane-before-clip .video-inner {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 440px;
-      height: 100%;
     }
 
     .sound-toggle-btn {
@@ -211,6 +196,15 @@
       pointer-events: none;
     }
 
+    .slider-handle-line {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 2px;
+      background-color: var(--gold-primary);
+    }
+
     .handle-circle {
       width: 50px;
       height: 50px;
@@ -223,6 +217,7 @@
       color: var(--gold-primary);
       box-shadow: 0 0 20px rgba(229, 197, 104, 0.7);
       pointer-events: auto;
+      z-index: 11;
     }
 
     .slider-badges {
@@ -633,13 +628,12 @@
     @media (max-width: 768px) {
       .hero-header h1 { font-size: 1.7rem; }
       .slider-wrapper { max-width: 320px; }
-      .pane-before-clip .video-inner { width: 320px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- HERO SECTION WITH FIXED DIRECTION DUAL SLIDER -->
+  <!-- HERO SECTION WITH CLIP-PATH FIX -->
   <section class="hero-container">
     <div class="hero-header">
       <div class="eyebrow">Beverly Hills Private Practice</div>
@@ -655,22 +649,21 @@
         <span id="soundLabel">Sound Off</span>
       </button>
 
-      <!-- AFTER VIDEO BASE LAYER (RIGHT SIDE) -->
+      <!-- AFTER VIDEO BASE LAYER (RIGHT SIDE ALWAYS VISIBLE UNDERNEATH) -->
       <div class="video-pane pane-after-base" id="afterBasePane">
         <video id="afterLoop" autoplay muted loop playsinline src="cosmetic after loop.mp4"></video>
         <video id="afterSwap" muted playsinline src="cosmetic after  swap.mp4" style="display: none;"></video>
       </div>
 
-      <!-- BEFORE VIDEO CLIPPED LAYER (LEFT SIDE) -->
+      <!-- BEFORE VIDEO CLIP LAYER (TOP LAYER) -->
       <div class="video-pane pane-before-clip" id="beforeClipPane">
-        <div class="video-inner" id="beforeInner">
-          <video id="beforeLoop" autoplay muted loop playsinline src="cosmetic befor loop.mp4"></video>
-          <video id="beforeSwap" muted playsinline src="cosmetic before swap.mp4" style="display: none;"></video>
-        </div>
+        <video id="beforeLoop" autoplay muted loop playsinline src="cosmetic befor loop.mp4"></video>
+        <video id="beforeSwap" muted playsinline src="cosmetic before swap.mp4" style="display: none;"></video>
       </div>
 
       <!-- SLIDER HANDLE -->
       <div class="slider-handle" id="sliderHandle">
+        <div class="slider-handle-line"></div>
         <div class="handle-circle">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
@@ -709,13 +702,15 @@
       <p style="color: var(--text-muted); font-size: 0.88rem; margin-top: 6px;">Swipe horizontally or hover to pause and examine clinical outcomes.</p>
     </div>
 
+    <!-- Ensure images exist in repo exactly with these names including capitalization -->
     <div class="marquee-viewport" id="imgViewport">
       <div class="marquee-track-img" id="imgTrack">
         <!-- Image 1 -->
         <div class="img-case-item">
           <div class="img-case-top">
             <span class="img-case-tag">Deep-Plane Lift</span>
-            <img src="denise-richard-feature-2026-lead-sidebyside.webp" alt="Deep Plane Architectural Result">
+            <!-- Name matches EXACTLY: denise-richard-feature-2026-lead-sidebyside.webp -->
+            <img src="denise-richard-feature-2026-lead-sidebyside.webp" alt="Deep Plane Architectural Result" onerror="this.src='https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80'">
           </div>
           <div class="img-case-body">
             <h4>Midface & Jawline Elevation</h4>
@@ -727,7 +722,8 @@
         <div class="img-case-item">
           <div class="img-case-top">
             <span class="img-case-tag">Dual-Pathway</span>
-            <img src="Makeup.webp" alt="Facial Restoration Result">
+            <!-- Name matches EXACTLY: Makeup.webp -->
+            <img src="Makeup.webp" alt="Facial Restoration Result" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80'">
           </div>
           <div class="img-case-body">
             <h4>Cheek Volume & Perioral Lift</h4>
@@ -739,7 +735,8 @@
         <div class="img-case-item">
           <div class="img-case-top">
             <span class="img-case-tag">Submentoplasty</span>
-            <img src="sc30.jpg" alt="Neck & Chin Contour Result">
+            <!-- Name matches EXACTLY: sc30.jpg -->
+            <img src="sc30.jpg" alt="Neck & Chin Contour Result" onerror="this.src='https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80'">
           </div>
           <div class="img-case-body">
             <h4>Jawline & Cervical Definition</h4>
@@ -751,7 +748,8 @@
         <div class="img-case-item">
           <div class="img-case-top">
             <span class="img-case-tag">Natural Harmony</span>
-            <img src="images.jfif" alt="Full Facial Architectural Rejuvenation">
+            <!-- Name matches EXACTLY: images.jfif -->
+            <img src="images.jfif" alt="Full Facial Architectural Rejuvenation" onerror="this.src='https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80'">
           </div>
           <div class="img-case-body">
             <h4>Complete Facial Balancing</h4>
@@ -763,7 +761,8 @@
         <div class="img-case-item">
           <div class="img-case-top">
             <span class="img-case-tag">Full Face Renewal</span>
-            <img src="istockphoto-2159264716-612x612.jpg" alt="Senior Facial Restoration Result">
+            <!-- Name matches EXACTLY: istockphoto-2159264716-612x612.jpg -->
+            <img src="istockphoto-2159264716-612x612.jpg" alt="Senior Facial Restoration Result" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80'">
           </div>
           <div class="img-case-body">
             <h4>Structural SMAS & Neck Lift</h4>
@@ -775,7 +774,8 @@
         <div class="img-case-item">
           <div class="img-case-top">
             <span class="img-case-tag">Lateral Elevation</span>
-            <img src="istockphoto-1210828134-612x612.jpg" alt="Lateral Profile Lift Result">
+            <!-- Name matches EXACTLY: istockphoto-1210828134-612x612.jpg -->
+            <img src="istockphoto-1210828134-612x612.jpg" alt="Lateral Profile Lift Result" onerror="this.src='https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80'">
           </div>
           <div class="img-case-body">
             <h4>Lateral Profile & Brow Angle</h4>
@@ -787,7 +787,8 @@
         <div class="img-case-item">
           <div class="img-case-top">
             <span class="img-case-tag">Perioral Detail</span>
-            <img src="images (1).jfif" alt="Perioral Line Smoothing Result">
+            <!-- Name matches EXACTLY: images (1).jfif -->
+            <img src="images (1).jfif" alt="Perioral Line Smoothing Result" onerror="this.src='https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80'">
           </div>
           <div class="img-case-body">
             <h4>Micro-Texture Smoothing</h4>
@@ -799,7 +800,7 @@
         <div class="img-case-item">
           <div class="img-case-top">
             <span class="img-case-tag">Deep-Plane Lift</span>
-            <img src="denise-richard-feature-2026-lead-sidebyside.webp" alt="Deep Plane Architectural Result">
+            <img src="denise-richard-feature-2026-lead-sidebyside.webp" alt="Deep Plane Architectural Result" onerror="this.src='https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80'">
           </div>
           <div class="img-case-body">
             <h4>Midface & Jawline Elevation</h4>
@@ -810,7 +811,7 @@
         <div class="img-case-item">
           <div class="img-case-top">
             <span class="img-case-tag">Dual-Pathway</span>
-            <img src="Makeup.webp" alt="Facial Restoration Result">
+            <img src="Makeup.webp" alt="Facial Restoration Result" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80'">
           </div>
           <div class="img-case-body">
             <h4>Cheek Volume & Perioral Lift</h4>
@@ -1019,7 +1020,6 @@
 
     const sliderWrapper = document.getElementById('sliderWrapper');
     const beforeClipPane = document.getElementById('beforeClipPane');
-    const beforeInner = document.getElementById('beforeInner');
     const sliderHandle = document.getElementById('sliderHandle');
 
     // SOUND CONTROLS
@@ -1080,16 +1080,7 @@
       } catch (e) {}
     }
 
-    function syncWidth() {
-      const w = sliderWrapper.offsetWidth;
-      beforeInner.style.width = w + 'px';
-    }
-    window.addEventListener('resize', syncWidth);
-    syncWidth();
-
-    // MODE SWITCH LOGIC:
-    // DRAG LEFT: pos < 0.44 -> Before clips smaller, After is revealed -> Play After Touch
-    // DRAG RIGHT: pos > 0.56 -> Before clips larger, covering After -> Play Before Regret Touch
+    // SLIDER CLIP-PATH LOGIC (FIXED)
     function handleModeTransition(targetMode) {
       if (currentMode === targetMode) return;
       currentMode = targetMode;
@@ -1118,8 +1109,12 @@
     function setSliderPosition(pos) {
       if (pos < 0) pos = 0; if (pos > 1) pos = 1;
       const percentage = pos * 100;
+      
       sliderHandle.style.left = percentage + '%';
-      beforeClipPane.style.width = percentage + '%';
+      
+      // Use CSS clip-path to crop the BEFORE video dynamically
+      // inset(top right bottom left) -> we crop the right side based on percentage
+      beforeClipPane.style.clipPath = `inset(0 ${100 - percentage}% 0 0)`;
 
       if (pos < 0.44) {
         handleModeTransition('left_after');
@@ -1187,9 +1182,13 @@
         viewport.scrollLeft = scrollLeft - walk;
       });
       window.addEventListener('pointerup', () => { isDown = false; });
+      window.addEventListener('pointerleave', () => { isDown = false; });
     }
     setupMarqueeDraggable(document.getElementById('imgViewport'));
     setupMarqueeDraggable(document.getElementById('revViewport'));
+
+    // INITIAL SETUP
+    setSliderPosition(0.5);
 
     // FLOATING HUB & MODAL
     const hubTrigger = document.getElementById('hubTrigger');
