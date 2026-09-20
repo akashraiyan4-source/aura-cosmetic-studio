@@ -12,14 +12,13 @@
     :root {
       --bg-main: #060609;
       --bg-surface: #101016;
-      --bg-surface-glass: rgba(16, 16, 22, 0.85);
       --gold-primary: #E5C568;
       --gold-light: #FAEEB1;
       --gold-dark: #C59F38;
       --text-main: #FFFFFF;
-      --text-muted: #B0B0C0;
-      --border-gold: rgba(229, 197, 104, 0.3);
-      --accent-glow: rgba(229, 197, 104, 0.18);
+      --text-muted: #A8A8B8;
+      --border-gold: rgba(229, 197, 104, 0.28);
+      --accent-glow: rgba(229, 197, 104, 0.16);
     }
 
     * {
@@ -88,7 +87,7 @@
       align-items: center;
       justify-content: center;
       padding: 50px 20px 40px;
-      background: radial-gradient(circle at 50% 0%, #1c1c28 0%, #060609 75%);
+      background: radial-gradient(circle at 50% 0%, #1a1a26 0%, #060609 75%);
     }
 
     .hero-header {
@@ -114,7 +113,7 @@
       text-shadow: 0 2px 15px rgba(0,0,0,0.9);
     }
 
-    /* DUAL INTERACTIVE VIDEO SLIDER WRAPPER */
+    /* DUAL INTERACTIVE VIDEO SLIDER */
     .slider-wrapper {
       position: relative;
       width: 100%;
@@ -173,7 +172,7 @@
       top: 16px;
       right: 16px;
       z-index: 20;
-      background: rgba(10, 10, 15, 0.8);
+      background: rgba(10, 10, 15, 0.85);
       backdrop-filter: blur(10px);
       border: 1px solid var(--border-gold);
       border-radius: 30px;
@@ -188,12 +187,6 @@
       font-weight: 600;
       cursor: pointer;
       box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-    }
-
-    .sound-toggle-btn:hover {
-      background: rgba(20, 20, 30, 0.95);
-      border-color: var(--gold-primary);
-      color: #FFF;
     }
 
     .sound-toggle-btn svg {
@@ -306,12 +299,12 @@
     .section-wrap {
       max-width: 1140px;
       margin: 0 auto;
-      padding: 90px 20px;
+      padding: 85px 20px;
     }
 
     .sec-header {
       text-align: center;
-      max-width: 700px;
+      max-width: 720px;
       margin: 0 auto 50px;
     }
 
@@ -364,7 +357,73 @@
       line-height: 1.7;
     }
 
-    /* GOOGLE REVIEWS INFINITE MARQUEE */
+    /* CLINICAL GALLERY SHOWCASE (WITH USER IMAGES) */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .case-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-gold);
+      border-radius: 12px;
+      overflow: hidden;
+      padding: 16px;
+    }
+
+    .case-img-wrap {
+      width: 100%;
+      height: 280px;
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+      background: #000;
+    }
+
+    .case-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .case-card:hover .case-img-wrap img {
+      transform: scale(1.04);
+    }
+
+    .case-tag {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: rgba(0,0,0,0.75);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--border-gold);
+      color: var(--gold-light);
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .case-info {
+      padding: 18px 6px 6px;
+    }
+
+    .case-info h4 {
+      font-size: 1.1rem;
+      color: #FFF;
+      margin-bottom: 6px;
+    }
+
+    .case-info p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    /* REVIEWS INFINITE MARQUEE */
     .reviews-section {
       padding: 70px 0;
       background: #08080E;
@@ -382,9 +441,7 @@
       padding: 20px 0;
       cursor: grab;
     }
-    .reviews-marquee-wrap::-webkit-scrollbar {
-      display: none;
-    }
+    .reviews-marquee-wrap::-webkit-scrollbar { display: none; }
 
     .reviews-track {
       display: flex;
@@ -410,7 +467,6 @@
       padding: 25px;
       width: 340px;
       flex-shrink: 0;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
     }
 
     .review-stars {
@@ -441,95 +497,7 @@
       letter-spacing: 1px;
     }
 
-    /* EXTRA BEFORE/AFTER IMAGE GALLERY SLIDERS */
-    .gallery-slider-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 35px;
-      margin-top: 40px;
-    }
-
-    .image-comparison-card {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-gold);
-      border-radius: 12px;
-      overflow: hidden;
-      padding: 20px;
-    }
-
-    .img-comp-container {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 4 / 5;
-      border-radius: 8px;
-      overflow: hidden;
-      user-select: none;
-    }
-
-    .img-comp-container img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      pointer-events: none;
-    }
-
-    .img-comp-after {
-      z-index: 1;
-    }
-
-    .img-comp-before {
-      z-index: 2;
-      width: 50%; /* adjustable slider */
-      border-right: 2px solid var(--gold-primary);
-    }
-
-    .img-comp-slider {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 50%;
-      width: 4px;
-      background: var(--gold-primary);
-      z-index: 10;
-      cursor: ew-resize;
-    }
-
-    .img-comp-slider::after {
-      content: '↔';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 32px;
-      height: 32px;
-      background: #08080A;
-      color: var(--gold-primary);
-      border: 1px solid var(--gold-primary);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.8rem;
-      box-shadow: 0 0 10px rgba(229, 197, 104, 0.5);
-    }
-
-    .gallery-card-title {
-      margin-top: 15px;
-      font-size: 1.1rem;
-      color: #FFF;
-      font-family: 'Cinzel', serif;
-    }
-
-    .gallery-card-desc {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      margin-top: 6px;
-    }
-
-    /* MODULE 5: CANDIDATE QUALIFICATION */
+    /* MODULE 5: QUALIFICATION */
     .qualification-box {
       background: linear-gradient(180deg, #14141E 0%, #0A0A0F 100%);
       border: 1px solid var(--border-gold);
@@ -562,7 +530,7 @@
       flex-shrink: 0;
     }
 
-    /* FLOATING AI MASTER HUB */
+    /* FLOATING AI HUB */
     .floating-hub {
       position: fixed;
       bottom: 30px;
@@ -595,9 +563,7 @@
       align-items: flex-end;
     }
 
-    .hub-options.active {
-      display: flex;
-    }
+    .hub-options.active { display: flex; }
 
     .hub-sub-btn {
       background: #12121A;
@@ -626,9 +592,7 @@
       padding: 20px;
     }
 
-    .modal-overlay.active {
-      display: flex;
-    }
+    .modal-overlay.active { display: flex; }
 
     .modal-body {
       background: #12121A;
@@ -691,7 +655,7 @@
         </div>
       </div>
 
-      <!-- INTERACTIVE SLIDER HANDLE -->
+      <!-- SLIDER HANDLE -->
       <div class="slider-handle" id="sliderHandle">
         <div class="handle-circle">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
@@ -723,103 +687,153 @@
     </div>
   </div>
 
+  <!-- CLINICAL TRANSFORMATIONS WITH ATTACHED IMAGES -->
+  <section class="section-wrap">
+    <div class="sec-header">
+      <span class="tag">Patient Archive</span>
+      <h2>Verified Clinical Case Studies</h2>
+      <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 8px;">Natural architectural restoration maintaining individual facial identity.</p>
+    </div>
+
+    <div class="gallery-grid">
+      <!-- Case 1 -->
+      <div class="case-card bh-card">
+        <div class="case-img-wrap">
+          <span class="case-tag">Deep-Plane Lift</span>
+          <img src="denise-richard-feature-2026-lead-sidebyside.webp" alt="Deep Plane Architectural Transformation">
+        </div>
+        <div class="case-info">
+          <h4>Midface & Jawline Elevation</h4>
+          <p>Age 52 • Structural SMAS repositioning without artificial skin tension.</p>
+        </div>
+      </div>
+
+      <!-- Case 2 -->
+      <div class="case-card bh-card">
+        <div class="case-img-wrap">
+          <span class="case-tag">Dual-Pathway</span>
+          <img src="Makeup.webp" alt="Facial Restoration Case">
+        </div>
+        <div class="case-info">
+          <h4>Cheek Volume & Perioral Lift</h4>
+          <p>Age 48 • Harmonious rejuvenation restoring youthful resting posture.</p>
+        </div>
+      </div>
+
+      <!-- Case 3 -->
+      <div class="case-card bh-card">
+        <div class="case-img-wrap">
+          <span class="case-tag">Submentoplasty</span>
+          <img src="sc30.jpg" alt="Neck & Chin Contour Case">
+        </div>
+        <div class="case-info">
+          <h4>Jawline & Cervical Definition</h4>
+          <p>Age 38 • Sculpted deep cervical angle with rapid 10-day recovery.</p>
+        </div>
+      </div>
+
+      <!-- Case 4 -->
+      <div class="case-card bh-card">
+        <div class="case-img-wrap">
+          <span class="case-tag">Natural Harmony</span>
+          <img src="images.jfif" alt="Full Facial Architectural Rejuvenation">
+        </div>
+        <div class="case-info">
+          <h4>Complete Facial Balancing</h4>
+          <p>Age 44 • Restored ocular volume and midface architectural symmetry.</p>
+        </div>
+      </div>
+
+      <!-- Case 5 -->
+      <div class="case-card bh-card">
+        <div class="case-img-wrap">
+          <span class="case-tag">Full Face Renewal</span>
+          <img src="istockphoto-2159264716-612x612.jpg" alt="Senior Facial Restoration">
+        </div>
+        <div class="case-info">
+          <h4>Structural SMAS & Neck Restoration</h4>
+          <p>Age 61 • Deep cellular restoration with complete skin elasticity renewal.</p>
+        </div>
+      </div>
+
+      <!-- Case 6 -->
+      <div class="case-card bh-card">
+        <div class="case-img-wrap">
+          <span class="case-tag">Precision Artistry</span>
+          <img src="istockphoto-1210828134-612x612.jpg" alt="Lateral Profile Elevation">
+        </div>
+        <div class="case-info">
+          <h4>Lateral Profile & Brow Architecture</h4>
+          <p>Age 49 • Subtle youthful elevation eliminating heavy lateral hooding.</p>
+        </div>
+      </div>
+
+      <!-- Case 7 (Micro-Detail) -->
+      <div class="case-card bh-card">
+        <div class="case-img-wrap">
+          <span class="case-tag">Perioral Precision</span>
+          <img src="images (1).jfif" alt="Perioral Line Smoothing">
+        </div>
+        <div class="case-info">
+          <h4>Micro-Texture & Perioral Smoothing</h4>
+          <p>Age 58 • Precision erbium-structural restoration of deep lip lines.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- GOOGLE REVIEWS INFINITE MARQUEE -->
   <section class="reviews-section">
-    <div class="sec-header" style="margin-bottom: 30px;">
+    <div class="sec-header" style="margin-bottom: 25px;">
       <span class="tag">Verified Patient Feedback</span>
       <h2>Google 5-Star Elite Testimonials</h2>
     </div>
     
     <div class="reviews-marquee-wrap" id="reviewsWrap">
       <div class="reviews-track" id="reviewsTrack">
-        <!-- Review 1 -->
         <div class="review-card">
           <div class="review-stars">★★★★★</div>
-          <div class="review-text">"The complete anonymity and VIP valet entry changed everything. Zero public waiting, and the deep-plane restoration looks breathtakingly natural."</div>
+          <div class="review-text">"The anonymous valet entry changed everything. Zero public waiting, and the deep-plane restoration looks breathtakingly natural."</div>
           <div class="review-author">Lady E. Sterling</div>
           <div class="review-location">London, UK • Verified Patient</div>
         </div>
-        <!-- Review 2 -->
         <div class="review-card">
           <div class="review-stars">★★★★★</div>
-          <div class="review-text">"Flown in via private jet charter coordinated directly by their concierge. The recovery suite and private nurses were absolute 5-star luxury."</div>
+          <div class="review-text">"Flown in via private jet charter coordinated directly by their concierge. The recovery suite and private nurses were pure 5-star luxury."</div>
           <div class="review-author">Marcus V.</div>
           <div class="review-location">Zurich, Switzerland • Verified Patient</div>
         </div>
-        <!-- Review 3 -->
         <div class="review-card">
           <div class="review-stars">★★★★★</div>
-          <div class="review-text">"No pulled 'windswept' look whatsoever. The architectural facial harmony achieved here is pure art. Worth every single penny."</div>
+          <div class="review-text">"No pulled 'windswept' look whatsoever. The architectural facial harmony achieved here is genuine medical art."</div>
           <div class="review-author">Dr. Alistair M.</div>
           <div class="review-location">Beverly Hills, CA • Verified Patient</div>
         </div>
-        <!-- Review 4 -->
         <div class="review-card">
           <div class="review-stars">★★★★★</div>
-          <div class="review-text">"Absolute discretion from start to finish. Strict legal NDAs gave me complete peace of mind during my public recovery timeline."</div>
+          <div class="review-text">"Absolute discretion from start to finish. Strict legal NDAs gave me complete peace of mind during recovery."</div>
           <div class="review-author">Anonymous Executive</div>
           <div class="review-location">New York, NY • Verified Patient</div>
         </div>
-        <!-- Duplicate for infinite seamless loop -->
+        <!-- Duplicates for seamless loop -->
         <div class="review-card">
           <div class="review-stars">★★★★★</div>
-          <div class="review-text">"The complete anonymity and VIP valet entry changed everything. Zero public waiting, and the deep-plane restoration looks breathtakingly natural."</div>
+          <div class="review-text">"The anonymous valet entry changed everything. Zero public waiting, and the deep-plane restoration looks breathtakingly natural."</div>
           <div class="review-author">Lady E. Sterling</div>
           <div class="review-location">London, UK • Verified Patient</div>
         </div>
         <div class="review-card">
           <div class="review-stars">★★★★★</div>
-          <div class="review-text">"Flown in via private jet charter coordinated directly by their concierge. The recovery suite and private nurses were absolute 5-star luxury."</div>
+          <div class="review-text">"Flown in via private jet charter coordinated directly by their concierge. The recovery suite and private nurses were pure 5-star luxury."</div>
           <div class="review-author">Marcus V.</div>
           <div class="review-location">Zurich, Switzerland • Verified Patient</div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- MORE AFTER & BEFORE IMAGE SLIDER GALLERY -->
-  <section class="section-wrap">
-    <div class="sec-header">
-      <span class="tag">Clinical Gallery</span>
-      <h2>Exclusive Architectural Transformations</h2>
-      <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 10px;">Drag the slider on each image to examine precision deep-plane results.</p>
-    </div>
-
-    <div class="gallery-slider-grid">
-      <!-- Gallery Card 1 -->
-      <div class="image-comparison-card">
-        <div class="img-comp-container" id="compContainer1">
-          <div class="img-comp-container img-comp-after" style="position:absolute; width:100%; height:100%;">
-            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=800&q=80" alt="After Transformation">
-          </div>
-          <div class="img-comp-container img-comp-before" id="compBefore1" style="position:absolute; width:50%; height:100%; overflow:hidden;">
-            <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=800&q=80" alt="Before Restoration" style="width: 320px; max-width: none;">
-          </div>
-          <div class="img-comp-slider" id="compSlider1"></div>
-        </div>
-        <div class="gallery-card-title">Deep-Plane Facelift & Jawline Contouring</div>
-        <div class="gallery-card-desc">Patient Age: 52 • 14-Day Post-Op Private Recovery</div>
-      </div>
-
-      <!-- Gallery Card 2 -->
-      <div class="image-comparison-card">
-        <div class="img-comp-container" id="compContainer2">
-          <div class="img-comp-container img-comp-after" style="position:absolute; width:100%; height:100%;">
-            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80" alt="After Transformation">
-          </div>
-          <div class="img-comp-container img-comp-before" id="compBefore2" style="position:absolute; width:50%; height:100%; overflow:hidden;">
-            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=80" alt="Before Restoration" style="width: 320px; max-width: none;">
-          </div>
-          <div class="img-comp-slider" id="compSlider2"></div>
-        </div>
-        <div class="gallery-card-title">Precision Blepharoplasty & Brow Architecture</div>
-        <div class="gallery-card-desc">Patient Age: 46 • Natural Upper & Lower Restoration</div>
       </div>
     </div>
   </section>
 
   <!-- MODULE 2: 100% DISCREET VIP PRIVACY SUITE -->
-  <section class="section-wrap" style="background: #08080E;">
+  <section class="section-wrap">
     <div class="sec-header">
       <span class="tag">Uncompromising Privacy</span>
       <h2>100% Discreet VIP Sanctuary</h2>
@@ -844,7 +858,7 @@
   </section>
 
   <!-- MODULE 3: SURGICAL SAFETY & NATURAL HARMONY -->
-  <section class="section-wrap">
+  <section class="section-wrap" style="background: #08080E;">
     <div class="sec-header">
       <span class="tag">Clinical Excellence</span>
       <h2>Surgical Safety & Natural Harmony</h2>
@@ -864,6 +878,31 @@
         <div class="card-icon">✨</div>
         <h3>Deep-Plane Structural Harmony</h3>
         <p>Structural SMAS and deep-plane repositioning designed for natural youthful harmony. Zero artificial or "windswept" pulled tension.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODULE 4: OUT-OF-TOWN "FLY-IN" VIP CONCIERGE -->
+  <section class="section-wrap">
+    <div class="sec-header">
+      <span class="tag">Global Patients</span>
+      <h2>Fly-In Private Concierge Service</h2>
+    </div>
+    <div class="grid-3">
+      <div class="bh-card">
+        <div class="card-icon">✈️</div>
+        <h3>Private Airport & Chauffeur</h3>
+        <p>Private luxury chauffeur transfer straight from LAX or private hangars directly to our clinical suites with zero logistical friction.</p>
+      </div>
+      <div class="bh-card">
+        <div class="card-icon">🏨</div>
+        <h3>5-Star Partner Recovery Suites</h3>
+        <p>Post-procedure healing in exclusive luxury partner hotels accompanied by dedicated 24/7 private registered nurses.</p>
+      </div>
+      <div class="bh-card">
+        <div class="card-icon">💻</div>
+        <h3>Virtual 3D Pre-Flight Assessment</h3>
+        <p>High-resolution remote anatomy review and timeline planning before booking travel arrangements.</p>
       </div>
     </div>
   </section>
@@ -974,45 +1013,51 @@
     let isDragging = false;
     let currentMode = 'idle';
     let springAnimation = null;
+
+    // ULTRA-SOFT CLEAN MECHANICAL HAPTIC TICK (Web Audio API)
     let audioCtx = null;
     let lastTickTime = 0;
 
     function playHapticTick() {
-      if (navigator.vibrate) navigator.vibrate(12);
-      const now = Date.now();
-      if (now - lastTickTime < 45) return;
+      // Mobile Vibration API
+      if (navigator.vibrate) {
+        navigator.vibrate(10);
+      }
+
+      const now = performance.now();
+      if (now - lastTickTime < 60) return; // Smooth pacing, no jitter
       lastTickTime = now;
 
       try {
-        if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        if (audioCtx.state === 'suspended') audioCtx.resume();
-        
+        if (!audioCtx) {
+          audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        }
+        if (audioCtx.state === 'suspended') {
+          audioCtx.resume();
+        }
+
+        // Soft, rounded mechanical sub-click (80Hz to 20Hz)
         const osc = audioCtx.createOscillator();
         const gain = audioCtx.createGain();
+
         osc.type = 'sine';
-        osc.frequency.setValueAtTime(120, audioCtx.currentTime);
-        osc.frequency.exponentialRampToValueAtTime(30, audioCtx.currentTime + 0.025);
-        gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.025);
+        osc.frequency.setValueAtTime(80, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(20, audioCtx.currentTime + 0.02);
+
+        gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.02);
+
         osc.connect(gain);
         gain.connect(audioCtx.destination);
+
         osc.start();
-        osc.stop(audioCtx.currentTime + 0.026);
+        osc.stop(audioCtx.currentTime + 0.021);
       } catch (e) {}
     }
 
     function syncWidth() {
       const w = sliderWrapper.offsetWidth;
       videoInner.style.width = w + 'px';
-
-      // Sync gallery image containers
-      ['1', '2'].forEach(id => {
-        const cont = document.getElementById('compContainer' + id);
-        const before = document.getElementById('compBefore' + id);
-        if (cont && before) {
-          before.querySelector('img').style.width = cont.offsetWidth + 'px';
-        }
-      });
     }
     window.addEventListener('resize', syncWidth);
     syncWidth();
@@ -1092,32 +1137,7 @@
     window.addEventListener('pointerup', () => { if (isDragging) { isDragging = false; springBackToCenter(); } });
     window.addEventListener('pointercancel', () => { if (isDragging) { isDragging = false; springBackToCenter(); } });
 
-    // GALLERY IMAGE SLIDER INTERACTION LOGIC
-    function initImageComparison(id) {
-      const container = document.getElementById('compContainer' + id);
-      const beforeDiv = document.getElementById('compBefore' + id);
-      const slider = document.getElementById('compSlider' + id);
-      let isCompDragging = false;
-
-      function updatePos(clientX) {
-        const rect = container.getBoundingClientRect();
-        let x = clientX - rect.left;
-        if (x < 0) x = 0;
-        if (x > rect.width) x = rect.width;
-        let percentage = (x / rect.width) * 100;
-        slider.style.left = percentage + '%';
-        beforeDiv.style.width = percentage + '%';
-      }
-
-      slider.addEventListener('pointerdown', (e) => { isCompDragging = true; e.preventDefault(); });
-      container.addEventListener('pointerdown', (e) => { isCompDragging = true; updatePos(e.clientX); });
-      window.addEventListener('pointermove', (e) => { if (!isCompDragging) return; updatePos(e.clientX); });
-      window.addEventListener('pointerup', () => { isCompDragging = false; });
-    }
-    initImageComparison('1');
-    initImageComparison('2');
-
-    // REVIEWS MARQUEE MANUAL TOUCH/DRAG
+    // REVIEWS INFINITE MARQUEE TOUCH / DRAG
     const reviewsWrap = document.getElementById('reviewsWrap');
     let isReviewDragging = false;
     let startX, scrollLeft;
