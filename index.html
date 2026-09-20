@@ -41,7 +41,6 @@
       letter-spacing: 1px;
     }
 
-    /* লাক্সারি কার্ড ও বাটনে বাউন্সি/স্প্রিং ট্রানজিশন */
     .bh-card, .gold-btn, .hub-main-trigger, .hub-sub-btn, .sound-toggle-btn {
       transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1), 
                   box-shadow 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
@@ -145,24 +144,26 @@
       pointer-events: none;
     }
 
-    .pane-before {
+    /* AFTER LAYER IS BASE FULL (RIGHT SIDE) */
+    .pane-after-base {
       width: 100%;
       z-index: 1;
     }
 
-    .pane-after {
-      right: 0;
-      left: auto;
+    /* BEFORE LAYER CLIPS FROM LEFT */
+    .pane-before-clip {
+      top: 0;
+      left: 0;
       width: 50%;
       z-index: 2;
-      border-left: 2px solid var(--gold-primary);
-      box-shadow: -8px 0 30px rgba(0,0,0,0.6);
+      border-right: 2px solid var(--gold-primary);
+      box-shadow: 8px 0 30px rgba(0,0,0,0.6);
     }
 
-    .pane-after .video-inner {
+    .pane-before-clip .video-inner {
       position: absolute;
       top: 0;
-      right: 0;
+      left: 0;
       width: 440px;
       height: 100%;
     }
@@ -305,7 +306,7 @@
     .sec-header {
       text-align: center;
       max-width: 720px;
-      margin: 0 auto 50px;
+      margin: 0 auto 40px;
     }
 
     .sec-header .tag {
@@ -323,6 +324,159 @@
       color: #FFF;
     }
 
+    /* INFINITE MARQUEE STRIPS (FOR IMAGES & REVIEWS) */
+    .marquee-slider-section {
+      padding: 60px 0;
+      background: #08080E;
+      border-top: 1px solid rgba(229, 197, 104, 0.12);
+      border-bottom: 1px solid rgba(229, 197, 104, 0.12);
+      overflow: hidden;
+    }
+
+    .marquee-viewport {
+      display: flex;
+      width: 100%;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      padding: 20px 0;
+      cursor: grab;
+      user-select: none;
+    }
+    .marquee-viewport::-webkit-scrollbar { display: none; }
+
+    .marquee-track-img {
+      display: flex;
+      gap: 24px;
+      padding-left: 20px;
+      animation: autoScrollMarquee 32s linear infinite;
+      width: max-content;
+    }
+
+    .marquee-track-rev {
+      display: flex;
+      gap: 24px;
+      padding-left: 20px;
+      animation: autoScrollMarquee 38s linear infinite;
+      width: max-content;
+    }
+
+    .marquee-viewport:hover .marquee-track-img,
+    .marquee-viewport:hover .marquee-track-rev {
+      animation-play-state: paused;
+    }
+
+    @keyframes autoScrollMarquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* IMAGE CARDS IN SINGLE LINE */
+    .img-case-item {
+      width: 320px;
+      height: 380px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-gold);
+      border-radius: 12px;
+      overflow: hidden;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+    }
+
+    .img-case-top {
+      position: relative;
+      width: 100%;
+      height: 290px;
+      background: #000;
+      overflow: hidden;
+    }
+
+    .img-case-top img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .img-case-item:hover .img-case-top img {
+      transform: scale(1.05);
+    }
+
+    .img-case-tag {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: rgba(0,0,0,0.8);
+      border: 1px solid var(--border-gold);
+      color: var(--gold-light);
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.68rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .img-case-body {
+      padding: 14px 18px;
+      background: var(--bg-surface);
+    }
+
+    .img-case-body h4 {
+      font-size: 0.95rem;
+      color: #FFF;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .img-case-body p {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 3px;
+    }
+
+    /* REVIEWS IN SINGLE LINE */
+    .review-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-gold);
+      border-radius: 10px;
+      padding: 24px;
+      width: 340px;
+      flex-shrink: 0;
+    }
+
+    .review-stars {
+      color: var(--gold-primary);
+      font-size: 0.95rem;
+      margin-bottom: 8px;
+      letter-spacing: 2px;
+    }
+
+    .review-text {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      line-height: 1.6;
+    }
+
+    .review-author {
+      font-size: 0.85rem;
+      color: #FFF;
+      font-weight: 600;
+      font-family: 'Cinzel', serif;
+    }
+
+    .review-location {
+      font-size: 0.7rem;
+      color: var(--gold-primary);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* 3-GRID CARDS */
     .grid-3 {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -357,147 +511,7 @@
       line-height: 1.7;
     }
 
-    /* CLINICAL GALLERY SHOWCASE (WITH USER IMAGES) */
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 30px;
-      margin-top: 40px;
-    }
-
-    .case-card {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-gold);
-      border-radius: 12px;
-      overflow: hidden;
-      padding: 16px;
-    }
-
-    .case-img-wrap {
-      width: 100%;
-      height: 280px;
-      border-radius: 8px;
-      overflow: hidden;
-      position: relative;
-      background: #000;
-    }
-
-    .case-img-wrap img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.6s ease;
-    }
-
-    .case-card:hover .case-img-wrap img {
-      transform: scale(1.04);
-    }
-
-    .case-tag {
-      position: absolute;
-      top: 12px;
-      left: 12px;
-      background: rgba(0,0,0,0.75);
-      backdrop-filter: blur(8px);
-      border: 1px solid var(--border-gold);
-      color: var(--gold-light);
-      padding: 4px 10px;
-      border-radius: 20px;
-      font-size: 0.68rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .case-info {
-      padding: 18px 6px 6px;
-    }
-
-    .case-info h4 {
-      font-size: 1.1rem;
-      color: #FFF;
-      margin-bottom: 6px;
-    }
-
-    .case-info p {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-    }
-
-    /* REVIEWS INFINITE MARQUEE */
-    .reviews-section {
-      padding: 70px 0;
-      background: #08080E;
-      border-top: 1px solid rgba(229, 197, 104, 0.15);
-      border-bottom: 1px solid rgba(229, 197, 104, 0.15);
-      overflow: hidden;
-    }
-
-    .reviews-marquee-wrap {
-      display: flex;
-      width: 100%;
-      overflow-x: auto;
-      scroll-behavior: smooth;
-      -webkit-overflow-scrolling: touch;
-      padding: 20px 0;
-      cursor: grab;
-    }
-    .reviews-marquee-wrap::-webkit-scrollbar { display: none; }
-
-    .reviews-track {
-      display: flex;
-      gap: 24px;
-      padding-left: 24px;
-      animation: autoScroll 35s linear infinite;
-      width: max-content;
-    }
-
-    .reviews-marquee-wrap:hover .reviews-track {
-      animation-play-state: paused;
-    }
-
-    @keyframes autoScroll {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-
-    .review-card {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-gold);
-      border-radius: 10px;
-      padding: 25px;
-      width: 340px;
-      flex-shrink: 0;
-    }
-
-    .review-stars {
-      color: var(--gold-primary);
-      font-size: 1rem;
-      margin-bottom: 10px;
-      letter-spacing: 2px;
-    }
-
-    .review-text {
-      font-size: 0.88rem;
-      color: var(--text-muted);
-      margin-bottom: 15px;
-      line-height: 1.6;
-    }
-
-    .review-author {
-      font-size: 0.85rem;
-      color: #FFF;
-      font-weight: 600;
-      font-family: 'Cinzel', serif;
-    }
-
-    .review-location {
-      font-size: 0.72rem;
-      color: var(--gold-primary);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    /* MODULE 5: QUALIFICATION */
+    /* MODULE 5: CANDIDATE */
     .qualification-box {
       background: linear-gradient(180deg, #14141E 0%, #0A0A0F 100%);
       border: 1px solid var(--border-gold);
@@ -619,13 +633,13 @@
     @media (max-width: 768px) {
       .hero-header h1 { font-size: 1.7rem; }
       .slider-wrapper { max-width: 320px; }
-      .pane-after .video-inner { width: 320px; }
+      .pane-before-clip .video-inner { width: 320px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- HERO SECTION WITH INTERACTIVE DUAL-BREAK VIDEO SLIDER -->
+  <!-- HERO SECTION WITH FIXED DIRECTION DUAL SLIDER -->
   <section class="hero-container">
     <div class="hero-header">
       <div class="eyebrow">Beverly Hills Private Practice</div>
@@ -633,7 +647,7 @@
     </div>
 
     <div class="slider-wrapper" id="sliderWrapper">
-      <!-- MUTE / UNMUTE TOGGLE -->
+      <!-- MUTE / UNMUTE BUTTON -->
       <button class="sound-toggle-btn" id="soundToggleBtn">
         <span id="soundIcon">
           <svg viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
@@ -641,17 +655,17 @@
         <span id="soundLabel">Sound Off</span>
       </button>
 
-      <!-- BEFORE LAYER (LEFT) -->
-      <div class="video-pane pane-before" id="beforePane">
-        <video id="beforeLoop" autoplay muted loop playsinline src="cosmetic befor loop.mp4"></video>
-        <video id="beforeSwap" muted playsinline src="cosmetic before swap.mp4" style="display: none;"></video>
+      <!-- AFTER VIDEO BASE LAYER (RIGHT SIDE) -->
+      <div class="video-pane pane-after-base" id="afterBasePane">
+        <video id="afterLoop" autoplay muted loop playsinline src="cosmetic after loop.mp4"></video>
+        <video id="afterSwap" muted playsinline src="cosmetic after  swap.mp4" style="display: none;"></video>
       </div>
 
-      <!-- AFTER LAYER (RIGHT) -->
-      <div class="video-pane pane-after" id="afterPane">
-        <div class="video-inner" id="videoInner">
-          <video id="afterLoop" autoplay muted loop playsinline src="cosmetic after loop.mp4"></video>
-          <video id="afterSwap" muted playsinline src="cosmetic after  swap.mp4" style="display: none;"></video>
+      <!-- BEFORE VIDEO CLIPPED LAYER (LEFT SIDE) -->
+      <div class="video-pane pane-before-clip" id="beforeClipPane">
+        <div class="video-inner" id="beforeInner">
+          <video id="beforeLoop" autoplay muted loop playsinline src="cosmetic befor loop.mp4"></video>
+          <video id="beforeSwap" muted playsinline src="cosmetic before swap.mp4" style="display: none;"></video>
         </div>
       </div>
 
@@ -670,11 +684,11 @@
     </div>
 
     <div class="interaction-hint">
-      <span>↔</span> Drag Left for Glow • Drag Right for Regret
+      <span>↔</span> Drag Left For Glow • Drag Right For Regret
     </div>
   </section>
 
-  <!-- MODULE 1: PRESS & MEDIA AUTHORITY STRIP -->
+  <!-- MODULE 1: PRESS & MEDIA STRIP -->
   <div class="press-strip">
     <div class="press-title">Discreet Luxury Aesthetics • Trusted by Industry Leaders & Celebrities</div>
     <div class="press-logos">
@@ -687,110 +701,135 @@
     </div>
   </div>
 
-  <!-- CLINICAL TRANSFORMATIONS WITH ATTACHED IMAGES -->
-  <section class="section-wrap">
+  <!-- SINGLE-LINE INFINITE SLIDER FOR CASE STUDY IMAGES -->
+  <section class="marquee-slider-section">
     <div class="sec-header">
-      <span class="tag">Patient Archive</span>
-      <h2>Verified Clinical Case Studies</h2>
-      <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 8px;">Natural architectural restoration maintaining individual facial identity.</p>
+      <span class="tag">Clinical Case Studies</span>
+      <h2>Architectural Facial Transformations</h2>
+      <p style="color: var(--text-muted); font-size: 0.88rem; margin-top: 6px;">Swipe horizontally or hover to pause and examine clinical outcomes.</p>
     </div>
 
-    <div class="gallery-grid">
-      <!-- Case 1 -->
-      <div class="case-card bh-card">
-        <div class="case-img-wrap">
-          <span class="case-tag">Deep-Plane Lift</span>
-          <img src="denise-richard-feature-2026-lead-sidebyside.webp" alt="Deep Plane Architectural Transformation">
+    <div class="marquee-viewport" id="imgViewport">
+      <div class="marquee-track-img" id="imgTrack">
+        <!-- Image 1 -->
+        <div class="img-case-item">
+          <div class="img-case-top">
+            <span class="img-case-tag">Deep-Plane Lift</span>
+            <img src="denise-richard-feature-2026-lead-sidebyside.webp" alt="Deep Plane Architectural Result">
+          </div>
+          <div class="img-case-body">
+            <h4>Midface & Jawline Elevation</h4>
+            <p>Age 52 • Structural SMAS repositioning</p>
+          </div>
         </div>
-        <div class="case-info">
-          <h4>Midface & Jawline Elevation</h4>
-          <p>Age 52 • Structural SMAS repositioning without artificial skin tension.</p>
-        </div>
-      </div>
 
-      <!-- Case 2 -->
-      <div class="case-card bh-card">
-        <div class="case-img-wrap">
-          <span class="case-tag">Dual-Pathway</span>
-          <img src="Makeup.webp" alt="Facial Restoration Case">
+        <!-- Image 2 -->
+        <div class="img-case-item">
+          <div class="img-case-top">
+            <span class="img-case-tag">Dual-Pathway</span>
+            <img src="Makeup.webp" alt="Facial Restoration Result">
+          </div>
+          <div class="img-case-body">
+            <h4>Cheek Volume & Perioral Lift</h4>
+            <p>Age 48 • Natural youthful elevation</p>
+          </div>
         </div>
-        <div class="case-info">
-          <h4>Cheek Volume & Perioral Lift</h4>
-          <p>Age 48 • Harmonious rejuvenation restoring youthful resting posture.</p>
-        </div>
-      </div>
 
-      <!-- Case 3 -->
-      <div class="case-card bh-card">
-        <div class="case-img-wrap">
-          <span class="case-tag">Submentoplasty</span>
-          <img src="sc30.jpg" alt="Neck & Chin Contour Case">
+        <!-- Image 3 -->
+        <div class="img-case-item">
+          <div class="img-case-top">
+            <span class="img-case-tag">Submentoplasty</span>
+            <img src="sc30.jpg" alt="Neck & Chin Contour Result">
+          </div>
+          <div class="img-case-body">
+            <h4>Jawline & Cervical Definition</h4>
+            <p>Age 38 • Sculpted deep cervical angle</p>
+          </div>
         </div>
-        <div class="case-info">
-          <h4>Jawline & Cervical Definition</h4>
-          <p>Age 38 • Sculpted deep cervical angle with rapid 10-day recovery.</p>
-        </div>
-      </div>
 
-      <!-- Case 4 -->
-      <div class="case-card bh-card">
-        <div class="case-img-wrap">
-          <span class="case-tag">Natural Harmony</span>
-          <img src="images.jfif" alt="Full Facial Architectural Rejuvenation">
+        <!-- Image 4 -->
+        <div class="img-case-item">
+          <div class="img-case-top">
+            <span class="img-case-tag">Natural Harmony</span>
+            <img src="images.jfif" alt="Full Facial Architectural Rejuvenation">
+          </div>
+          <div class="img-case-body">
+            <h4>Complete Facial Balancing</h4>
+            <p>Age 44 • Restored resting symmetry</p>
+          </div>
         </div>
-        <div class="case-info">
-          <h4>Complete Facial Balancing</h4>
-          <p>Age 44 • Restored ocular volume and midface architectural symmetry.</p>
-        </div>
-      </div>
 
-      <!-- Case 5 -->
-      <div class="case-card bh-card">
-        <div class="case-img-wrap">
-          <span class="case-tag">Full Face Renewal</span>
-          <img src="istockphoto-2159264716-612x612.jpg" alt="Senior Facial Restoration">
+        <!-- Image 5 -->
+        <div class="img-case-item">
+          <div class="img-case-top">
+            <span class="img-case-tag">Full Face Renewal</span>
+            <img src="istockphoto-2159264716-612x612.jpg" alt="Senior Facial Restoration Result">
+          </div>
+          <div class="img-case-body">
+            <h4>Structural SMAS & Neck Lift</h4>
+            <p>Age 61 • Deep cellular restoration</p>
+          </div>
         </div>
-        <div class="case-info">
-          <h4>Structural SMAS & Neck Restoration</h4>
-          <p>Age 61 • Deep cellular restoration with complete skin elasticity renewal.</p>
-        </div>
-      </div>
 
-      <!-- Case 6 -->
-      <div class="case-card bh-card">
-        <div class="case-img-wrap">
-          <span class="case-tag">Precision Artistry</span>
-          <img src="istockphoto-1210828134-612x612.jpg" alt="Lateral Profile Elevation">
+        <!-- Image 6 -->
+        <div class="img-case-item">
+          <div class="img-case-top">
+            <span class="img-case-tag">Lateral Elevation</span>
+            <img src="istockphoto-1210828134-612x612.jpg" alt="Lateral Profile Lift Result">
+          </div>
+          <div class="img-case-body">
+            <h4>Lateral Profile & Brow Angle</h4>
+            <p>Age 49 • Eliminating heavy hooding</p>
+          </div>
         </div>
-        <div class="case-info">
-          <h4>Lateral Profile & Brow Architecture</h4>
-          <p>Age 49 • Subtle youthful elevation eliminating heavy lateral hooding.</p>
-        </div>
-      </div>
 
-      <!-- Case 7 (Micro-Detail) -->
-      <div class="case-card bh-card">
-        <div class="case-img-wrap">
-          <span class="case-tag">Perioral Precision</span>
-          <img src="images (1).jfif" alt="Perioral Line Smoothing">
+        <!-- Image 7 -->
+        <div class="img-case-item">
+          <div class="img-case-top">
+            <span class="img-case-tag">Perioral Detail</span>
+            <img src="images (1).jfif" alt="Perioral Line Smoothing Result">
+          </div>
+          <div class="img-case-body">
+            <h4>Micro-Texture Smoothing</h4>
+            <p>Age 58 • Precision erbium structural fix</p>
+          </div>
         </div>
-        <div class="case-info">
-          <h4>Micro-Texture & Perioral Smoothing</h4>
-          <p>Age 58 • Precision erbium-structural restoration of deep lip lines.</p>
+
+        <!-- DUPLICATES FOR INFINITE LOOP -->
+        <div class="img-case-item">
+          <div class="img-case-top">
+            <span class="img-case-tag">Deep-Plane Lift</span>
+            <img src="denise-richard-feature-2026-lead-sidebyside.webp" alt="Deep Plane Architectural Result">
+          </div>
+          <div class="img-case-body">
+            <h4>Midface & Jawline Elevation</h4>
+            <p>Age 52 • Structural SMAS repositioning</p>
+          </div>
+        </div>
+
+        <div class="img-case-item">
+          <div class="img-case-top">
+            <span class="img-case-tag">Dual-Pathway</span>
+            <img src="Makeup.webp" alt="Facial Restoration Result">
+          </div>
+          <div class="img-case-body">
+            <h4>Cheek Volume & Perioral Lift</h4>
+            <p>Age 48 • Natural youthful elevation</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- GOOGLE REVIEWS INFINITE MARQUEE -->
-  <section class="reviews-section">
-    <div class="sec-header" style="margin-bottom: 25px;">
+  <!-- SINGLE-LINE INFINITE SLIDER FOR GOOGLE REVIEWS -->
+  <section class="marquee-slider-section" style="background: #060609; border-top: none;">
+    <div class="sec-header">
       <span class="tag">Verified Patient Feedback</span>
       <h2>Google 5-Star Elite Testimonials</h2>
     </div>
     
-    <div class="reviews-marquee-wrap" id="reviewsWrap">
-      <div class="reviews-track" id="reviewsTrack">
+    <div class="marquee-viewport" id="revViewport">
+      <div class="marquee-track-rev" id="revTrack">
         <div class="review-card">
           <div class="review-stars">★★★★★</div>
           <div class="review-text">"The anonymous valet entry changed everything. Zero public waiting, and the deep-plane restoration looks breathtakingly natural."</div>
@@ -907,7 +946,7 @@
     </div>
   </section>
 
-  <!-- MODULE 5: "AM I A CANDIDATE?" SELF-QUALIFICATION -->
+  <!-- MODULE 5: CANDIDATE QUALIFICATION -->
   <section class="section-wrap" style="background: #08080E;">
     <div class="qualification-box bh-card">
       <span class="tag" style="color: var(--gold-primary); letter-spacing: 3px; font-size: 0.75rem; text-transform: uppercase;">Self-Assessment</span>
@@ -944,7 +983,7 @@
     </div>
   </div>
 
-  <!-- AI MODAL -->
+  <!-- MODAL -->
   <div class="modal-overlay" id="conciergeModal">
     <div class="modal-body bh-card">
       <button class="modal-close" onclick="closeConciergeModal()">&times;</button>
@@ -979,9 +1018,9 @@
     const afterSwap = document.getElementById('afterSwap');
 
     const sliderWrapper = document.getElementById('sliderWrapper');
-    const afterPane = document.getElementById('afterPane');
+    const beforeClipPane = document.getElementById('beforeClipPane');
+    const beforeInner = document.getElementById('beforeInner');
     const sliderHandle = document.getElementById('sliderHandle');
-    const videoInner = document.getElementById('videoInner');
 
     // SOUND CONTROLS
     const soundToggleBtn = document.getElementById('soundToggleBtn');
@@ -1014,42 +1053,28 @@
     let currentMode = 'idle';
     let springAnimation = null;
 
-    // ULTRA-SOFT CLEAN MECHANICAL HAPTIC TICK (Web Audio API)
+    // HAPTIC SOUND
     let audioCtx = null;
     let lastTickTime = 0;
 
     function playHapticTick() {
-      // Mobile Vibration API
-      if (navigator.vibrate) {
-        navigator.vibrate(10);
-      }
-
+      if (navigator.vibrate) navigator.vibrate(10);
       const now = performance.now();
-      if (now - lastTickTime < 60) return; // Smooth pacing, no jitter
+      if (now - lastTickTime < 65) return;
       lastTickTime = now;
 
       try {
-        if (!audioCtx) {
-          audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        }
-        if (audioCtx.state === 'suspended') {
-          audioCtx.resume();
-        }
-
-        // Soft, rounded mechanical sub-click (80Hz to 20Hz)
+        if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        if (audioCtx.state === 'suspended') audioCtx.resume();
         const osc = audioCtx.createOscillator();
         const gain = audioCtx.createGain();
-
         osc.type = 'sine';
         osc.frequency.setValueAtTime(80, audioCtx.currentTime);
         osc.frequency.exponentialRampToValueAtTime(20, audioCtx.currentTime + 0.02);
-
         gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
         gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.02);
-
         osc.connect(gain);
         gain.connect(audioCtx.destination);
-
         osc.start();
         osc.stop(audioCtx.currentTime + 0.021);
       } catch (e) {}
@@ -1057,11 +1082,14 @@
 
     function syncWidth() {
       const w = sliderWrapper.offsetWidth;
-      videoInner.style.width = w + 'px';
+      beforeInner.style.width = w + 'px';
     }
     window.addEventListener('resize', syncWidth);
     syncWidth();
 
+    // MODE SWITCH LOGIC:
+    // DRAG LEFT: pos < 0.44 -> Before clips smaller, After is revealed -> Play After Touch
+    // DRAG RIGHT: pos > 0.56 -> Before clips larger, covering After -> Play Before Regret Touch
     function handleModeTransition(targetMode) {
       if (currentMode === targetMode) return;
       currentMode = targetMode;
@@ -1069,16 +1097,19 @@
       if (targetMode === 'left_after') {
         afterLoop.style.display = 'none'; afterLoop.pause();
         afterSwap.style.display = 'block'; afterSwap.muted = isMuted; afterSwap.currentTime = 0; afterSwap.play();
+
         beforeSwap.style.display = 'none'; beforeSwap.pause();
         beforeLoop.style.display = 'block'; beforeLoop.play();
       } else if (targetMode === 'right_before') {
         beforeLoop.style.display = 'none'; beforeLoop.pause();
         beforeSwap.style.display = 'block'; beforeSwap.muted = isMuted; beforeSwap.currentTime = 0; beforeSwap.play();
+
         afterSwap.style.display = 'none'; afterSwap.pause();
         afterLoop.style.display = 'block'; afterLoop.play();
       } else if (targetMode === 'idle') {
         beforeSwap.style.display = 'none'; beforeSwap.pause();
         beforeLoop.style.display = 'block'; beforeLoop.play();
+
         afterSwap.style.display = 'none'; afterSwap.pause();
         afterLoop.style.display = 'block'; afterLoop.play();
       }
@@ -1088,11 +1119,15 @@
       if (pos < 0) pos = 0; if (pos > 1) pos = 1;
       const percentage = pos * 100;
       sliderHandle.style.left = percentage + '%';
-      afterPane.style.width = (100 - percentage) + '%';
+      beforeClipPane.style.width = percentage + '%';
 
-      if (pos < 0.44) handleModeTransition('left_after');
-      else if (pos > 0.56) handleModeTransition('right_before');
-      else handleModeTransition('idle');
+      if (pos < 0.44) {
+        handleModeTransition('left_after');
+      } else if (pos > 0.56) {
+        handleModeTransition('right_before');
+      } else {
+        handleModeTransition('idle');
+      }
     }
 
     function springBackToCenter() {
@@ -1137,23 +1172,24 @@
     window.addEventListener('pointerup', () => { if (isDragging) { isDragging = false; springBackToCenter(); } });
     window.addEventListener('pointercancel', () => { if (isDragging) { isDragging = false; springBackToCenter(); } });
 
-    // REVIEWS INFINITE MARQUEE TOUCH / DRAG
-    const reviewsWrap = document.getElementById('reviewsWrap');
-    let isReviewDragging = false;
-    let startX, scrollLeft;
-
-    reviewsWrap.addEventListener('pointerdown', (e) => {
-      isReviewDragging = true;
-      startX = e.pageX - reviewsWrap.offsetLeft;
-      scrollLeft = reviewsWrap.scrollLeft;
-    });
-    window.addEventListener('pointermove', (e) => {
-      if (!isReviewDragging) return;
-      const x = e.pageX - reviewsWrap.offsetLeft;
-      const walk = (x - startX) * 2;
-      reviewsWrap.scrollLeft = scrollLeft - walk;
-    });
-    window.addEventListener('pointerup', () => { isReviewDragging = false; });
+    // TOUCH & DRAG FOR HORIZONTAL MARQUEE STRIPS
+    function setupMarqueeDraggable(viewport) {
+      let isDown = false, startX, scrollLeft;
+      viewport.addEventListener('pointerdown', (e) => {
+        isDown = true;
+        startX = e.pageX - viewport.offsetLeft;
+        scrollLeft = viewport.scrollLeft;
+      });
+      window.addEventListener('pointermove', (e) => {
+        if (!isDown) return;
+        const x = e.pageX - viewport.offsetLeft;
+        const walk = (x - startX) * 1.8;
+        viewport.scrollLeft = scrollLeft - walk;
+      });
+      window.addEventListener('pointerup', () => { isDown = false; });
+    }
+    setupMarqueeDraggable(document.getElementById('imgViewport'));
+    setupMarqueeDraggable(document.getElementById('revViewport'));
 
     // FLOATING HUB & MODAL
     const hubTrigger = document.getElementById('hubTrigger');
