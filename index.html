@@ -10,6 +10,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
+    /* ==========================================================================
+       স্ক্রিনশটের অরিজিনাল সফট গ্রেডিয়েন্ট ও লাক্সারি প্যালেট
+       ========================================================================== */
     :root {
       --bg-cream: #FAF8F5;
       --bg-card: #FFFFFF;
@@ -18,10 +21,11 @@
       --text-light: #8E8A85;
       
       --rose-accent: #C58874;
-      --rose-light: #E0A996;
-      --rose-btn: linear-gradient(135deg, #B87B68 0%, #8C4E3C 100%);
-      --rose-glow: rgba(184, 123, 104, 0.28);
       --card-border: rgba(197, 136, 116, 0.22);
+      
+      /* আপনার স্ক্রিনশটের বাম পাশের হুবহু শ্যাম্পেন টু ডাস্টি-রোজ সফট গ্রেডিয়েন্ট ও শ্যাডো */
+      --rose-btn: linear-gradient(90deg, #E2B6A6 0%, #8C5358 100%);
+      --rose-glow: 0 12px 28px -4px rgba(140, 83, 88, 0.45);
       
       --spring-snap: cubic-bezier(0.34, 1.56, 0.64, 1);
     }
@@ -48,29 +52,30 @@
       letter-spacing: -0.01em;
     }
 
+    /* স্ক্রিনশটের হুবহু সেই সফট রোজ-গোল্ড গ্রেডিয়েন্ট বাটন */
     .gold-btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      background: var(--rose-btn);
-      color: #FFFFFF;
-      padding: 14px 30px;
+      background: var(--rose-btn) !important;
+      color: #FFFFFF !important;
+      padding: 13px 28px;
       border-radius: 4px;
-      border: 1px solid rgba(255, 255, 255, 0.25);
+      border: none;
       font-family: 'Montserrat', sans-serif;
-      font-size: 0.78rem;
+      font-size: 0.76rem;
       font-weight: 600;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       text-decoration: none;
       cursor: pointer;
-      box-shadow: 0 10px 24px var(--rose-glow);
+      box-shadow: var(--rose-glow) !important;
       transition: transform 0.4s var(--spring-snap), box-shadow 0.4s ease;
     }
 
     .gold-btn:hover {
       transform: translateY(-2px) scale(1.02);
-      box-shadow: 0 14px 28px rgba(184, 123, 104, 0.42);
+      box-shadow: 0 16px 32px -4px rgba(140, 83, 88, 0.6) !important;
     }
 
     .section-container {
@@ -189,7 +194,7 @@
 
     .pill-item span { color: var(--rose-accent); }
 
-    /* ৯:১৬ হিরো স্লাইডার */
+    /* ৯:১৬ হিরো স্লাইডার ফ্রেম */
     .slider-frame {
       position: relative;
       width: 100%;
@@ -203,7 +208,7 @@
       user-select: none;
       -webkit-user-select: none;
       touch-action: pan-y;
-      background: #000;
+      background: #141316;
     }
 
     .pane-video {
@@ -222,6 +227,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      display: block;
     }
 
     .pane-left { z-index: 1; }
@@ -368,7 +374,7 @@
       text-transform: uppercase;
     }
 
-    /* ইনফিনিট মারকুই */
+    /* ইনফিনিট কেস স্টাডি মারকুই */
     .marquee-wrapper {
       position: relative;
       width: 100%;
@@ -449,7 +455,7 @@
       color: var(--text-light);
     }
 
-    /* গ্রিড ও কার্ড স্টাইল */
+    /* ৩-কলাম ও ২-কলাম গ্রিড */
     .grid-3-col {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -616,7 +622,7 @@
 </head>
 <body>
 
-  <!-- হিরো সেকশন -->
+  <!-- ১. HERO FLAGSHIP SECTION -->
   <section class="hero-section">
     <div class="hero-content">
       <div class="hero-pre-tag">• BEVERLY HILLS PRIVATE PRACTICE</div>
@@ -640,7 +646,7 @@
       </div>
     </div>
 
-    <!-- ৯:১৬ ভিডিও স্লাইডার (কালো না হওয়ার জন্য নির্ভরযোগ্য অটোপ্লে স্ট্রিম) -->
+    <!-- ৯:১৬ ভিডিও স্লাইডার (সরাসরি প্লে হওয়া নির্ভরযোগ্য স্ট্রিমিং ও পোস্টার ফলব্যাক) -->
     <div class="hero-video-wrapper">
       <div class="slider-frame" id="sliderWrapper">
         
@@ -650,7 +656,7 @@
         </div>
 
         <div class="pane-video pane-left">
-          <video id="beforeLoop" autoplay muted loop playsinline preload="auto">
+          <video id="beforeLoop" autoplay muted loop playsinline preload="auto" poster="denise-richard-feature-2026-lead-sidebyside.webp">
             <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4">
           </video>
           <video id="beforeAction" class="pane-video action-layer" muted loop playsinline preload="auto">
@@ -659,7 +665,7 @@
         </div>
 
         <div class="pane-video pane-right" id="afterPane">
-          <video id="afterLoop" autoplay muted loop playsinline preload="auto">
+          <video id="afterLoop" autoplay muted loop playsinline preload="auto" poster="Makeup.webp">
             <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4" type="video/mp4">
           </video>
           <video id="afterAction" class="pane-video action-layer" muted loop playsinline preload="auto">
@@ -685,7 +691,7 @@
     </div>
   </section>
 
-  <!-- প্রেস বার -->
+  <!-- ২. প্রেস বার -->
   <div class="press-bar">
     <div class="press-text">Discreet Luxury Aesthetics • Trusted By Industry Leaders & Celebrities</div>
     <div class="press-list">
@@ -698,7 +704,7 @@
     </div>
   </div>
 
-  <!-- ইনফিনিট কেস স্টাডি মারকুই (আপনার আসল ছবিগুলো সরাসরি কানেক্টেড) -->
+  <!-- ৩. ইনফিনিট কেস স্টাডি মারকুই -->
   <section style="padding: 70px 0 30px 0; text-align: center;">
     <div class="section-header" style="margin-bottom: 30px;">
       <span class="sub-tag">Clinical Case Studies</span>
@@ -709,7 +715,6 @@
     <div class="marquee-wrapper">
       <div class="marquee-track">
         
-        <!-- ১. sc30.jpg -->
         <div class="case-card">
           <div class="case-img-box">
             <span class="case-badge">Submentoplasty</span>
@@ -721,7 +726,6 @@
           </div>
         </div>
 
-        <!-- ২. images.jfif -->
         <div class="case-card">
           <div class="case-img-box">
             <span class="case-badge">Natural Harmony</span>
@@ -733,7 +737,6 @@
           </div>
         </div>
 
-        <!-- ৩. istockphoto-2159264716-612x612.jpg -->
         <div class="case-card">
           <div class="case-img-box">
             <span class="case-badge">Full Face Renewal</span>
@@ -745,7 +748,6 @@
           </div>
         </div>
 
-        <!-- ৪. istockphoto-1210828134-612x612.jpg -->
         <div class="case-card">
           <div class="case-img-box">
             <span class="case-badge">Lateral Elevation</span>
@@ -757,7 +759,6 @@
           </div>
         </div>
 
-        <!-- ৫. images (1).jfif -->
         <div class="case-card">
           <div class="case-img-box">
             <span class="case-badge">Perioral Detail</span>
@@ -769,7 +770,6 @@
           </div>
         </div>
 
-        <!-- ৬. denise-richard-feature-2026-lead-sidebyside.webp -->
         <div class="case-card">
           <div class="case-img-box">
             <span class="case-badge">Deep-Plane Lift</span>
@@ -781,7 +781,6 @@
           </div>
         </div>
 
-        <!-- ৭. Makeup.webp -->
         <div class="case-card">
           <div class="case-img-box">
             <span class="case-badge">Dual-Pathway</span>
@@ -793,7 +792,7 @@
           </div>
         </div>
 
-        <!-- লুপের ধারাবাহিকতার জন্য ডুপ্লিকেট সেট -->
+        <!-- ইনফিনিট লুপের জন্য ডুপ্লিকেট সেট -->
         <div class="case-card">
           <div class="case-img-box">
             <span class="case-badge">Submentoplasty</span>
@@ -820,7 +819,7 @@
     </div>
   </section>
 
-  <!-- ১০০% ডিসক্রিট ভিআইপি সেঞ্চুয়ারি -->
+  <!-- ৪. ১০০% ডিসক্রিট ভিআইপি সেঞ্চুয়ারি -->
   <section class="section-container" style="padding-top: 20px;">
     <div class="section-header">
       <span class="sub-tag">Uncompromising Privacy</span>
@@ -848,7 +847,7 @@
     </div>
   </section>
 
-  <!-- নন-সার্জিক্যাল ডুয়াল-পাথওয়ে -->
+  <!-- ৫. নন-সার্জিক্যাল ডুয়াল-পাথওয়ে -->
   <section class="section-container" style="padding-top: 20px;">
     <div class="section-header">
       <span class="sub-tag">Zero Scalpel • Zero Downtime</span>
@@ -887,7 +886,7 @@
     </div>
   </section>
 
-  <!-- সার্জিক্যাল সেফটি & QUAD-A -->
+  <!-- ৬. সার্জিক্যাল সেফটি & QUAD-A -->
   <section class="section-container" style="padding-top: 20px;">
     <div class="section-header">
       <span class="sub-tag">Clinical Excellence</span>
@@ -915,7 +914,7 @@
     </div>
   </section>
 
-  <!-- বডি আর্কিটেকচার & মমি মেকওভার -->
+  <!-- ৭. বডি আর্কিটেকচার & মমি মেকওভার -->
   <section class="section-container" style="padding-top: 20px;">
     <div class="section-header">
       <span class="sub-tag">Full-Body Harmony</span>
@@ -948,7 +947,7 @@
     </div>
   </section>
 
-  <!-- দ্য FLY-IN সেঞ্চুয়ারি -->
+  <!-- ৮. দ্য FLY-IN সেঞ্চুয়ারি -->
   <section class="section-container" style="padding-top: 20px;">
     <div class="section-header">
       <span class="sub-tag">Global Destination</span>
@@ -977,7 +976,7 @@
     </div>
   </section>
 
-  <!-- গুগল ৫-স্টার রিভিউ মারকুই -->
+  <!-- ৯. গুগল ৫-স্টার রিভিউ মারকুই -->
   <section style="padding: 60px 0 40px 0; text-align: center;">
     <div class="section-header" style="margin-bottom: 30px;">
       <span class="sub-tag">Verified Feedback</span>
@@ -1031,7 +1030,7 @@
     </div>
   </section>
 
-  <!-- সেলফ-অ্যাসেসমেন্ট -->
+  <!-- ১০. সেলফ-অ্যাসেসমেন্ট -->
   <section class="section-container" id="candidate-section" style="padding-top: 20px; padding-bottom: 90px;">
     <div class="self-card">
       <span class="sub-tag">Self-Assessment</span>
@@ -1058,7 +1057,7 @@
     </div>
   </section>
 
-  <!-- জাভাস্ক্রিপ্ট -->
+  <!-- জাভাস্ক্রিপ্ট লজিক -->
   <script>
     const wrapper = document.getElementById('sliderWrapper');
     const knob = document.getElementById('sliderKnob');
@@ -1076,6 +1075,17 @@
 
     let isDragging = false;
     let isMuted = true;
+
+    // ব্রাউজার অটোপ্লে এনফোর্সমেন্ট
+    function ensurePlay() {
+      [beforeLoop, afterLoop].forEach(v => {
+        v.muted = true;
+        v.play().catch(() => {});
+      });
+    }
+    window.addEventListener('DOMContentLoaded', ensurePlay);
+    window.addEventListener('touchstart', ensurePlay, { once: true });
+    window.addEventListener('click', ensurePlay, { once: true });
 
     knob.addEventListener('mousedown', startDrag);
     knob.addEventListener('touchstart', startDrag, { passive: false });
