@@ -1,254 +1,327 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Discreet Luxury Facial Architecture | Beverly Hills</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AURA | Discreet Deep-Plane Facial Architecture • Beverly Hills</title>
+  
+  <!-- Premium Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
+    /* ==========================================================================
+       1. LUXURY COLOR PALETTE & SHARP TYPOGRAPHY ENGINE
+       ========================================================================== */
     :root {
-      /* WARM ALABASTER CREAM & ROSE-GOLD PALETTE */
-      --bg-main: #FAF8F5;
-      --bg-surface: #FFFFFF;
-      --bg-secondary: #F3EFEA;
-      --rose-gold: #B76E79;
-      --rose-gold-light: #E8C5C8;
-      --rose-gold-dark: #8C4853;
-      --gold-metallic: #C5A059;
-      --text-main: #1C1B1F;
-      --text-muted: #6B6870;
-      --border-rose: rgba(183, 110, 121, 0.28);
-      --accent-glow: rgba(183, 110, 121, 0.15);
+      --bg-cream: #FAF8F5;
+      --bg-card: #FFFFFF;
+      --bg-card-alt: #F4EFEB;
+      
+      /* Crisp Obsidian Typography */
+      --text-main: #0B0A0D;
+      --text-muted: #2E2B33;
+      --text-soft: #4E4A56;
+      
+      /* Metallic Rose-Gold Palette */
+      --rose-gold: #C59A6F;
+      --rose-gold-light: #DFB892;
+      --rose-gold-dark: #8C5338;
+      --rose-gold-glow: rgba(197, 154, 111, 0.25);
+      
+      --border-subtle: rgba(197, 154, 111, 0.22);
+      --border-crisp: rgba(197, 154, 111, 0.45);
+      
+      --shadow-sm: 0 4px 12px rgba(11, 10, 13, 0.04);
+      --shadow-md: 0 12px 30px -8px rgba(11, 10, 13, 0.07);
+      --shadow-lg: 0 24px 50px -12px rgba(140, 83, 56, 0.12);
+
+      --font-serif: 'Cinzel', Georgia, serif;
+      --font-sans: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
     }
 
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
-      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--bg-cream);
     }
 
     body {
-      background-color: var(--bg-main);
+      font-family: var(--font-sans);
       color: var(--text-main);
-      font-family: 'Montserrat', sans-serif;
+      background-color: var(--bg-cream);
       overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      font-weight: 450;
+      line-height: 1.6;
+    }
+
+    /* Headings Sharpness */
+    h1, h2, h3, h4, h5 {
+      font-family: var(--font-serif);
+      color: var(--text-main);
+      letter-spacing: 0.02em;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      letter-spacing: 0.2px;
       line-height: 1.65;
     }
 
-    h1, h2, h3, h4, .cinzel {
-      font-family: 'Cinzel', serif;
-      letter-spacing: 1px;
-      color: var(--text-main);
+    a {
+      text-decoration: none;
+      color: inherit;
     }
 
-    /* Spring Physics Transitions */
-    .bh-card, .rose-gold-btn, .hub-main-trigger, .hub-sub-btn, .sound-toggle-btn {
+    /* Section Container */
+    .container {
+      width: 100%;
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .sec-padding {
+      padding: 100px 0;
+    }
+
+    .sec-header {
+      text-align: center;
+      max-width: 780px;
+      margin: 0 auto 60px;
+    }
+
+    .sec-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      color: var(--rose-gold-dark);
+      margin-bottom: 12px;
+      display: inline-block;
+    }
+
+    .sec-header h2 {
+      font-size: 2.3rem;
+      line-height: 1.25;
+      margin-bottom: 16px;
+    }
+
+    .sec-header p {
+      font-size: 1.05rem;
+    }
+
+    /* Spring Physics Cards */
+    .bh-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 40px 32px;
+      box-shadow: var(--shadow-sm);
       transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1), 
                   box-shadow 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
                   border-color 0.3s ease;
-      will-change: transform;
-    }
-
-    .bh-card:hover, .bh-card:active {
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 25px 40px -10px rgba(183, 110, 121, 0.22), 
-                  0 0 25px rgba(183, 110, 121, 0.1);
-      border-color: rgba(183, 110, 121, 0.6);
-    }
-
-    .rose-gold-btn {
-      background: linear-gradient(135deg, #EAD1D4, var(--rose-gold), var(--rose-gold-dark));
-      color: #FFFFFF;
-      font-weight: 700;
-      border: none;
-      padding: 16px 34px;
-      border-radius: 4px;
-      cursor: pointer;
-      text-transform: uppercase;
-      font-size: 0.85rem;
-      letter-spacing: 2px;
-      display: inline-block;
-      text-decoration: none;
-      text-align: center;
-      box-shadow: 0 10px 25px rgba(183, 110, 121, 0.3);
-    }
-
-    .rose-gold-btn:hover, .rose-gold-btn:active {
-      transform: translateY(-3px) scale(1.04);
-      box-shadow: 0 16px 32px rgba(183, 110, 121, 0.45);
-      color: #FFFFFF;
-    }
-
-    /* HERO SECTION */
-    .hero-container {
       position: relative;
-      min-height: 94vh;
-      display: flex;
+    }
+
+    .bh-card:hover {
+      transform: translateY(-8px) scale(1.015);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--border-crisp);
+    }
+
+    /* Rose-Gold Luxury Buttons */
+    .rose-gold-btn {
+      display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 70px 20px 50px;
-      background: radial-gradient(circle at 50% 10%, #FFFFFF 0%, var(--bg-main) 75%);
+      gap: 10px;
+      background: linear-gradient(135deg, #A8644A 0%, #7A3F28 100%);
+      color: #FFFFFF;
+      font-family: var(--font-sans);
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      padding: 16px 32px;
+      border-radius: 40px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 10px 24px rgba(122, 63, 40, 0.28);
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+                  box-shadow 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
-    .hero-split-grid {
-      max-width: 1240px;
-      width: 100%;
-      margin: 0 auto;
+    .rose-gold-btn:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 16px 32px rgba(122, 63, 40, 0.38);
+    }
+
+    /* ==========================================================================
+       2. HERO SECTION & 9:16 DUAL-VIDEO INTERACTION
+       ========================================================================== */
+    .hero-sec {
+      padding: 120px 0 80px;
+      position: relative;
+    }
+
+    .hero-grid {
       display: grid;
       grid-template-columns: 1.15fr 0.85fr;
       gap: 60px;
       align-items: center;
     }
 
-    .hero-content {
-      text-align: left;
-    }
-
     .hero-eyebrow {
-      color: var(--rose-gold-dark);
-      text-transform: uppercase;
-      letter-spacing: 4px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      margin-bottom: 14px;
-      display: flex;
+      display: inline-flex;
       align-items: center;
-      gap: 10px;
-    }
-
-    .hero-header h1 {
-      font-size: 2.85rem;
-      line-height: 1.22;
-      color: #1A191D;
+      gap: 8px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      color: var(--rose-gold-dark);
       margin-bottom: 20px;
     }
 
-    .hero-desc {
-      font-size: 1rem;
-      color: var(--text-muted);
-      line-height: 1.8;
-      margin-bottom: 30px;
+    .hero-eyebrow::before {
+      content: '';
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--rose-gold);
     }
 
-    .hero-trust-badges {
+    .hero-title {
+      font-size: 3.4rem;
+      line-height: 1.15;
+      margin-bottom: 24px;
+      color: var(--text-main);
+    }
+
+    .hero-desc {
+      font-size: 1.1rem;
+      margin-bottom: 32px;
+      max-width: 540px;
+    }
+
+    .hero-pills {
       display: flex;
       flex-wrap: wrap;
-      gap: 14px;
-      margin-bottom: 35px;
+      gap: 12px;
+      margin-bottom: 40px;
     }
 
     .trust-pill {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-rose);
-      padding: 8px 18px;
-      border-radius: 30px;
-      font-size: 0.75rem;
-      color: var(--rose-gold-dark);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      letter-spacing: 1px;
+      font-size: 0.72rem;
+      font-weight: 700;
       text-transform: uppercase;
-      font-weight: 600;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-    }
-
-    /* ZERO-BLACKOUT SEAMLESS SLIDER STACK */
-    .slider-stage {
-      display: flex;
-      flex-direction: column;
+      letter-spacing: 0.08em;
+      padding: 9px 18px;
+      border-radius: 30px;
+      background: rgba(197, 154, 111, 0.12);
+      border: 1px solid var(--border-subtle);
+      color: var(--rose-gold-dark);
+      display: inline-flex;
       align-items: center;
-      width: 100%;
+      gap: 6px;
     }
 
+    /* 9:16 Mobile-First Vertical Slider */
     .slider-wrapper {
       position: relative;
       width: 100%;
       max-width: 420px;
       aspect-ratio: 9 / 16;
-      border-radius: 14px;
+      border-radius: 28px;
       overflow: hidden;
-      border: 2px solid var(--border-rose);
-      box-shadow: 0 25px 50px -10px rgba(183, 110, 121, 0.25), 0 0 30px rgba(232, 197, 200, 0.3);
+      margin: 0 auto;
+      box-shadow: 0 28px 65px -15px rgba(28, 25, 23, 0.22);
+      border: 1px solid var(--border-crisp);
       user-select: none;
       touch-action: none;
-      background: #EFECE6;
+      background: #000;
     }
 
     .video-pane {
       position: absolute;
-      top: 0;
-      left: 0;
+      inset: 0;
       width: 100%;
       height: 100%;
     }
 
-    .video-pane video {
+    .pane-after {
+      z-index: 1;
+    }
+
+    .pane-before {
+      z-index: 2;
+      clip-path: inset(0 50% 0 0);
+      border-right: 2.5px solid var(--rose-gold-light);
+    }
+
+    /* Pre-loaded 4 Layers (Zero Flicker / Zero Blackout) */
+    .vid-layer {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
+      opacity: 0;
+      transition: opacity 0.22s cubic-bezier(0.25, 1, 0.5, 1);
       pointer-events: none;
     }
 
-    /* AFTER Video sits continuously as base */
-    .pane-after-base {
-      z-index: 1;
+    .vid-layer.active {
+      opacity: 1;
     }
 
-    /* BEFORE Video clipped on top - NEVER GOES BLACK */
-    .pane-before-clip {
-      z-index: 2;
-      clip-path: inset(0 50% 0 0);
-      border-right: 2px solid var(--rose-gold);
-    }
-
+    /* Directional Sound Button */
     .sound-toggle-btn {
       position: absolute;
-      top: 16px;
-      right: 16px;
-      z-index: 20;
-      background: rgba(255, 255, 255, 0.88);
+      top: 18px;
+      right: 18px;
+      z-index: 10;
+      background: rgba(11, 10, 13, 0.65);
       backdrop-filter: blur(10px);
-      border: 1px solid var(--border-rose);
-      border-radius: 30px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 24px;
       padding: 6px 14px;
+      color: #FFF;
+      font-size: 0.7rem;
+      font-weight: 600;
       display: flex;
       align-items: center;
-      gap: 8px;
-      color: var(--rose-gold-dark);
-      font-size: 0.72rem;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      font-weight: 600;
+      gap: 6px;
       cursor: pointer;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      transition: background 0.2s ease;
     }
 
-    .sound-toggle-btn svg {
-      width: 16px;
-      height: 16px;
-      fill: currentColor;
+    .sound-toggle-btn:hover {
+      background: rgba(11, 10, 13, 0.85);
     }
 
+    /* Handle Line & Circle */
     .slider-handle {
       position: absolute;
       top: 0;
       bottom: 0;
       left: 50%;
-      width: 2px;
-      z-index: 10;
-      transform: translateX(-50%);
-      cursor: ew-resize;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      width: 0;
+      z-index: 5;
       pointer-events: none;
     }
 
@@ -256,79 +329,71 @@
       position: absolute;
       top: 0;
       bottom: 0;
-      left: 0;
+      left: -1px;
       width: 2px;
-      background-color: var(--rose-gold);
+      background: #FFFFFF;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
     }
 
     .handle-circle {
-      width: 50px;
-      height: 50px;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translate(-50%, -50%);
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
       background: #FFFFFF;
-      border: 2px solid var(--rose-gold);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--rose-gold);
-      box-shadow: 0 0 20px rgba(183, 110, 121, 0.5);
-      pointer-events: auto;
-      z-index: 11;
+      color: var(--rose-gold-dark);
+      font-size: 1.1rem;
+      font-weight: bold;
     }
 
     .slider-badges {
       position: absolute;
-      bottom: 16px;
-      width: 100%;
+      bottom: 18px;
+      left: 18px;
+      right: 18px;
       display: flex;
       justify-content: space-between;
-      padding: 0 16px;
-      z-index: 5;
+      z-index: 4;
       pointer-events: none;
     }
 
-    .badge {
-      background: rgba(255, 255, 255, 0.88);
-      backdrop-filter: blur(10px);
-      border: 1px solid var(--border-rose);
+    .slider-badges .badge {
+      background: rgba(11, 10, 13, 0.65);
+      backdrop-filter: blur(8px);
+      color: #FFF;
       padding: 6px 14px;
       border-radius: 20px;
-      font-size: 0.7rem;
-      letter-spacing: 1px;
-      text-transform: uppercase;
+      font-size: 0.68rem;
       font-weight: 600;
-      color: var(--rose-gold-dark);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+      letter-spacing: 0.05em;
+      border: 1px solid rgba(255, 255, 255, 0.15);
     }
 
-    .interaction-hint {
-      margin-top: 14px;
-      font-size: 0.78rem;
-      color: var(--rose-gold-dark);
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      opacity: 0.9;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    /* PRESS & MEDIA STRIP */
+    /* ==========================================================================
+       3. MODULE 1: PRESS & MEDIA AUTHORITY STRIP
+       ========================================================================== */
     .press-strip {
-      background: var(--bg-surface);
-      border-top: 1px solid var(--border-rose);
-      border-bottom: 1px solid var(--border-rose);
-      padding: 38px 20px;
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 36px 0;
+      background: rgba(244, 239, 235, 0.5);
       text-align: center;
     }
 
-    .press-title {
-      font-size: 0.75rem;
+    .press-headline {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.24em;
       text-transform: uppercase;
-      letter-spacing: 3px;
       color: var(--rose-gold-dark);
-      margin-bottom: 20px;
-      font-weight: 600;
+      margin-bottom: 24px;
     }
 
     .press-logos {
@@ -336,535 +401,394 @@
       justify-content: center;
       align-items: center;
       flex-wrap: wrap;
-      gap: 45px;
-      font-family: 'Cinzel', serif;
+      gap: 48px;
+      font-family: var(--font-serif);
       font-size: 1.15rem;
-      color: #8C8A94;
-      letter-spacing: 3px;
-    }
-
-    .press-logos span:hover {
-      color: var(--rose-gold);
-    }
-
-    /* GENERAL SECTIONS & GRIDS */
-    .section-wrap {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 95px 20px;
-    }
-
-    .sec-header {
-      text-align: center;
-      max-width: 760px;
-      margin: 0 auto 50px;
-    }
-
-    .sec-header .tag {
-      color: var(--rose-gold);
-      letter-spacing: 3px;
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      display: block;
-      margin-bottom: 12px;
       font-weight: 600;
+      letter-spacing: 0.15em;
+      color: var(--text-soft);
     }
 
-    .sec-header h2 {
-      font-size: 2.25rem;
-      color: var(--text-main);
-      line-height: 1.3;
-    }
-
-    .sec-header p {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      margin-top: 10px;
-    }
-
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 30px;
-    }
-
-    .grid-2 {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-      gap: 35px;
-    }
-
-    .bh-card {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-rose);
-      padding: 42px 32px;
-      border-radius: 12px;
-      position: relative;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.04);
-    }
-
-    .card-icon {
-      font-size: 2rem;
-      color: var(--rose-gold);
-      margin-bottom: 22px;
-      display: inline-block;
-    }
-
-    .bh-card h3 {
-      font-size: 1.3rem;
-      margin-bottom: 14px;
-      color: var(--text-main);
-    }
-
-    .bh-card p {
-      font-size: 0.92rem;
-      color: var(--text-muted);
-      line-height: 1.75;
-    }
-
-    /* INFINITE MARQUEE STRIPS */
-    .marquee-slider-section {
-      padding: 65px 0;
-      background: var(--bg-secondary);
-      border-top: 1px solid var(--border-rose);
-      border-bottom: 1px solid var(--border-rose);
+    /* ==========================================================================
+       4. CLINICAL BEFORE & AFTER MARQUEE TRACK (7 VERIFIED CASES)
+       ========================================================================== */
+    .marquee-section {
+      padding: 90px 0;
       overflow: hidden;
     }
 
-    .marquee-viewport {
-      display: flex;
+    .marquee-container {
       width: 100%;
       overflow-x: auto;
-      scroll-behavior: smooth;
-      -webkit-overflow-scrolling: touch;
-      padding: 20px 0;
       cursor: grab;
-      user-select: none;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      padding: 20px 0;
     }
-    .marquee-viewport::-webkit-scrollbar { display: none; }
+
+    .marquee-container::-webkit-scrollbar {
+      display: none;
+    }
 
     .marquee-track-img {
       display: flex;
-      gap: 24px;
-      padding-left: 20px;
-      animation: autoScrollMarquee 32s linear infinite;
+      gap: 28px;
       width: max-content;
+      animation: infiniteMarquee 42s linear infinite;
     }
 
-    .marquee-track-rev {
-      display: flex;
-      gap: 24px;
-      padding-left: 20px;
-      animation: autoScrollMarquee 38s linear infinite;
-      width: max-content;
-    }
-
-    .marquee-viewport:hover .marquee-track-img,
-    .marquee-viewport:hover .marquee-track-rev {
+    .marquee-track-img:hover {
       animation-play-state: paused;
     }
 
-    @keyframes autoScrollMarquee {
+    @keyframes infiniteMarquee {
       0% { transform: translateX(0); }
       100% { transform: translateX(-50%); }
     }
 
     .img-case-item {
       width: 320px;
-      height: 380px;
-      background: var(--bg-surface);
-      border: 1px solid var(--border-rose);
-      border-radius: 12px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 18px;
       overflow: hidden;
+      box-shadow: var(--shadow-sm);
       flex-shrink: 0;
-      display: flex;
-      flex-direction: column;
-      box-shadow: 0 15px 30px rgba(0,0,0,0.05);
     }
 
     .img-case-top {
       position: relative;
       width: 100%;
-      height: 290px;
-      background: #EFECE6;
+      aspect-ratio: 1 / 1;
       overflow: hidden;
+      background: #EAE5E0;
     }
 
     .img-case-top img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.5s ease;
-    }
-
-    .img-case-item:hover .img-case-top img {
-      transform: scale(1.05);
+      display: block;
     }
 
     .img-case-tag {
       position: absolute;
-      top: 12px;
-      left: 12px;
-      background: rgba(255, 255, 255, 0.9);
-      border: 1px solid var(--border-rose);
-      color: var(--rose-gold-dark);
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 0.68rem;
-      letter-spacing: 1px;
+      top: 14px;
+      left: 14px;
+      background: rgba(11, 10, 13, 0.7);
+      backdrop-filter: blur(8px);
+      color: #FFF;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
     .img-case-body {
-      padding: 14px 18px;
-      background: var(--bg-surface);
+      padding: 20px;
     }
 
     .img-case-body h4 {
       font-size: 0.95rem;
-      color: var(--text-main);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      margin-bottom: 6px;
     }
 
     .img-case-body p {
-      font-size: 0.78rem;
+      font-size: 0.8rem;
+    }
+
+    /* ==========================================================================
+       5. 3-COLUMN GRID ARCHITECTURE (MODULE 2, 3, 4, BODY)
+       ========================================================================== */
+    .three-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+
+    .card-icon {
+      font-size: 1.8rem;
+      margin-bottom: 22px;
+      display: inline-block;
+      color: var(--rose-gold-dark);
+    }
+
+    .bh-card h3 {
+      font-size: 1.05rem;
+      line-height: 1.35;
+      margin-bottom: 14px;
+    }
+
+    .bh-card p {
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    /* ==========================================================================
+       6. THE DUAL-PATHWAY ARCHITECTURE
+       ========================================================================== */
+    .dual-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+    }
+
+    .pathway-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 24px;
+      padding: 44px 38px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .pathway-badge {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--rose-gold-dark);
+      padding: 6px 14px;
+      background: rgba(197, 154, 111, 0.12);
+      border-radius: 20px;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+
+    .pathway-card h3 {
+      font-size: 1.45rem;
+      margin-bottom: 14px;
+    }
+
+    .feature-list {
+      list-style: none;
+      margin: 26px 0 34px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .feature-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.9rem;
       color: var(--text-muted);
-      margin-top: 3px;
+    }
+
+    .feature-list li::before {
+      content: '✓';
+      color: var(--rose-gold-dark);
+      font-weight: bold;
+    }
+
+    /* ==========================================================================
+       7. SELF-ASSESSMENT & VERIFIED REVIEWS
+       ========================================================================== */
+    .reviews-track {
+      display: flex;
+      gap: 24px;
+      overflow-x: auto;
+      padding: 10px 0 40px;
+      scrollbar-width: none;
+    }
+
+    .reviews-track::-webkit-scrollbar {
+      display: none;
     }
 
     .review-card {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-rose);
-      border-radius: 10px;
-      padding: 26px;
-      width: 340px;
+      width: 320px;
       flex-shrink: 0;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.03);
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 18px;
+      padding: 28px;
+      box-shadow: var(--shadow-sm);
     }
 
     .review-stars {
-      color: var(--gold-metallic);
-      font-size: 0.95rem;
-      margin-bottom: 8px;
+      color: var(--rose-gold);
+      margin-bottom: 12px;
       letter-spacing: 2px;
     }
 
-    .review-text {
-      font-size: 0.88rem;
-      color: var(--text-muted);
-      margin-bottom: 12px;
-      line-height: 1.65;
-    }
-
-    .review-author {
-      font-size: 0.88rem;
-      color: var(--text-main);
-      font-weight: 600;
-      font-family: 'Cinzel', serif;
-    }
-
-    .review-location {
-      font-size: 0.7rem;
-      color: var(--rose-gold-dark);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    /* DUAL-PATHWAY PILLARS */
-    .pathway-badge {
-      display: inline-block;
-      padding: 5px 14px;
-      background: rgba(183, 110, 121, 0.1);
-      border: 1px solid var(--rose-gold);
-      color: var(--rose-gold-dark);
-      border-radius: 20px;
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      margin-bottom: 16px;
-    }
-
-    .pathway-points {
-      list-style: none;
-      margin: 20px 0 28px;
-    }
-
-    .pathway-points li {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      color: var(--text-main);
-      font-size: 0.9rem;
-      margin-bottom: 12px;
-    }
-
-    .pathway-points li svg {
-      color: var(--rose-gold);
-      flex-shrink: 0;
-    }
-
-    /* CANDIDATE CHECKLIST & INTAKE FORM */
-    .qualification-box {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-rose);
-      border-radius: 14px;
-      padding: 55px 35px;
-      max-width: 860px;
+    .candidate-box {
+      max-width: 820px;
       margin: 0 auto;
+      background: var(--bg-card);
+      border: 1px solid var(--border-crisp);
+      border-radius: 24px;
+      padding: 50px 40px;
       text-align: center;
-      box-shadow: 0 20px 45px rgba(183, 110, 121, 0.12);
+      box-shadow: var(--shadow-md);
     }
 
-    .qual-checklist {
+    .candidate-checklist {
       list-style: none;
+      max-width: 620px;
+      margin: 30px auto;
       text-align: left;
-      max-width: 660px;
-      margin: 30px auto 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
     }
 
-    .qual-checklist li {
-      margin-bottom: 18px;
+    .candidate-checklist li {
       display: flex;
       align-items: flex-start;
-      gap: 14px;
+      gap: 12px;
       font-size: 0.95rem;
-      color: var(--text-main);
-      line-height: 1.5;
+      color: var(--text-muted);
     }
 
-    .qual-checklist li svg {
-      color: var(--rose-gold);
-      flex-shrink: 0;
-      margin-top: 3px;
+    .candidate-checklist li span {
+      color: var(--rose-gold-dark);
+      font-weight: bold;
     }
 
-    /* FLOATING INTERACTIVE HUB */
-    .floating-hub {
+    /* ==========================================================================
+       8. FLOATING VIP CONCIERGE TRIGGER HUB
+       ========================================================================== */
+    .vip-floating-hub {
       position: fixed;
       bottom: 30px;
       right: 30px;
-      z-index: 999;
-      display: flex;
-      flex-direction: column-reverse;
-      align-items: flex-end;
-      gap: 12px;
+      z-index: 100;
     }
 
-    .hub-main-trigger {
+    .hub-trigger {
       width: 62px;
       height: 62px;
       border-radius: 50%;
-      background: #FFFFFF;
-      border: 2px solid var(--rose-gold);
-      color: var(--rose-gold-dark);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1), 0 0 25px rgba(183, 110, 121, 0.3);
-    }
-
-    .hub-options {
-      display: none;
-      flex-direction: column;
-      gap: 10px;
-      align-items: flex-end;
-    }
-
-    .hub-options.active { display: flex; }
-
-    .hub-sub-btn {
-      background: #FFFFFF;
-      border: 1px solid var(--border-rose);
-      color: var(--rose-gold-dark);
-      padding: 10px 20px;
-      border-radius: 30px;
-      font-size: 0.8rem;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-      cursor: pointer;
-      font-weight: 600;
-    }
-
-    /* MODAL */
-    .modal-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(26, 25, 30, 0.7);
-      backdrop-filter: blur(10px);
-      z-index: 1000;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
-
-    .modal-overlay.active { display: flex; }
-
-    .modal-body {
-      background: #FFFFFF;
-      border: 1px solid var(--rose-gold);
-      padding: 40px;
-      border-radius: 12px;
-      width: 100%;
-      max-width: 520px;
-      position: relative;
-      box-shadow: 0 25px 50px rgba(0,0,0,0.15);
-    }
-
-    .modal-close {
-      position: absolute;
-      top: 15px;
-      right: 18px;
-      background: none;
+      background: linear-gradient(135deg, #A8644A 0%, #7A3F28 100%);
+      color: #FFF;
       border: none;
-      color: #999;
-      font-size: 1.6rem;
+      box-shadow: 0 12px 28px rgba(122, 63, 40, 0.4);
       cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
-    .form-input {
-      width: 100%;
-      padding: 15px;
-      background: #FAF8F5;
-      border: 1px solid var(--border-rose);
-      color: var(--text-main);
-      border-radius: 6px;
-      font-family: inherit;
-      font-size: 0.9rem;
-      outline: none;
-      transition: border-color 0.3s ease;
+    .hub-trigger:hover {
+      transform: scale(1.08) rotate(5deg);
     }
 
-    .form-input:focus {
-      border-color: var(--rose-gold);
-      box-shadow: 0 0 10px rgba(183, 110, 121, 0.25);
+    /* ==========================================================================
+       RESPONSIVE BREAKPOINTS
+       ========================================================================== */
+    @media (max-width: 1024px) {
+      .hero-grid { grid-template-columns: 1fr; text-align: center; gap: 40px; }
+      .hero-desc { margin: 0 auto 32px; }
+      .hero-pills { justify-content: center; }
+      .three-grid { grid-template-columns: 1fr; }
+      .dual-grid { grid-template-columns: 1fr; }
     }
 
-    @media (max-width: 960px) {
-      .hero-split-grid {
-        grid-template-columns: 1fr;
-        text-align: center;
-        gap: 40px;
-      }
-      .hero-content {
-        text-align: center;
-      }
-      .hero-eyebrow, .hero-trust-badges {
-        justify-content: center;
-      }
-      .hero-header h1 { font-size: 2.15rem; }
-      .slider-wrapper { max-width: 330px; }
+    @media (max-width: 768px) {
+      .hero-title { font-size: 2.3rem; }
+      .sec-header h2 { font-size: 1.8rem; }
+      .sec-padding { padding: 60px 0; }
     }
   </style>
 </head>
 <body>
 
-  <!-- SPLIT HERO SECTION (ALABASTER CREAM THEME) -->
-  <section class="hero-container">
-    <div class="hero-split-grid">
-      
-      <!-- LEFT DESKTOP: AUTHORITY & VALUE -->
+  <!-- ==========================================================================
+       HERO SECTION: 9:16 DUAL-VIDEO PRE-TREATMENT VS POST-RESTORATION
+       ========================================================================== -->
+  <section class="hero-sec">
+    <div class="container hero-grid">
       <div class="hero-content">
-        <div class="hero-eyebrow">
-          <span>◆</span> Beverly Hills Private Practice
-        </div>
-        <div class="hero-header">
-          <h1>Discreet Deep-Plane Facial Architecture</h1>
-        </div>
-        <p class="hero-desc">
-          Permanent structural SMAS repositioning designed for natural youthful harmony. Zero distortion, zero "windswept" tension, and 100% anonymous private suites for discerning individuals.
-        </p>
-
-        <div class="hero-trust-badges">
-          <div class="trust-pill">🗝️ Anonymous Valet Entry</div>
-          <div class="trust-pill">🛡️ Quad-A Surgical Theater</div>
-          <div class="trust-pill">🩺 MD Anesthesiologist Only</div>
+        <div class="hero-eyebrow">Discreet Beverly Hills Private Practice</div>
+        <h1 class="hero-title">Discreet Deep-Plane Facial Architecture</h1>
+        <p class="hero-desc">Permanent structural SMAS repositioning engineered for authentic youthful harmony. Zero distortion, zero "windswept" tightness, and 100% anonymous executive recovery suites.</p>
+        
+        <div class="hero-pills">
+          <span class="trust-pill">🔑 Anonymous Valet Entry</span>
+          <span class="trust-pill">🏥 Quad-A Surgical Theater</span>
+          <span class="trust-pill">🩺 MD Anesthesiologist Only</span>
         </div>
 
-        <div>
-          <button class="rose-gold-btn" onclick="openConciergeModal('Deep-Plane Facelift')">Reserve VIP Consultation →</button>
-        </div>
+        <button class="rose-gold-btn" onclick="scrollToCandidacy()">Reserve VIP Consultation →</button>
       </div>
 
-      <!-- RIGHT DESKTOP: 9:16 DUAL-VIDEO SLIDER (SEAMLESS SPLIT) -->
-      <div class="slider-stage">
-        <div class="slider-wrapper" id="sliderWrapper">
-          <!-- AUDIO TOGGLE -->
-          <button class="sound-toggle-btn" id="soundToggleBtn">
-            <span id="soundIcon">
-              <svg viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
-            </span>
-            <span id="soundLabel">Sound Off</span>
-          </button>
+      <!-- 9:16 Vertical Video Slider -->
+      <div class="slider-wrapper" id="sliderWrapper">
+        <button class="sound-toggle-btn" id="soundToggleBtn" aria-label="Toggle Directional Sound">
+          <span id="soundIcon">🔇</span>
+          <span id="soundLabel">Sound Off</span>
+        </button>
 
-          <!-- BASE LAYER: AFTER VIDEO (ALWAYS PLAYS IN BACKGROUND) -->
-          <div class="video-pane pane-after-base" id="afterBasePane">
-            <video id="afterLoop" autoplay muted loop playsinline src="cosmetic after loop.mp4"></video>
-          </div>
-
-          <!-- TOP LAYER: BEFORE VIDEO (CLIP-PATH SPLIT) -->
-          <div class="video-pane pane-before-clip" id="beforeClipPane">
-            <video id="beforeLoop" autoplay muted loop playsinline src="cosmetic befor loop.mp4"></video>
-          </div>
-
-          <!-- SLIDER HANDLE -->
-          <div class="slider-handle" id="sliderHandle">
-            <div class="slider-handle-line"></div>
-            <div class="handle-circle">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
-            </div>
-          </div>
-
-          <div class="slider-badges">
-            <div class="badge">Pre-Treatment</div>
-            <div class="badge">Post-Restoration</div>
-          </div>
+        <!-- Right Side: AFTER Base Container -->
+        <div class="video-pane pane-after">
+          <!-- Idle Loop -->
+          <video id="afterLoop" class="vid-layer active" autoplay muted loop playsinline src="cosmetic after loop.mp4"></video>
+          <!-- Drag Left Clip (Glow / Touch Face) -->
+          <video id="afterSwap" class="vid-layer" loop playsinline src="cosmetic after swap.mp4"></video>
         </div>
 
-        <div class="interaction-hint">
-          <span>↔</span> Drag Left For Glow • Drag Right For Regret
+        <!-- Left Side: BEFORE Overlay Container via Clip-Path -->
+        <div class="video-pane pane-before" id="beforeClipPane">
+          <!-- Idle Loop -->
+          <video id="beforeLoop" class="vid-layer active" autoplay muted loop playsinline src="cosmetic befor loop.mp4"></video>
+          <!-- Drag Right Clip (Regret / Concern Touch) -->
+          <video id="beforeSwap" class="vid-layer" loop playsinline src="cosmetic before swap.mp4"></video>
+        </div>
+
+        <!-- Central Spring Handle -->
+        <div class="slider-handle" id="sliderHandle">
+          <div class="slider-handle-line"></div>
+          <div class="handle-circle">↔</div>
+        </div>
+
+        <div class="slider-badges">
+          <span class="badge">Pre-Treatment</span>
+          <span class="badge">Post-Restoration</span>
         </div>
       </div>
-
     </div>
   </section>
 
-  <!-- MODULE 1: PRESS & MEDIA STRIP -->
-  <div class="press-strip">
-    <div class="press-title">Discreet Luxury Aesthetics • Trusted by Industry Leaders & Celebrities</div>
-    <div class="press-logos">
-      <span>VOGUE</span>
-      <span>HAUTE LIVING</span>
-      <span>ELLE</span>
-      <span>LOS ANGELES TIMES</span>
-      <span>HARPER'S BAZAAR</span>
-      <span>NETFLIX</span>
+  <!-- ==========================================================================
+       MODULE 1: PRESS & MEDIA AUTHORITY STRIP
+       ========================================================================== -->
+  <section class="press-strip">
+    <div class="container">
+      <div class="press-headline">Discreet Luxury Aesthetics • Trusted by Industry Leaders & Celebrities</div>
+      <div class="press-logos">
+        <span>VOGUE</span>
+        <span>HAUTE LIVING</span>
+        <span>ELLE</span>
+        <span>LOS ANGELES TIMES</span>
+        <span>HARPER'S BAZAAR</span>
+        <span>NETFLIX</span>
+      </div>
     </div>
-  </div>
+  </section>
 
-  <!-- CLINICAL BEFORE & AFTER MARQUEE -->
-  <section class="marquee-slider-section">
+  <!-- ==========================================================================
+       CLINICAL ARCHITECTURAL TRANSFORMATIONS: VERIFIED 7 MARQUEE CASES
+       ========================================================================== -->
+  <section class="marquee-section">
     <div class="sec-header">
-      <span class="tag">Clinical Case Studies</span>
+      <div class="sec-eyebrow">Clinical Case Studies</div>
       <h2>Architectural Facial Transformations</h2>
-      <p>Swipe horizontally or hover to pause and examine surgical outcomes.</p>
+      <p>Swipe horizontally or hover to pause and examine surgical structural outcomes.</p>
     </div>
 
-    <div class="marquee-viewport" id="imgViewport">
-      <div class="marquee-track-img" id="imgTrack">
+    <div class="marquee-container" id="marqueeContainer">
+      <div class="marquee-track-img">
+        <!-- 1: Denise Richards Side-by-side -->
         <div class="img-case-item">
           <div class="img-case-top">
             <span class="img-case-tag">Deep-Plane Lift</span>
-            <img src="denise-richard-feature-2026-lead-sidebyside.webp" alt="Deep Plane Architectural Result" onerror="this.src='https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80'">
+            <img src="denise-richard-feature-2026-lead-sidebyside.webp" alt="Deep Plane Architectural Result">
           </div>
           <div class="img-case-body">
             <h4>Midface & Jawline Elevation</h4>
@@ -872,10 +796,11 @@
           </div>
         </div>
 
+        <!-- 2: Makeup Restoration -->
         <div class="img-case-item">
           <div class="img-case-top">
             <span class="img-case-tag">Dual-Pathway</span>
-            <img src="Makeup.webp" alt="Facial Restoration Result" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80'">
+            <img src="Makeup.webp" alt="Facial Restoration Result">
           </div>
           <div class="img-case-body">
             <h4>Cheek Volume & Perioral Lift</h4>
@@ -883,10 +808,11 @@
           </div>
         </div>
 
+        <!-- 3: Cervical SC30 -->
         <div class="img-case-item">
           <div class="img-case-top">
             <span class="img-case-tag">Submentoplasty</span>
-            <img src="sc30.jpg" alt="Neck & Chin Contour Result" onerror="this.src='https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80'">
+            <img src="sc30.jpg" alt="Neck & Chin Contour Result">
           </div>
           <div class="img-case-body">
             <h4>Jawline & Cervical Definition</h4>
@@ -894,10 +820,11 @@
           </div>
         </div>
 
+        <!-- 4: Natural Harmony -->
         <div class="img-case-item">
           <div class="img-case-top">
             <span class="img-case-tag">Natural Harmony</span>
-            <img src="images.jfif" alt="Full Facial Architectural Rejuvenation" onerror="this.src='https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80'">
+            <img src="images.jfif" alt="Full Facial Architectural Rejuvenation">
           </div>
           <div class="img-case-body">
             <h4>Complete Facial Balancing</h4>
@@ -905,10 +832,11 @@
           </div>
         </div>
 
+        <!-- 5: Senior Structural Renewal -->
         <div class="img-case-item">
           <div class="img-case-top">
             <span class="img-case-tag">Full Face Renewal</span>
-            <img src="istockphoto-2159264716-612x612.jpg" alt="Senior Facial Restoration Result" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80'">
+            <img src="istockphoto-2159264716-612x612.jpg" alt="Senior Facial Restoration Result">
           </div>
           <div class="img-case-body">
             <h4>Structural SMAS & Neck Lift</h4>
@@ -916,21 +844,11 @@
           </div>
         </div>
 
-        <div class="img-case-item">
-          <div class="img-case-top">
-            <span class="img-case-tag">Lateral Elevation</span>
-            <img src="istockphoto-1210828134-612x612.jpg" alt="Lateral Profile Lift Result" onerror="this.src='https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80'">
-          </div>
-          <div class="img-case-body">
-            <h4>Lateral Profile & Brow Angle</h4>
-            <p>Age 49 • Eliminating heavy hooding</p>
-          </div>
-        </div>
-
+        <!-- 6: Perioral Detail -->
         <div class="img-case-item">
           <div class="img-case-top">
             <span class="img-case-tag">Perioral Detail</span>
-            <img src="images (1).jfif" alt="Perioral Line Smoothing Result" onerror="this.src='https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80'">
+            <img src="images (1).jfif" alt="Perioral Line Smoothing Result">
           </div>
           <div class="img-case-body">
             <h4>Micro-Texture Smoothing</h4>
@@ -938,11 +856,23 @@
           </div>
         </div>
 
-        <!-- LOOP DUPLICATES -->
+        <!-- 7: Lateral Elevation -->
+        <div class="img-case-item">
+          <div class="img-case-top">
+            <span class="img-case-tag">Lateral Elevation</span>
+            <img src="istockphoto-1210828134-612x612.jpg" alt="Lateral Profile Lift Result">
+          </div>
+          <div class="img-case-body">
+            <h4>Lateral Profile & Brow Angle</h4>
+            <p>Age 49 • Eliminating heavy hooding</p>
+          </div>
+        </div>
+
+        <!-- DUPLICATE SET FOR INFINITE SEAMLESS LOOP -->
         <div class="img-case-item">
           <div class="img-case-top">
             <span class="img-case-tag">Deep-Plane Lift</span>
-            <img src="denise-richard-feature-2026-lead-sidebyside.webp" alt="Deep Plane Architectural Result" onerror="this.src='https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80'">
+            <img src="denise-richard-feature-2026-lead-sidebyside.webp" alt="Deep Plane Architectural Result">
           </div>
           <div class="img-case-body">
             <h4>Midface & Jawline Elevation</h4>
@@ -953,7 +883,7 @@
         <div class="img-case-item">
           <div class="img-case-top">
             <span class="img-case-tag">Dual-Pathway</span>
-            <img src="Makeup.webp" alt="Facial Restoration Result" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80'">
+            <img src="Makeup.webp" alt="Facial Restoration Result">
           </div>
           <div class="img-case-body">
             <h4>Cheek Volume & Perioral Lift</h4>
@@ -964,469 +894,412 @@
     </div>
   </section>
 
-  <!-- MODULE 2: 100% DISCREET VIP PRIVACY SUITE -->
-  <section class="section-wrap">
-    <div class="sec-header">
-      <span class="tag">Uncompromising Privacy</span>
-      <h2>100% Discreet VIP Sanctuary</h2>
-    </div>
-    <div class="grid-3">
-      <div class="bh-card">
-        <div class="card-icon">🗝️</div>
-        <h3>Anonymous Valet Entry</h3>
-        <p>Private, discreet rear entrance directly accessible from VIP valet bays. Step in and out without public exposure or street visibility.</p>
+  <!-- ==========================================================================
+       MODULE 2: 100% DISCREET VIP PRIVACY SUITE
+       ========================================================================== -->
+  <section class="sec-padding" style="background-color: var(--bg-card-alt);">
+    <div class="container">
+      <div class="sec-header">
+        <div class="sec-eyebrow">Uncompromising Privacy</div>
+        <h2>100% Discreet VIP Sanctuary</h2>
+        <p>Engineered exclusively for high-profile figures, executives, and discerning clientele.</p>
       </div>
-      <div class="bh-card">
-        <div class="card-icon">🏛️</div>
-        <h3>Zero Public Waiting</h3>
-        <p>You are guided directly into dedicated private executive suites for consultation. You will never encounter another patient.</p>
-      </div>
-      <div class="bh-card">
-        <div class="card-icon">📜</div>
-        <h3>Strict Legal NDA Protocol</h3>
-        <p>Comprehensive mutual non-disclosure agreements maintained across all surgical staff, coordinators, and medical personnel.</p>
+
+      <div class="three-grid">
+        <div class="bh-card">
+          <div class="card-icon">🔑</div>
+          <h3>Anonymous Valet Entry</h3>
+          <p>Private, discreet rear entrance directly accessible from VIP valet bays. Step in and out without public exposure or street visibility.</p>
+        </div>
+
+        <div class="bh-card">
+          <div class="card-icon">🏛️</div>
+          <h3>Zero Public Waiting</h3>
+          <p>You are guided directly into dedicated private executive suites for consultation. You will never encounter another patient.</p>
+        </div>
+
+        <div class="bh-card">
+          <div class="card-icon">📜</div>
+          <h3>Strict Legal NDA Protocol</h3>
+          <p>Comprehensive mutual non-disclosure agreements maintained across all surgical staff, coordinators, and medical personnel.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- PILLAR 3: NON-SURGICAL DUAL-PATHWAY -->
-  <section class="section-wrap" style="background: var(--bg-secondary);">
-    <div class="sec-header">
-      <span class="tag">Zero Scalpel • Zero Downtime</span>
-      <h2>The Non-Surgical Dual-Pathway</h2>
-      <p>Instant structural elevation and collagen induction for busy executives requiring immediate social recovery.</p>
+  <!-- ==========================================================================
+       THE NON-SURGICAL DUAL-PATHWAY ARCHITECTURE
+       ========================================================================== -->
+  <section class="sec-padding">
+    <div class="container">
+      <div class="sec-header">
+        <div class="sec-eyebrow">Zero Scalpel • Zero Downtime</div>
+        <h2>The Non-Surgical Dual-Pathway</h2>
+        <p>Instant structural elevation and collagen induction for busy executives requiring immediate social recovery.</p>
+      </div>
+
+      <div class="dual-grid">
+        <div class="pathway-card">
+          <div class="pathway-badge">Pathway A</div>
+          <h3>Liquid Biostimulatory Lift</h3>
+          <p>High-density structural volumization using bio-stimulators that trigger native type-1 collagen synthesis over 90 days.</p>
+          <ul class="feature-list">
+            <li>Restores midface, temple, and jawline architectural volume</li>
+            <li>60-minute in-clinic "Lunchtime Rejuvenation" session</li>
+            <li>Zero bruising protocol with blunt-tip micro-cannulas</li>
+          </ul>
+          <button class="rose-gold-btn" onclick="scrollToCandidacy()">Explore Liquid Pathway →</button>
+        </div>
+
+        <div class="pathway-card">
+          <div class="pathway-badge">Pathway B</div>
+          <h3>Precision Micro-Laser Architecture</h3>
+          <p>Multi-layered fractional laser & RF thermal remodeling targeting dermal laxity, deep creping, and neck band slackening.</p>
+          <ul class="feature-list">
+            <li>Deep SMAS heating triggers permanent elastin contraction</li>
+            <li>Day 1 instant tightness vs Day 30 sustained neocollagenesis</li>
+            <li>Computerized depth control ensures uniform dermal protection</li>
+          </ul>
+          <button class="rose-gold-btn" onclick="scrollToCandidacy()">Explore Laser Pathway →</button>
+        </div>
+      </div>
     </div>
-    
-    <div class="grid-2">
-      <!-- Pathway A -->
-      <div class="bh-card">
-        <span class="pathway-badge">Pathway A</span>
-        <h3>Liquid Biostimulatory Lift</h3>
-        <p>High-density structural volumization using bio-stimulators that stimulate your body's native type-1 collagen synthesis over 90 days.</p>
-        <ul class="pathway-points">
-          <li>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            Restores midface, temple, and jawline architectural volume
-          </li>
-          <li>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            60-minute in-clinic "Lunchtime Rejuvenation" session
-          </li>
-          <li>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            Zero bruising protocol with blunt-tip micro-cannulas
-          </li>
+  </section>
+
+  <!-- ==========================================================================
+       MODULE 3: SURGICAL SAFETY & QUAD-A STANDARDS
+       ========================================================================== -->
+  <section class="sec-padding" style="background-color: var(--bg-card-alt);">
+    <div class="container">
+      <div class="sec-header">
+        <div class="sec-eyebrow">Clinical Excellence</div>
+        <h2>Surgical Safety & Quad-A Standards</h2>
+        <p>Rigorous hospital-grade standards executed in private luxury theaters.</p>
+      </div>
+
+      <div class="three-grid">
+        <div class="bh-card">
+          <div class="card-icon">🛡️</div>
+          <h3>Quad-A Accredited Center</h3>
+          <p>Hospital-grade sterile private surgical suites operating under stringent protocols without hospital infection risks.</p>
+        </div>
+
+        <div class="bh-card">
+          <div class="card-icon">🩺</div>
+          <h3>Board-Certified MD Anesthesiologists</h3>
+          <p>Zero nurse anesthetists for major procedures. Dedicated medical doctors continually manage and protect your vitals.</p>
+        </div>
+
+        <div class="bh-card">
+          <div class="card-icon">✨</div>
+          <h3>Deep-Plane Harmony</h3>
+          <p>Structural SMAS and deep-plane restoration designed for anatomical harmony. Zero artificial, tight, or "pulled" look.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       BODY ARCHITECTURE & MOMMY MAKEOVER
+       ========================================================================== -->
+  <section class="sec-padding">
+    <div class="container">
+      <div class="sec-header">
+        <div class="sec-eyebrow">Full-Body Harmony</div>
+        <h2>Body Architecture & Mommy Makeover</h2>
+        <p>Single safe anesthesia session combining abdominal restoration, breast contouring, and high-definition waist sculpting.</p>
+      </div>
+
+      <div class="three-grid">
+        <div class="bh-card">
+          <div class="card-icon">💎</div>
+          <h3>Combined Multi-Stage Harmony</h3>
+          <p>Simultaneous diastasis recti repair, excess skin excision, and breast lift executed under one coordinated MD surgical session.</p>
+        </div>
+
+        <div class="bh-card">
+          <div class="card-icon">👑</div>
+          <h3>Private Lymphatic Concierge</h3>
+          <p>Customized postoperative lymphatic drainage massages provided directly at your bedside by certified recovery therapists.</p>
+        </div>
+
+        <div class="bh-card">
+          <div class="card-icon">🏡</div>
+          <h3>24/7 Home Registered Nursing</h3>
+          <p>Discreet, dedicated recovery nursing delivered to your private residence or recovery villa for the first 72 critical hours.</p>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 48px;">
+        <button class="rose-gold-btn" onclick="scrollToCandidacy()">Inquire For Body Architecture Suite →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       MODULE 4: THE "FLY-IN" EXECUTIVE SANCTUARY
+       ========================================================================== -->
+  <section class="sec-padding" style="background-color: var(--bg-card-alt);">
+    <div class="container">
+      <div class="sec-header">
+        <div class="sec-eyebrow">Global Destination</div>
+        <h2>The "Fly-In" Executive Sanctuary</h2>
+        <p>White-glove surgical travel logistics for national and international clients flying into Los Angeles.</p>
+      </div>
+
+      <div class="three-grid">
+        <div class="bh-card">
+          <div class="card-icon">✈️</div>
+          <h3>Private Tarmac & Chauffeur</h3>
+          <p>Black Escalade chauffeur transfer directly from LAX private terminals or private hangars (Van Nuys/Burbank) to your clinic suite.</p>
+        </div>
+
+        <div class="bh-card">
+          <div class="card-icon">🏨</div>
+          <h3>5-Star Partner Recovery Suites</h3>
+          <p>Coordinated healing stay at luxury Beverly Hills partner hotels, fully equipped with private post-op medical amenities.</p>
+        </div>
+
+        <div class="bh-card">
+          <div class="card-icon">💻</div>
+          <h3>Virtual 3D Pre-Flight Scan</h3>
+          <p>Comprehensive high-resolution remote anatomical review and surgical recovery trajectory mapped before booking flights.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       MODULE 5: "AM I A CANDIDATE?" & VERIFIED REVIEWS
+       ========================================================================== -->
+  <section class="sec-padding" id="candidacySec">
+    <div class="container">
+      <div class="sec-header">
+        <div class="sec-eyebrow">Verified Feedback</div>
+        <h2>Google 5-Star Elite Testimonials</h2>
+      </div>
+
+      <div class="reviews-track">
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p>"The anonymous valet entry changed everything. Zero public waiting, and the deep-plane restoration looks breathtakingly natural."</p>
+          <h5 style="margin-top: 14px; font-size: 0.8rem;">LADY E. STERLING • LONDON, UK</h5>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p>"Absolute discretion from start to finish. Strict legal NDAs gave me complete peace of mind during recovery."</p>
+          <h5 style="margin-top: 14px; font-size: 0.8rem;">ANONYMOUS EXECUTIVE • NEW YORK, NY</h5>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p>"No pulled 'windswept' look whatsoever. The architectural facial harmony achieved here is genuine medical art."</p>
+          <h5 style="margin-top: 14px; font-size: 0.8rem;">DR. ALISTAIR M. • BEVERLY HILLS, CA</h5>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p>"Flown in via private jet charter coordinated directly by their concierge. The recovery suite and private nurses were pure 5-star luxury."</p>
+          <h5 style="margin-top: 14px; font-size: 0.8rem;">MARCUS V. • ZURICH, SWITZERLAND</h5>
+        </div>
+      </div>
+
+      <!-- Self Qualification Framework -->
+      <div class="candidate-box">
+        <div class="sec-eyebrow">Self-Assessment</div>
+        <h3>Am I a Candidate for Architectural Rejuvenation?</h3>
+        
+        <ul class="candidate-checklist">
+          <li><span>✓</span> Seeking structural facial tightening and jawline restoration without overfill or unnatural pillow-face effects?</li>
+          <li><span>✓</span> Desire permanent anatomical rejuvenation with rapid 10–14 day private recovery under board-certified MD oversight?</li>
+          <li><span>✓</span> Require 100% discreet private suites, rear valet arrivals, and legally binding mutual non-disclosure agreements?</li>
         </ul>
-        <button class="rose-gold-btn" style="width: 100%;" onclick="openConciergeModal('Pathway A: Liquid Lift')">Explore Liquid Pathway →</button>
-      </div>
 
-      <!-- Pathway B -->
-      <div class="bh-card">
-        <span class="pathway-badge">Pathway B</span>
-        <h3>Precision Micro-Laser Architecture</h3>
-        <p>Multi-layered fractional laser & RF thermal remodeling targeting dermal laxity, deep creping, and neck band slackening.</p>
-        <ul class="pathway-points">
-          <li>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            Deep SMAS heating triggers permanent elastin contraction
-          </li>
-          <li>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            Day 1 instant tightness vs Day 30 sustained neocollagenesis
-          </li>
-          <li>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            Computerized depth control ensures uniform dermal protection
-          </li>
-        </ul>
-        <button class="rose-gold-btn" style="width: 100%;" onclick="openConciergeModal('Pathway B: Laser Lift')">Explore Laser Pathway →</button>
+        <button class="rose-gold-btn" onclick="alert('Connecting to 256-Bit Encrypted Concierge Line...')">Check Candidacy with AI Concierge →</button>
       </div>
     </div>
   </section>
 
-  <!-- MODULE 3: SURGICAL SAFETY & QUAD-A CENTER -->
-  <section class="section-wrap">
-    <div class="sec-header">
-      <span class="tag">Clinical Excellence</span>
-      <h2>Surgical Safety & Quad-A Standards</h2>
-    </div>
-    <div class="grid-3">
-      <div class="bh-card">
-        <div class="card-icon">🛡️</div>
-        <h3>Quad-A Accredited Center</h3>
-        <p>Hospital-grade sterile private surgical suites operating under stringent protocols without hospital infection risks.</p>
-      </div>
-      <div class="bh-card">
-        <div class="card-icon">🩺</div>
-        <h3>Board-Certified MD Anesthesiologists</h3>
-        <p>Zero nurse anesthetists for major procedures. Dedicated medical doctors continually manage and protect your vitals.</p>
-      </div>
-      <div class="bh-card">
-        <div class="card-icon">✨</div>
-        <h3>Deep-Plane Harmony</h3>
-        <p>Structural SMAS and deep-plane restoration designed for anatomical harmony. Zero artificial, tight, or "pulled" look.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- PILLAR 4: HIGH-TICKET BODY ARCHITECTURE (MOMMY MAKEOVER) -->
-  <section class="section-wrap" style="background: var(--bg-secondary);">
-    <div class="sec-header">
-      <span class="tag">Full-Body Harmony</span>
-      <h2>Body Architecture & Mommy Makeover</h2>
-      <p>Single safe anesthesia session combining abdominal restoration, breast contouring, and high-definition waist sculpting.</p>
-    </div>
-    <div class="grid-3">
-      <div class="bh-card">
-        <div class="card-icon">💎</div>
-        <h3>Combined Multi-Stage Harmony</h3>
-        <p>Simultaneous diastasis recti repair, excess skin excision, and breast lift executed under one coordinated MD surgical session.</p>
-      </div>
-      <div class="bh-card">
-        <div class="card-icon">💆‍♀️</div>
-        <h3>Private Lymphatic Concierge</h3>
-        <p>Customized postoperative lymphatic drainage massages provided directly at your bedside by certified recovery therapists.</p>
-      </div>
-      <div class="bh-card">
-        <div class="card-icon">🏠</div>
-        <h3>24/7 Home Registered Nursing</h3>
-        <p>Discreet, dedicated recovery nursing delivered to your private residence or recovery villa for the first 72 critical hours.</p>
-      </div>
-    </div>
-    <div style="text-align: center; margin-top: 40px;">
-      <button class="rose-gold-btn" onclick="openConciergeModal('Body Architecture Intake')">Inquire for Body Architecture Suite →</button>
-    </div>
-  </section>
-
-  <!-- MODULE 4: OUT-OF-TOWN "FLY-IN" VIP CONCIERGE -->
-  <section class="section-wrap">
-    <div class="sec-header">
-      <span class="tag">Global Destination</span>
-      <h2>The "Fly-In" Executive Sanctuary</h2>
-      <p>White-glove surgical travel logistics for national and international clients flying into Los Angeles.</p>
-    </div>
-    <div class="grid-3">
-      <div class="bh-card">
-        <div class="card-icon">✈️</div>
-        <h3>Private Tarmac & Chauffeur</h3>
-        <p>Black Escalade chauffeur transfer directly from LAX private terminals or private hangars (Van Nuys/Burbank) to your clinic suite.</p>
-      </div>
-      <div class="bh-card">
-        <div class="card-icon">🏨</div>
-        <h3>5-Star Partner Recovery Suites</h3>
-        <p>Coordinated healing stay at luxury Beverly Hills partner hotels, fully equipped with private post-op medical amenities.</p>
-      </div>
-      <div class="bh-card">
-        <div class="card-icon">💻</div>
-        <h3>Virtual 3D Pre-Flight Scan</h3>
-        <p>Comprehensive high-resolution remote anatomical review and surgical recovery trajectory mapped before booking flights.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- GOOGLE 5-STAR REVIEWS MARQUEE -->
-  <section class="marquee-slider-section" style="background: var(--bg-main); border-top: none;">
-    <div class="sec-header">
-      <span class="tag">Verified Feedback</span>
-      <h2>Google 5-Star Elite Testimonials</h2>
-    </div>
-    
-    <div class="marquee-viewport" id="revViewport">
-      <div class="marquee-track-rev" id="revTrack">
-        <div class="review-card">
-          <div class="review-stars">★★★★★</div>
-          <div class="review-text">"The anonymous valet entry changed everything. Zero public waiting, and the deep-plane restoration looks breathtakingly natural."</div>
-          <div class="review-author">Lady E. Sterling</div>
-          <div class="review-location">London, UK • Verified Patient</div>
-        </div>
-        <div class="review-card">
-          <div class="review-stars">★★★★★</div>
-          <div class="review-text">"Flown in via private jet charter coordinated directly by their concierge. The recovery suite and private nurses were pure 5-star luxury."</div>
-          <div class="review-author">Marcus V.</div>
-          <div class="review-location">Zurich, Switzerland • Verified Patient</div>
-        </div>
-        <div class="review-card">
-          <div class="review-stars">★★★★★</div>
-          <div class="review-text">"No pulled 'windswept' look whatsoever. The architectural facial harmony achieved here is genuine medical art."</div>
-          <div class="review-author">Dr. Alistair M.</div>
-          <div class="review-location">Beverly Hills, CA • Verified Patient</div>
-        </div>
-        <div class="review-card">
-          <div class="review-stars">★★★★★</div>
-          <div class="review-text">"Absolute discretion from start to finish. Strict legal NDAs gave me complete peace of mind during recovery."</div>
-          <div class="review-author">Anonymous Executive</div>
-          <div class="review-location">New York, NY • Verified Patient</div>
-        </div>
-        <!-- Duplicates for seamless loop -->
-        <div class="review-card">
-          <div class="review-stars">★★★★★</div>
-          <div class="review-text">"The anonymous valet entry changed everything. Zero public waiting, and the deep-plane restoration looks breathtakingly natural."</div>
-          <div class="review-author">Lady E. Sterling</div>
-          <div class="review-location">London, UK • Verified Patient</div>
-        </div>
-        <div class="review-card">
-          <div class="review-stars">★★★★★</div>
-          <div class="review-text">"Flown in via private jet charter coordinated directly by their concierge. The recovery suite and private nurses were pure 5-star luxury."</div>
-          <div class="review-author">Marcus V.</div>
-          <div class="review-location">Zurich, Switzerland • Verified Patient</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- MODULE 5: CANDIDATE QUALIFICATION & INTAKE HUB -->
-  <section class="section-wrap" style="background: var(--bg-secondary);">
-    <div class="qualification-box">
-      <span class="tag" style="color: var(--rose-gold-dark); letter-spacing: 3px; font-size: 0.75rem; text-transform: uppercase;">Self-Assessment</span>
-      <h2 style="margin-top: 10px; font-size: 1.85rem;">Am I A Candidate For Architectural Rejuvenation?</h2>
-      
-      <ul class="qual-checklist">
-        <li>
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          <span>Seeking structural facial tightening and jawline restoration without overfill or unnatural pillow-face effects?</span>
-        </li>
-        <li>
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          <span>Desire permanent anatomical rejuvenation with rapid 10–14 day private recovery under board-certified MD oversight?</span>
-        </li>
-        <li>
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          <span>Require 100% discreet private suites, rear valet arrivals, and legally binding mutual non-disclosure agreements?</span>
-        </li>
-      </ul>
-
-      <button class="rose-gold-btn" onclick="openConciergeModal('Candidacy Assessment')">Check Candidacy With AI Concierge →</button>
-    </div>
-  </section>
-
-  <!-- FLOATING INTERACTIVE HUB -->
-  <div class="floating-hub">
-    <div class="hub-main-trigger" id="hubTrigger" title="VIP Concierge Hub">
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-    </div>
-    <div class="hub-options" id="hubOptions">
-      <a href="tel:+13105550199" class="hub-sub-btn">📞 Direct Private Line</a>
-      <button class="hub-sub-btn" onclick="openConciergeModal('Voice AI Concierge')">🎙️ Voice AI Assessment</button>
-      <button class="hub-sub-btn" onclick="openConciergeModal('Direct Consultation')">📅 Reserve Consultation</button>
-    </div>
+  <!-- ==========================================================================
+       FLOATING CONCIERGE BUTTON
+       ========================================================================== -->
+  <div class="vip-floating-hub">
+    <button class="hub-trigger" onclick="scrollToCandidacy()" aria-label="Open VIP Concierge">💬</button>
   </div>
 
-  <!-- CONCIERGE MODAL & INTAKE FORM (SERVER.JS BACKEND READY) -->
-  <div class="modal-overlay" id="conciergeModal">
-    <div class="modal-body">
-      <button class="modal-close" onclick="closeConciergeModal()">&times;</button>
-      <h3 style="font-size: 1.5rem; color: var(--text-main); margin-bottom: 8px;">Confidential VIP Intake</h3>
-      <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 24px;">Submissions are encrypted under strict medical NDA protocol. Our VIP surgical coordinator will connect with you in &lt;60 seconds.</p>
-      
-      <form id="intakeForm" onsubmit="handleFormSubmit(event)">
-        <div style="margin-bottom: 16px;">
-          <input type="text" id="patientName" class="form-input" placeholder="Preferred Name (or Alias)" required>
-        </div>
-        <div style="margin-bottom: 16px;">
-          <input type="tel" id="patientPhone" class="form-input" placeholder="Direct Mobile Number (SMS Encrypted)" required>
-        </div>
-        <div style="margin-bottom: 24px;">
-          <select id="selectedProcedure" class="form-input">
-            <option value="deep-plane">Deep-Plane Facelift & Neck Architecture</option>
-            <option value="fly-in">Out-Of-Town "Fly-In" Sanctuary Package</option>
-            <option value="liquid-pathway">Non-Surgical Liquid Biostimulatory Lift</option>
-            <option value="laser-pathway">Precision Micro-Laser Skin Remodeling</option>
-            <option value="body-architecture">Mommy Makeover & Full-Body Harmony</option>
-          </select>
-        </div>
-        <button type="submit" class="rose-gold-btn" style="width: 100%;">Connect With VIP Surgical Director →</button>
-      </form>
-    </div>
-  </div>
-
+  <!-- ==========================================================================
+       HERO 9:16 DUAL-VIDEO SWAP & DIRECTIONAL AUDIO ISOLATION JAVASCRIPT
+       ========================================================================== -->
   <script>
-    // ==========================================
-    // 1. VIDEO REFS & CLEAN AUDIO CONTROLS
-    // ==========================================
-    const beforeLoop = document.getElementById('beforeLoop');
-    const afterLoop = document.getElementById('afterLoop');
-
     const sliderWrapper = document.getElementById('sliderWrapper');
-    const beforeClipPane = document.getElementById('beforeClipPane');
     const sliderHandle = document.getElementById('sliderHandle');
+    const beforeClipPane = document.getElementById('beforeClipPane');
 
-    // AUDIO MANAGEMENT
+    const beforeLoop = document.getElementById('beforeLoop');
+    const beforeSwap = document.getElementById('beforeSwap');
+    const afterLoop = document.getElementById('afterLoop');
+    const afterSwap = document.getElementById('afterSwap');
+
     const soundToggleBtn = document.getElementById('soundToggleBtn');
     const soundIcon = document.getElementById('soundIcon');
     const soundLabel = document.getElementById('soundLabel');
+
+    let isDragging = false;
+    let currentPos = 0.50; // Center position (50%)
     let isMuted = true;
 
-    function updateAudioState() {
-      beforeLoop.muted = isMuted;
-      afterLoop.muted = isMuted;
-
-      if (isMuted) {
-        soundLabel.innerText = "Sound Off";
-        soundIcon.innerHTML = `<svg viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>`;
-      } else {
-        soundLabel.innerText = "Sound On";
-        soundIcon.innerHTML = `<svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77z"/></svg>`;
+    // Ensure all videos loop and playsInline natively
+    [beforeLoop, afterLoop, beforeSwap, afterSwap].forEach(vid => {
+      if (vid) {
+        vid.muted = true;
+        vid.playsInline = true;
       }
-    }
+    });
 
+    // Sound toggle state handler
     soundToggleBtn.addEventListener('click', (e) => {
       e.stopPropagation();
       isMuted = !isMuted;
-      updateAudioState();
+      soundIcon.textContent = isMuted ? '🔇' : '🔊';
+      soundLabel.textContent = isMuted ? 'Sound Off' : 'Sound On';
+      syncDirectionalAudio();
     });
 
-    // ==========================================
-    // 2. HIGH-PERFORMANCE SLIDER (NO BLACKOUT)
-    // ==========================================
-    let isDragging = false;
-    let springAnimation = null;
-    let cachedRect = null;
-
-    // HAPTIC FEEDBACK
-    let audioCtx = null;
-    let lastTickTime = 0;
-
-    function playHapticTick() {
-      const now = performance.now();
-      if (now - lastTickTime < 75) return;
-      lastTickTime = now;
-
-      if (navigator.vibrate) {
-        try { navigator.vibrate(8); } catch(e) {}
+    // Directional Audio Isolation Engine (Zero Sound Bleed)
+    function syncDirectionalAudio() {
+      if (isMuted) {
+        beforeLoop.muted = true;
+        afterLoop.muted = true;
+        beforeSwap.muted = true;
+        afterSwap.muted = true;
+        return;
       }
 
-      try {
-        if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        if (audioCtx.state === 'suspended') audioCtx.resume();
-        const osc = audioCtx.createOscillator();
-        const gain = audioCtx.createGain();
-        osc.type = 'sine';
-        osc.frequency.setValueAtTime(80, audioCtx.currentTime);
-        osc.frequency.exponentialRampToValueAtTime(20, audioCtx.currentTime + 0.02);
-        gain.gain.setValueAtTime(0.06, audioCtx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.02);
-        osc.connect(gain);
-        gain.connect(audioCtx.destination);
-        osc.start();
-        osc.stop(audioCtx.currentTime + 0.021);
-      } catch (e) {}
+      // Drag Left -> After Side Active (Only After Audio Plays)
+      if (currentPos < 0.44) {
+        afterSwap.muted = false;
+        afterLoop.muted = true;
+        beforeSwap.muted = true;
+        beforeLoop.muted = true;
+      } 
+      // Drag Right -> Before Side Active (Only Before Audio Plays)
+      else if (currentPos > 0.56) {
+        beforeSwap.muted = false;
+        beforeLoop.muted = true;
+        afterSwap.muted = true;
+        afterLoop.muted = true;
+      } 
+      // Idle / Center State -> Mute Swap Audio (Keep Peaceful Loop)
+      else {
+        beforeLoop.muted = true;
+        afterLoop.muted = true;
+        beforeSwap.muted = true;
+        afterSwap.muted = true;
+      }
     }
 
-    function setSliderPosition(pos) {
-      if (pos < 0) pos = 0; 
-      if (pos > 1) pos = 1;
+    // Dynamic Video Swap State Manager
+    function updatePlaybackState(pos) {
+      currentPos = pos;
+
+      // 1. Drag Left -> Reveal After (Touch Face Glow)
+      if (pos < 0.44) {
+        if (!afterSwap.classList.contains('active')) {
+          afterLoop.classList.remove('active');
+          afterSwap.classList.add('active');
+          afterSwap.play().catch(() => {});
+        }
+        beforeSwap.classList.remove('active');
+        beforeLoop.classList.add('active');
+      } 
+      // 2. Drag Right -> Reveal Before (Concern / Regret Touch)
+      else if (pos > 0.56) {
+        if (!beforeSwap.classList.contains('active')) {
+          beforeLoop.classList.remove('active');
+          beforeSwap.classList.add('active');
+          beforeSwap.play().catch(() => {});
+        }
+        afterSwap.classList.remove('active');
+        afterLoop.classList.add('active');
+      } 
+      // 3. Center Idle
+      else {
+        beforeSwap.classList.remove('active');
+        beforeLoop.classList.add('active');
+        afterSwap.classList.remove('active');
+        afterLoop.classList.add('active');
+      }
+
+      syncDirectionalAudio();
+    }
+
+    // Render Slider Coordinate & Clip Path
+    function renderSlider(pos) {
       const percentage = pos * 100;
-      
-      sliderHandle.style.left = percentage + '%';
+      sliderHandle.style.left = `${percentage}%`;
       beforeClipPane.style.clipPath = `inset(0 ${100 - percentage}% 0 0)`;
+      updatePlaybackState(pos);
     }
 
-    function springBackToCenter() {
-      if (springAnimation) cancelAnimationFrame(springAnimation);
-      let currentPos = parseFloat(sliderHandle.style.left || '50') / 100;
-      const targetPos = 0.50;
+    // Spring Physics Engine (Bounces back to 50% on release)
+    function springBack() {
+      const target = 0.50;
+      const stiffness = 0.12;
+      const damping = 0.74;
       let velocity = 0;
-      const stiffness = 0.12, damping = 0.72;
 
-      function animate() {
+      function step() {
         if (isDragging) return;
-        const force = (targetPos - currentPos) * stiffness;
+        const force = (target - currentPos) * stiffness;
         velocity = (velocity + force) * damping;
         currentPos += velocity;
-        setSliderPosition(currentPos);
-        if (Math.abs(targetPos - currentPos) > 0.002 || Math.abs(velocity) > 0.002) {
-          springAnimation = requestAnimationFrame(animate);
+
+        renderSlider(currentPos);
+
+        if (Math.abs(currentPos - target) > 0.001 || Math.abs(velocity) > 0.001) {
+          requestAnimationFrame(step);
         } else {
-          setSliderPosition(0.50);
+          currentPos = target;
+          renderSlider(target);
         }
       }
-      springAnimation = requestAnimationFrame(animate);
+      requestAnimationFrame(step);
+    }
+
+    // Pointer Drag Tracking
+    function handlePointerMove(clientX) {
+      const rect = sliderWrapper.getBoundingClientRect();
+      let pos = (clientX - rect.left) / rect.width;
+      if (pos < 0.05) pos = 0.05;
+      if (pos > 0.95) pos = 0.95;
+      currentPos = pos;
+      renderSlider(pos);
     }
 
     sliderWrapper.addEventListener('pointerdown', (e) => {
-      if (e.target.closest('#soundToggleBtn')) return;
       isDragging = true;
       sliderWrapper.setPointerCapture(e.pointerId);
-      cachedRect = sliderWrapper.getBoundingClientRect();
-      if (springAnimation) cancelAnimationFrame(springAnimation);
-      playHapticTick();
-      setSliderPosition((e.clientX - cachedRect.left) / cachedRect.width);
+      handlePointerMove(e.clientX);
     });
 
     sliderWrapper.addEventListener('pointermove', (e) => {
-      if (!isDragging || !cachedRect) return;
-      playHapticTick();
-      setSliderPosition((e.clientX - cachedRect.left) / cachedRect.width);
+      if (!isDragging) return;
+      handlePointerMove(e.clientX);
     });
 
-    function endDrag(e) {
-      if (isDragging) {
-        isDragging = false;
-        try { sliderWrapper.releasePointerCapture(e.pointerId); } catch(err) {}
-        springBackToCenter();
-      }
+    sliderWrapper.addEventListener('pointerup', (e) => {
+      if (!isDragging) return;
+      isDragging = false;
+      sliderWrapper.releasePointerCapture(e.pointerId);
+      springBack();
+    });
+
+    sliderWrapper.addEventListener('pointercancel', () => {
+      isDragging = false;
+      springBack();
+    });
+
+    function scrollToCandidacy() {
+      document.getElementById('candidacySec').scrollIntoView({ behavior: 'smooth' });
     }
-
-    sliderWrapper.addEventListener('pointerup', endDrag);
-    sliderWrapper.addEventListener('pointercancel', endDrag);
-
-    // ==========================================
-    // 3. HORIZONTAL DRAGGABLE MARQUEE
-    // ==========================================
-    function setupMarqueeDraggable(viewport) {
-      let isDown = false, startX, scrollLeft;
-      viewport.addEventListener('pointerdown', (e) => {
-        isDown = true;
-        startX = e.pageX - viewport.offsetLeft;
-        scrollLeft = viewport.scrollLeft;
-      });
-      window.addEventListener('pointermove', (e) => {
-        if (!isDown) return;
-        const x = e.pageX - viewport.offsetLeft;
-        const walk = (x - startX) * 1.8;
-        viewport.scrollLeft = scrollLeft - walk;
-      });
-      window.addEventListener('pointerup', () => { isDown = false; });
-    }
-    setupMarqueeDraggable(document.getElementById('imgViewport'));
-    setupMarqueeDraggable(document.getElementById('revViewport'));
-
-    // ==========================================
-    // 4. FLOATING HUB & INTAKE MODAL
-    // ==========================================
-    const hubTrigger = document.getElementById('hubTrigger');
-    const hubOptions = document.getElementById('hubOptions');
-    hubTrigger.addEventListener('click', () => hubOptions.classList.toggle('active'));
-
-    const conciergeModal = document.getElementById('conciergeModal');
-    const procedureSelect = document.getElementById('selectedProcedure');
-
-    function openConciergeModal(preSelected = null) {
-      if (preSelected) {
-        if (preSelected.includes('Liquid')) procedureSelect.value = 'liquid-pathway';
-        else if (preSelected.includes('Laser')) procedureSelect.value = 'laser-pathway';
-        else if (preSelected.includes('Body')) procedureSelect.value = 'body-architecture';
-        else if (preSelected.includes('Fly-In')) procedureSelect.value = 'fly-in';
-        else procedureSelect.value = 'deep-plane';
-      }
-      conciergeModal.classList.add('active');
-      hubOptions.classList.remove('active');
-    }
-
-    function closeConciergeModal() {
-      conciergeModal.classList.remove('active');
-    }
-
-    function handleFormSubmit(e) {
-      e.preventDefault();
-      const patientName = document.getElementById('patientName').value;
-      alert(`Inquiry received discreetly for ${patientName}. Our aesthetic coordinator will connect via encrypted channel within 60 seconds.`);
-      closeConciergeModal();
-      e.target.reset();
-    }
-
-    // Initial Split Position
-    setSliderPosition(0.5);
   </script>
 </body>
 </html>
