@@ -10,16 +10,18 @@
   
   <style>
     :root {
-      --bg-main: #060609;
-      --bg-surface: #101017;
-      --bg-card-hover: #161622;
-      --gold-primary: #E5C568;
-      --gold-light: #FAEEB1;
-      --gold-dark: #C59F38;
-      --text-main: #FFFFFF;
-      --text-muted: #A8A8B8;
-      --border-gold: rgba(229, 197, 104, 0.25);
-      --accent-glow: rgba(229, 197, 104, 0.16);
+      /* WARM ALABASTER CREAM & ROSE-GOLD PALETTE */
+      --bg-main: #FAF8F5;
+      --bg-surface: #FFFFFF;
+      --bg-secondary: #F3EFEA;
+      --rose-gold: #B76E79;
+      --rose-gold-light: #E8C5C8;
+      --rose-gold-dark: #8C4853;
+      --gold-metallic: #C5A059;
+      --text-main: #1C1B1F;
+      --text-muted: #6B6870;
+      --border-rose: rgba(183, 110, 121, 0.28);
+      --accent-glow: rgba(183, 110, 121, 0.15);
     }
 
     * {
@@ -34,16 +36,17 @@
       color: var(--text-main);
       font-family: 'Montserrat', sans-serif;
       overflow-x: hidden;
-      line-height: 1.6;
+      line-height: 1.65;
     }
 
     h1, h2, h3, h4, .cinzel {
       font-family: 'Cinzel', serif;
       letter-spacing: 1px;
+      color: var(--text-main);
     }
 
-    /* Spring Physics Hover Effects */
-    .bh-card, .gold-btn, .hub-main-trigger, .hub-sub-btn, .sound-toggle-btn {
+    /* Spring Physics Transitions */
+    .bh-card, .rose-gold-btn, .hub-main-trigger, .hub-sub-btn, .sound-toggle-btn {
       transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1), 
                   box-shadow 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
                   border-color 0.3s ease;
@@ -52,17 +55,17 @@
 
     .bh-card:hover, .bh-card:active {
       transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 25px 40px -10px rgba(229, 197, 104, 0.25), 
-                  0 0 25px rgba(229, 197, 104, 0.1);
-      border-color: rgba(229, 197, 104, 0.6);
+      box-shadow: 0 25px 40px -10px rgba(183, 110, 121, 0.22), 
+                  0 0 25px rgba(183, 110, 121, 0.1);
+      border-color: rgba(183, 110, 121, 0.6);
     }
 
-    .gold-btn {
-      background: linear-gradient(135deg, var(--gold-light), var(--gold-primary), var(--gold-dark));
-      color: #08080A;
+    .rose-gold-btn {
+      background: linear-gradient(135deg, #EAD1D4, var(--rose-gold), var(--rose-gold-dark));
+      color: #FFFFFF;
       font-weight: 700;
       border: none;
-      padding: 16px 32px;
+      padding: 16px 34px;
       border-radius: 4px;
       cursor: pointer;
       text-transform: uppercase;
@@ -71,23 +74,24 @@
       display: inline-block;
       text-decoration: none;
       text-align: center;
-      box-shadow: 0 10px 25px rgba(229, 197, 104, 0.25);
+      box-shadow: 0 10px 25px rgba(183, 110, 121, 0.3);
     }
 
-    .gold-btn:hover, .gold-btn:active {
-      transform: translateY(-3px) scale(1.05);
-      box-shadow: 0 15px 30px rgba(229, 197, 104, 0.45);
+    .rose-gold-btn:hover, .rose-gold-btn:active {
+      transform: translateY(-3px) scale(1.04);
+      box-shadow: 0 16px 32px rgba(183, 110, 121, 0.45);
+      color: #FFFFFF;
     }
 
-    /* DESKTOP SPLIT HERO SECTION */
+    /* HERO SECTION */
     .hero-container {
       position: relative;
-      min-height: 95vh;
+      min-height: 94vh;
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 70px 20px 50px;
-      background: radial-gradient(circle at 50% 0%, #1a1a28 0%, #060609 75%);
+      background: radial-gradient(circle at 50% 10%, #FFFFFF 0%, var(--bg-main) 75%);
     }
 
     .hero-split-grid {
@@ -105,7 +109,7 @@
     }
 
     .hero-eyebrow {
-      color: var(--gold-primary);
+      color: var(--rose-gold-dark);
       text-transform: uppercase;
       letter-spacing: 4px;
       font-size: 0.8rem;
@@ -117,10 +121,9 @@
     }
 
     .hero-header h1 {
-      font-size: 2.8rem;
-      line-height: 1.2;
-      color: #FFF;
-      text-shadow: 0 2px 15px rgba(0,0,0,0.9);
+      font-size: 2.85rem;
+      line-height: 1.22;
+      color: #1A191D;
       margin-bottom: 20px;
     }
 
@@ -134,26 +137,27 @@
     .hero-trust-badges {
       display: flex;
       flex-wrap: wrap;
-      gap: 16px;
+      gap: 14px;
       margin-bottom: 35px;
     }
 
     .trust-pill {
-      background: rgba(16, 16, 23, 0.8);
-      border: 1px solid var(--border-gold);
-      padding: 8px 16px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-rose);
+      padding: 8px 18px;
       border-radius: 30px;
       font-size: 0.75rem;
-      color: var(--gold-light);
+      color: var(--rose-gold-dark);
       display: flex;
       align-items: center;
       gap: 8px;
       letter-spacing: 1px;
       text-transform: uppercase;
       font-weight: 600;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.03);
     }
 
-    /* SLIDER & SMOOTH OPACITY CROSSFADE STACK */
+    /* ZERO-BLACKOUT SEAMLESS SLIDER STACK */
     .slider-stage {
       display: flex;
       flex-direction: column;
@@ -168,10 +172,11 @@
       aspect-ratio: 9 / 16;
       border-radius: 14px;
       overflow: hidden;
-      border: 1.5px solid var(--border-gold);
-      box-shadow: 0 30px 60px -12px rgba(0,0,0,0.95), 0 0 35px var(--accent-glow);
+      border: 2px solid var(--border-rose);
+      box-shadow: 0 25px 50px -10px rgba(183, 110, 121, 0.25), 0 0 30px rgba(232, 197, 200, 0.3);
       user-select: none;
       touch-action: none;
+      background: #EFECE6;
     }
 
     .video-pane {
@@ -180,7 +185,6 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: #000;
     }
 
     .video-pane video {
@@ -191,17 +195,18 @@
       height: 100%;
       object-fit: cover;
       pointer-events: none;
-      transition: opacity 0.35s ease;
     }
 
+    /* AFTER Video sits continuously as base */
     .pane-after-base {
       z-index: 1;
     }
 
+    /* BEFORE Video clipped on top - NEVER GOES BLACK */
     .pane-before-clip {
       z-index: 2;
       clip-path: inset(0 50% 0 0);
-      border-right: 2px solid var(--gold-primary);
+      border-right: 2px solid var(--rose-gold);
     }
 
     .sound-toggle-btn {
@@ -209,21 +214,21 @@
       top: 16px;
       right: 16px;
       z-index: 20;
-      background: rgba(10, 10, 15, 0.85);
+      background: rgba(255, 255, 255, 0.88);
       backdrop-filter: blur(10px);
-      border: 1px solid var(--border-gold);
+      border: 1px solid var(--border-rose);
       border-radius: 30px;
       padding: 6px 14px;
       display: flex;
       align-items: center;
       gap: 8px;
-      color: var(--gold-light);
+      color: var(--rose-gold-dark);
       font-size: 0.72rem;
       letter-spacing: 1px;
       text-transform: uppercase;
       font-weight: 600;
       cursor: pointer;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
     }
 
     .sound-toggle-btn svg {
@@ -253,20 +258,20 @@
       bottom: 0;
       left: 0;
       width: 2px;
-      background-color: var(--gold-primary);
+      background-color: var(--rose-gold);
     }
 
     .handle-circle {
       width: 50px;
       height: 50px;
       border-radius: 50%;
-      background: #08080A;
-      border: 2px solid var(--gold-primary);
+      background: #FFFFFF;
+      border: 2px solid var(--rose-gold);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--gold-primary);
-      box-shadow: 0 0 20px rgba(229, 197, 104, 0.7);
+      color: var(--rose-gold);
+      box-shadow: 0 0 20px rgba(183, 110, 121, 0.5);
       pointer-events: auto;
       z-index: 11;
     }
@@ -283,22 +288,23 @@
     }
 
     .badge {
-      background: rgba(8, 8, 12, 0.85);
+      background: rgba(255, 255, 255, 0.88);
       backdrop-filter: blur(10px);
-      border: 1px solid var(--border-gold);
-      padding: 6px 12px;
+      border: 1px solid var(--border-rose);
+      padding: 6px 14px;
       border-radius: 20px;
       font-size: 0.7rem;
       letter-spacing: 1px;
       text-transform: uppercase;
       font-weight: 600;
-      color: var(--gold-light);
+      color: var(--rose-gold-dark);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
     }
 
     .interaction-hint {
       margin-top: 14px;
       font-size: 0.78rem;
-      color: var(--gold-light);
+      color: var(--rose-gold-dark);
       letter-spacing: 2px;
       text-transform: uppercase;
       opacity: 0.9;
@@ -307,12 +313,12 @@
       gap: 8px;
     }
 
-    /* MODULE 1: PRESS & MEDIA STRIP */
+    /* PRESS & MEDIA STRIP */
     .press-strip {
-      background: #0A0A10;
-      border-top: 1px solid rgba(229, 197, 104, 0.12);
-      border-bottom: 1px solid rgba(229, 197, 104, 0.12);
-      padding: 35px 20px;
+      background: var(--bg-surface);
+      border-top: 1px solid var(--border-rose);
+      border-bottom: 1px solid var(--border-rose);
+      padding: 38px 20px;
       text-align: center;
     }
 
@@ -320,7 +326,7 @@
       font-size: 0.75rem;
       text-transform: uppercase;
       letter-spacing: 3px;
-      color: var(--gold-primary);
+      color: var(--rose-gold-dark);
       margin-bottom: 20px;
       font-weight: 600;
     }
@@ -333,13 +339,12 @@
       gap: 45px;
       font-family: 'Cinzel', serif;
       font-size: 1.15rem;
-      color: #7E7E90;
+      color: #8C8A94;
       letter-spacing: 3px;
     }
 
     .press-logos span:hover {
-      color: #FFF;
-      text-shadow: 0 0 10px rgba(255,255,255,0.5);
+      color: var(--rose-gold);
     }
 
     /* GENERAL SECTIONS & GRIDS */
@@ -356,7 +361,7 @@
     }
 
     .sec-header .tag {
-      color: var(--gold-primary);
+      color: var(--rose-gold);
       letter-spacing: 3px;
       font-size: 0.75rem;
       text-transform: uppercase;
@@ -366,8 +371,8 @@
     }
 
     .sec-header h2 {
-      font-size: 2.2rem;
-      color: #FFF;
+      font-size: 2.25rem;
+      color: var(--text-main);
       line-height: 1.3;
     }
 
@@ -391,16 +396,16 @@
 
     .bh-card {
       background: var(--bg-surface);
-      border: 1px solid var(--border-gold);
+      border: 1px solid var(--border-rose);
       padding: 42px 32px;
       border-radius: 12px;
       position: relative;
-      box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.04);
     }
 
     .card-icon {
       font-size: 2rem;
-      color: var(--gold-primary);
+      color: var(--rose-gold);
       margin-bottom: 22px;
       display: inline-block;
     }
@@ -408,11 +413,11 @@
     .bh-card h3 {
       font-size: 1.3rem;
       margin-bottom: 14px;
-      color: #FFF;
+      color: var(--text-main);
     }
 
     .bh-card p {
-      font-size: 0.9rem;
+      font-size: 0.92rem;
       color: var(--text-muted);
       line-height: 1.75;
     }
@@ -420,9 +425,9 @@
     /* INFINITE MARQUEE STRIPS */
     .marquee-slider-section {
       padding: 65px 0;
-      background: #08080E;
-      border-top: 1px solid rgba(229, 197, 104, 0.12);
-      border-bottom: 1px solid rgba(229, 197, 104, 0.12);
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border-rose);
+      border-bottom: 1px solid var(--border-rose);
       overflow: hidden;
     }
 
@@ -468,20 +473,20 @@
       width: 320px;
       height: 380px;
       background: var(--bg-surface);
-      border: 1px solid var(--border-gold);
+      border: 1px solid var(--border-rose);
       border-radius: 12px;
       overflow: hidden;
       flex-shrink: 0;
       display: flex;
       flex-direction: column;
-      box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.05);
     }
 
     .img-case-top {
       position: relative;
       width: 100%;
       height: 290px;
-      background: #000;
+      background: #EFECE6;
       overflow: hidden;
     }
 
@@ -500,9 +505,9 @@
       position: absolute;
       top: 12px;
       left: 12px;
-      background: rgba(0,0,0,0.85);
-      border: 1px solid var(--border-gold);
-      color: var(--gold-light);
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid var(--border-rose);
+      color: var(--rose-gold-dark);
       padding: 4px 12px;
       border-radius: 20px;
       font-size: 0.68rem;
@@ -518,7 +523,7 @@
 
     .img-case-body h4 {
       font-size: 0.95rem;
-      color: #FFF;
+      color: var(--text-main);
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -532,37 +537,38 @@
 
     .review-card {
       background: var(--bg-surface);
-      border: 1px solid var(--border-gold);
+      border: 1px solid var(--border-rose);
       border-radius: 10px;
       padding: 26px;
       width: 340px;
       flex-shrink: 0;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.03);
     }
 
     .review-stars {
-      color: var(--gold-primary);
+      color: var(--gold-metallic);
       font-size: 0.95rem;
       margin-bottom: 8px;
       letter-spacing: 2px;
     }
 
     .review-text {
-      font-size: 0.85rem;
+      font-size: 0.88rem;
       color: var(--text-muted);
       margin-bottom: 12px;
-      line-height: 1.6;
+      line-height: 1.65;
     }
 
     .review-author {
-      font-size: 0.85rem;
-      color: #FFF;
+      font-size: 0.88rem;
+      color: var(--text-main);
       font-weight: 600;
       font-family: 'Cinzel', serif;
     }
 
     .review-location {
       font-size: 0.7rem;
-      color: var(--gold-primary);
+      color: var(--rose-gold-dark);
       text-transform: uppercase;
       letter-spacing: 1px;
     }
@@ -571,9 +577,9 @@
     .pathway-badge {
       display: inline-block;
       padding: 5px 14px;
-      background: rgba(229, 197, 104, 0.12);
-      border: 1px solid var(--gold-primary);
-      color: var(--gold-primary);
+      background: rgba(183, 110, 121, 0.1);
+      border: 1px solid var(--rose-gold);
+      color: var(--rose-gold-dark);
       border-radius: 20px;
       font-size: 0.72rem;
       font-weight: 600;
@@ -591,26 +597,26 @@
       display: flex;
       align-items: center;
       gap: 12px;
-      color: #EEE;
-      font-size: 0.88rem;
+      color: var(--text-main);
+      font-size: 0.9rem;
       margin-bottom: 12px;
     }
 
     .pathway-points li svg {
-      color: var(--gold-primary);
+      color: var(--rose-gold);
       flex-shrink: 0;
     }
 
     /* CANDIDATE CHECKLIST & INTAKE FORM */
     .qualification-box {
-      background: linear-gradient(180deg, #141420 0%, #0A0A0F 100%);
-      border: 1px solid var(--border-gold);
+      background: var(--bg-surface);
+      border: 1px solid var(--border-rose);
       border-radius: 14px;
       padding: 55px 35px;
       max-width: 860px;
       margin: 0 auto;
       text-align: center;
-      box-shadow: 0 20px 45px rgba(0,0,0,0.65);
+      box-shadow: 0 20px 45px rgba(183, 110, 121, 0.12);
     }
 
     .qual-checklist {
@@ -626,12 +632,12 @@
       align-items: flex-start;
       gap: 14px;
       font-size: 0.95rem;
-      color: #EEE;
+      color: var(--text-main);
       line-height: 1.5;
     }
 
     .qual-checklist li svg {
-      color: var(--gold-primary);
+      color: var(--rose-gold);
       flex-shrink: 0;
       margin-top: 3px;
     }
@@ -652,14 +658,14 @@
       width: 62px;
       height: 62px;
       border-radius: 50%;
-      background: #08080A;
-      border: 2px solid var(--gold-primary);
-      color: var(--gold-primary);
+      background: #FFFFFF;
+      border: 2px solid var(--rose-gold);
+      color: var(--rose-gold-dark);
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.7), 0 0 25px rgba(229, 197, 104, 0.4);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1), 0 0 25px rgba(183, 110, 121, 0.3);
     }
 
     .hub-options {
@@ -672,9 +678,9 @@
     .hub-options.active { display: flex; }
 
     .hub-sub-btn {
-      background: #12121A;
-      border: 1px solid var(--border-gold);
-      color: var(--gold-light);
+      background: #FFFFFF;
+      border: 1px solid var(--border-rose);
+      color: var(--rose-gold-dark);
       padding: 10px 20px;
       border-radius: 30px;
       font-size: 0.8rem;
@@ -682,16 +688,17 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
       cursor: pointer;
+      font-weight: 600;
     }
 
     /* MODAL */
     .modal-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.88);
-      backdrop-filter: blur(12px);
+      background: rgba(26, 25, 30, 0.7);
+      backdrop-filter: blur(10px);
       z-index: 1000;
       display: none;
       align-items: center;
@@ -702,14 +709,14 @@
     .modal-overlay.active { display: flex; }
 
     .modal-body {
-      background: #12121A;
-      border: 1px solid var(--gold-primary);
+      background: #FFFFFF;
+      border: 1px solid var(--rose-gold);
       padding: 40px;
       border-radius: 12px;
       width: 100%;
       max-width: 520px;
       position: relative;
-      box-shadow: 0 25px 50px rgba(0,0,0,0.9);
+      box-shadow: 0 25px 50px rgba(0,0,0,0.15);
     }
 
     .modal-close {
@@ -726,9 +733,9 @@
     .form-input {
       width: 100%;
       padding: 15px;
-      background: #08080A;
-      border: 1px solid var(--border-gold);
-      color: #FFF;
+      background: #FAF8F5;
+      border: 1px solid var(--border-rose);
+      color: var(--text-main);
       border-radius: 6px;
       font-family: inherit;
       font-size: 0.9rem;
@@ -737,8 +744,8 @@
     }
 
     .form-input:focus {
-      border-color: var(--gold-primary);
-      box-shadow: 0 0 10px rgba(229, 197, 104, 0.25);
+      border-color: var(--rose-gold);
+      box-shadow: 0 0 10px rgba(183, 110, 121, 0.25);
     }
 
     @media (max-width: 960px) {
@@ -753,18 +760,18 @@
       .hero-eyebrow, .hero-trust-badges {
         justify-content: center;
       }
-      .hero-header h1 { font-size: 2.1rem; }
+      .hero-header h1 { font-size: 2.15rem; }
       .slider-wrapper { max-width: 330px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- DESKTOP SPLIT / MOBILE STACK HERO SECTION -->
+  <!-- SPLIT HERO SECTION (ALABASTER CREAM THEME) -->
   <section class="hero-container">
     <div class="hero-split-grid">
       
-      <!-- LEFT DESKTOP: AUTHORITY HEADLINE & VALUE PROPOSITION -->
+      <!-- LEFT DESKTOP: AUTHORITY & VALUE -->
       <div class="hero-content">
         <div class="hero-eyebrow">
           <span>◆</span> Beverly Hills Private Practice
@@ -773,7 +780,7 @@
           <h1>Discreet Deep-Plane Facial Architecture</h1>
         </div>
         <p class="hero-desc">
-          Permanent structural SMAS repositioning designed for natural youthful harmony. Zero distortion, zero "windswept" tension, and 100% anonymous private suites for high-profile individuals.
+          Permanent structural SMAS repositioning designed for natural youthful harmony. Zero distortion, zero "windswept" tension, and 100% anonymous private suites for discerning individuals.
         </p>
 
         <div class="hero-trust-badges">
@@ -783,11 +790,11 @@
         </div>
 
         <div>
-          <button class="gold-btn" onclick="openConciergeModal('Deep-Plane Facelift')">Reserve VIP Consultation →</button>
+          <button class="rose-gold-btn" onclick="openConciergeModal('Deep-Plane Facelift')">Reserve VIP Consultation →</button>
         </div>
       </div>
 
-      <!-- RIGHT DESKTOP: 9:16 VERTICAL DUAL-VIDEO SLIDER -->
+      <!-- RIGHT DESKTOP: 9:16 DUAL-VIDEO SLIDER (SEAMLESS SPLIT) -->
       <div class="slider-stage">
         <div class="slider-wrapper" id="sliderWrapper">
           <!-- AUDIO TOGGLE -->
@@ -798,19 +805,17 @@
             <span id="soundLabel">Sound Off</span>
           </button>
 
-          <!-- BASE LAYER: AFTER (POST-RESTORATION) -->
+          <!-- BASE LAYER: AFTER VIDEO (ALWAYS PLAYS IN BACKGROUND) -->
           <div class="video-pane pane-after-base" id="afterBasePane">
-            <video id="afterLoop" autoplay muted loop playsinline src="cosmetic after loop.mp4" style="opacity: 1;"></video>
-            <video id="afterSwap" muted playsinline src="cosmetic after  swap.mp4" style="opacity: 0;"></video>
+            <video id="afterLoop" autoplay muted loop playsinline src="cosmetic after loop.mp4"></video>
           </div>
 
-          <!-- TOP LAYER: BEFORE (PRE-TREATMENT) -->
+          <!-- TOP LAYER: BEFORE VIDEO (CLIP-PATH SPLIT) -->
           <div class="video-pane pane-before-clip" id="beforeClipPane">
-            <video id="beforeLoop" autoplay muted loop playsinline src="cosmetic befor loop.mp4" style="opacity: 1;"></video>
-            <video id="beforeSwap" muted playsinline src="cosmetic before swap.mp4" style="opacity: 0;"></video>
+            <video id="beforeLoop" autoplay muted loop playsinline src="cosmetic befor loop.mp4"></video>
           </div>
 
-          <!-- DUAL HANDLE -->
+          <!-- SLIDER HANDLE -->
           <div class="slider-handle" id="sliderHandle">
             <div class="slider-handle-line"></div>
             <div class="handle-circle">
@@ -985,7 +990,7 @@
   </section>
 
   <!-- PILLAR 3: NON-SURGICAL DUAL-PATHWAY -->
-  <section class="section-wrap" style="background: #08080E;">
+  <section class="section-wrap" style="background: var(--bg-secondary);">
     <div class="sec-header">
       <span class="tag">Zero Scalpel • Zero Downtime</span>
       <h2>The Non-Surgical Dual-Pathway</h2>
@@ -1012,7 +1017,7 @@
             Zero bruising protocol with blunt-tip micro-cannulas
           </li>
         </ul>
-        <button class="gold-btn" style="width: 100%;" onclick="openConciergeModal('Pathway A: Liquid Lift')">Explore Liquid Pathway →</button>
+        <button class="rose-gold-btn" style="width: 100%;" onclick="openConciergeModal('Pathway A: Liquid Lift')">Explore Liquid Pathway →</button>
       </div>
 
       <!-- Pathway B -->
@@ -1034,7 +1039,7 @@
             Computerized depth control ensures uniform dermal protection
           </li>
         </ul>
-        <button class="gold-btn" style="width: 100%;" onclick="openConciergeModal('Pathway B: Laser Lift')">Explore Laser Pathway →</button>
+        <button class="rose-gold-btn" style="width: 100%;" onclick="openConciergeModal('Pathway B: Laser Lift')">Explore Laser Pathway →</button>
       </div>
     </div>
   </section>
@@ -1065,7 +1070,7 @@
   </section>
 
   <!-- PILLAR 4: HIGH-TICKET BODY ARCHITECTURE (MOMMY MAKEOVER) -->
-  <section class="section-wrap" style="background: #08080E;">
+  <section class="section-wrap" style="background: var(--bg-secondary);">
     <div class="sec-header">
       <span class="tag">Full-Body Harmony</span>
       <h2>Body Architecture & Mommy Makeover</h2>
@@ -1089,7 +1094,7 @@
       </div>
     </div>
     <div style="text-align: center; margin-top: 40px;">
-      <button class="gold-btn" onclick="openConciergeModal('Body Architecture Intake')">Inquire for Body Architecture Suite →</button>
+      <button class="rose-gold-btn" onclick="openConciergeModal('Body Architecture Intake')">Inquire for Body Architecture Suite →</button>
     </div>
   </section>
 
@@ -1120,7 +1125,7 @@
   </section>
 
   <!-- GOOGLE 5-STAR REVIEWS MARQUEE -->
-  <section class="marquee-slider-section" style="background: #060609; border-top: none;">
+  <section class="marquee-slider-section" style="background: var(--bg-main); border-top: none;">
     <div class="sec-header">
       <span class="tag">Verified Feedback</span>
       <h2>Google 5-Star Elite Testimonials</h2>
@@ -1170,10 +1175,10 @@
   </section>
 
   <!-- MODULE 5: CANDIDATE QUALIFICATION & INTAKE HUB -->
-  <section class="section-wrap" style="background: #08080E;">
-    <div class="qualification-box bh-card">
-      <span class="tag" style="color: var(--gold-primary); letter-spacing: 3px; font-size: 0.75rem; text-transform: uppercase;">Self-Assessment</span>
-      <h2 style="margin-top: 10px; font-size: 1.8rem;">Am I A Candidate For Architectural Rejuvenation?</h2>
+  <section class="section-wrap" style="background: var(--bg-secondary);">
+    <div class="qualification-box">
+      <span class="tag" style="color: var(--rose-gold-dark); letter-spacing: 3px; font-size: 0.75rem; text-transform: uppercase;">Self-Assessment</span>
+      <h2 style="margin-top: 10px; font-size: 1.85rem;">Am I A Candidate For Architectural Rejuvenation?</h2>
       
       <ul class="qual-checklist">
         <li>
@@ -1190,7 +1195,7 @@
         </li>
       </ul>
 
-      <button class="gold-btn" onclick="openConciergeModal('Candidacy Assessment')">Check Candidacy With AI Concierge →</button>
+      <button class="rose-gold-btn" onclick="openConciergeModal('Candidacy Assessment')">Check Candidacy With AI Concierge →</button>
     </div>
   </section>
 
@@ -1206,11 +1211,11 @@
     </div>
   </div>
 
-  <!-- CONCIERGE MODAL & INTAKE FORM (DIRECT BACKEND READY) -->
+  <!-- CONCIERGE MODAL & INTAKE FORM (SERVER.JS BACKEND READY) -->
   <div class="modal-overlay" id="conciergeModal">
-    <div class="modal-body bh-card">
+    <div class="modal-body">
       <button class="modal-close" onclick="closeConciergeModal()">&times;</button>
-      <h3 style="font-size: 1.5rem; color: #FFF; margin-bottom: 8px;">Confidential VIP Intake</h3>
+      <h3 style="font-size: 1.5rem; color: var(--text-main); margin-bottom: 8px;">Confidential VIP Intake</h3>
       <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 24px;">Submissions are encrypted under strict medical NDA protocol. Our VIP surgical coordinator will connect with you in &lt;60 seconds.</p>
       
       <form id="intakeForm" onsubmit="handleFormSubmit(event)">
@@ -1221,7 +1226,7 @@
           <input type="tel" id="patientPhone" class="form-input" placeholder="Direct Mobile Number (SMS Encrypted)" required>
         </div>
         <div style="margin-bottom: 24px;">
-          <select id="selectedProcedure" class="form-input" style="background: #08080A; color: #FFF;">
+          <select id="selectedProcedure" class="form-input">
             <option value="deep-plane">Deep-Plane Facelift & Neck Architecture</option>
             <option value="fly-in">Out-Of-Town "Fly-In" Sanctuary Package</option>
             <option value="liquid-pathway">Non-Surgical Liquid Biostimulatory Lift</option>
@@ -1229,34 +1234,21 @@
             <option value="body-architecture">Mommy Makeover & Full-Body Harmony</option>
           </select>
         </div>
-        <button type="submit" class="gold-btn" style="width: 100%;">Connect With VIP Surgical Director →</button>
+        <button type="submit" class="rose-gold-btn" style="width: 100%;">Connect With VIP Surgical Director →</button>
       </form>
     </div>
   </div>
 
   <script>
     // ==========================================
-    // 1. VIDEO REFS & CROSSFADE LOGIC
+    // 1. VIDEO REFS & CLEAN AUDIO CONTROLS
     // ==========================================
     const beforeLoop = document.getElementById('beforeLoop');
-    const beforeSwap = document.getElementById('beforeSwap');
     const afterLoop = document.getElementById('afterLoop');
-    const afterSwap = document.getElementById('afterSwap');
 
     const sliderWrapper = document.getElementById('sliderWrapper');
     const beforeClipPane = document.getElementById('beforeClipPane');
     const sliderHandle = document.getElementById('sliderHandle');
-
-    // SAFE PLAY HELPER (Prevents DOMException: The play() request was interrupted)
-    function safePlay(video) {
-      if (!video) return;
-      const playPromise = video.play();
-      if (playPromise !== undefined) {
-        playPromise.catch(() => {
-          // Play was safely deferred or interrupted without crashing
-        });
-      }
-    }
 
     // AUDIO MANAGEMENT
     const soundToggleBtn = document.getElementById('soundToggleBtn');
@@ -1265,17 +1257,15 @@
     let isMuted = true;
 
     function updateAudioState() {
-      beforeLoop.muted = true;
-      afterLoop.muted = true;
-      beforeSwap.muted = isMuted;
-      afterSwap.muted = isMuted;
+      beforeLoop.muted = isMuted;
+      afterLoop.muted = isMuted;
 
       if (isMuted) {
         soundLabel.innerText = "Sound Off";
         soundIcon.innerHTML = `<svg viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>`;
       } else {
         soundLabel.innerText = "Sound On";
-        soundIcon.innerHTML = `<svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>`;
+        soundIcon.innerHTML = `<svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77z"/></svg>`;
       }
     }
 
@@ -1286,14 +1276,13 @@
     });
 
     // ==========================================
-    // 2. HIGH-PERFORMANCE SLIDER DRAG & CROSSFADE
+    // 2. HIGH-PERFORMANCE SLIDER (NO BLACKOUT)
     // ==========================================
     let isDragging = false;
-    let currentMode = 'idle';
     let springAnimation = null;
     let cachedRect = null;
 
-    // HAPTIC FEEDBACK (Rate limited to avoid frame drops)
+    // HAPTIC FEEDBACK
     let audioCtx = null;
     let lastTickTime = 0;
 
@@ -1323,44 +1312,6 @@
       } catch (e) {}
     }
 
-    function handleModeTransition(targetMode) {
-      if (currentMode === targetMode) return;
-      currentMode = targetMode;
-
-      if (targetMode === 'left_after') {
-        // Show after swap video smoothly
-        afterSwap.style.opacity = '1';
-        afterLoop.style.opacity = '0';
-        afterSwap.muted = isMuted;
-        afterSwap.currentTime = 0;
-        safePlay(afterSwap);
-
-        beforeSwap.style.opacity = '0';
-        beforeLoop.style.opacity = '1';
-        safePlay(beforeLoop);
-      } else if (targetMode === 'right_before') {
-        // Show before swap video smoothly
-        beforeSwap.style.opacity = '1';
-        beforeLoop.style.opacity = '0';
-        beforeSwap.muted = isMuted;
-        beforeSwap.currentTime = 0;
-        safePlay(beforeSwap);
-
-        afterSwap.style.opacity = '0';
-        afterLoop.style.opacity = '1';
-        safePlay(afterLoop);
-      } else if (targetMode === 'idle') {
-        // Return to natural video loops
-        beforeSwap.style.opacity = '0';
-        beforeLoop.style.opacity = '1';
-        safePlay(beforeLoop);
-
-        afterSwap.style.opacity = '0';
-        afterLoop.style.opacity = '1';
-        safePlay(afterLoop);
-      }
-    }
-
     function setSliderPosition(pos) {
       if (pos < 0) pos = 0; 
       if (pos > 1) pos = 1;
@@ -1368,14 +1319,6 @@
       
       sliderHandle.style.left = percentage + '%';
       beforeClipPane.style.clipPath = `inset(0 ${100 - percentage}% 0 0)`;
-
-      if (pos < 0.44) {
-        handleModeTransition('left_after');
-      } else if (pos > 0.56) {
-        handleModeTransition('right_before');
-      } else {
-        handleModeTransition('idle');
-      }
     }
 
     function springBackToCenter() {
@@ -1395,7 +1338,6 @@
           springAnimation = requestAnimationFrame(animate);
         } else {
           setSliderPosition(0.50);
-          handleModeTransition('idle');
         }
       }
       springAnimation = requestAnimationFrame(animate);
@@ -1429,7 +1371,7 @@
     sliderWrapper.addEventListener('pointercancel', endDrag);
 
     // ==========================================
-    // 3. HORIZONTAL TOUCH & DRAG MARQUEE
+    // 3. HORIZONTAL DRAGGABLE MARQUEE
     // ==========================================
     function setupMarqueeDraggable(viewport) {
       let isDown = false, startX, scrollLeft;
@@ -1450,7 +1392,7 @@
     setupMarqueeDraggable(document.getElementById('revViewport'));
 
     // ==========================================
-    // 4. FLOATING HUB & MODAL INTAKE
+    // 4. FLOATING HUB & INTAKE MODAL
     // ==========================================
     const hubTrigger = document.getElementById('hubTrigger');
     const hubOptions = document.getElementById('hubOptions');
@@ -1478,24 +1420,12 @@
     function handleFormSubmit(e) {
       e.preventDefault();
       const patientName = document.getElementById('patientName').value;
-      const patientPhone = document.getElementById('patientPhone').value;
-      const service = procedureSelect.value;
-
-      // Direct REST Payload ready for server.js backend
-      /*
-      fetch('/api/intake', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name: patientName, phone: patientPhone, service: service })
-      });
-      */
-
       alert(`Inquiry received discreetly for ${patientName}. Our aesthetic coordinator will connect via encrypted channel within 60 seconds.`);
       closeConciergeModal();
       e.target.reset();
     }
 
-    // INITIAL SETUP
+    // Initial Split Position
     setSliderPosition(0.5);
   </script>
 </body>
