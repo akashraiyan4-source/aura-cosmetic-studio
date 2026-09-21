@@ -10,17 +10,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-    /* ==========================================================================
-       স্ক্রিনশটের অরিজিনাল কালার প্যালেট ও মেটাবলিক স্টাইল
-       ========================================================================== */
     :root {
-      --bg-cream: #FAF8F5;          /* স্ক্রিনশটের ক্লাসিক অ্যালাবাস্টার ক্রিম */
+      --bg-cream: #FAF8F5;
       --bg-card: #FFFFFF;
-      --text-main: #141316;          /* শার্প ব্ল্যাক ও ডিপ চারকোল */
-      --text-muted: #5C5854;         /* সাব-হেডার ও বডি টেক্সট */
+      --text-main: #141316;
+      --text-muted: #5C5854;
       --text-light: #8E8A85;
       
-      /* স্ক্রিনশটের অরিজিনাল রোজ-গোল্ড / শ্যাম্পেন কালার */
       --rose-accent: #C58874;
       --rose-light: #E0A996;
       --rose-btn: linear-gradient(135deg, #B87B68 0%, #8C4E3C 100%);
@@ -52,7 +48,6 @@
       letter-spacing: -0.01em;
     }
 
-    /* স্ক্রিনশটের হুবহু আয়তাকার বাটন (অতিরিক্ত গোল নয়) */
     .gold-btn {
       display: inline-flex;
       align-items: center;
@@ -113,9 +108,7 @@
       font-weight: 400;
     }
 
-    /* ==========================================================================
-       ১. হিরো সেকশন (স্ক্রিনশট ১৭) - মোবাইল ও পিসি অপ্টিমাইজেশন
-       ========================================================================== */
+    /* হিরো সেকশন */
     .hero-section {
       max-width: 1320px;
       margin: 0 auto;
@@ -132,7 +125,6 @@
         padding: 30px 16px 50px 16px;
         gap: 36px;
       }
-      /* মোবাইলে সবার উপরে ভিডিও স্লাইডার চলে আসবে */
       .hero-video-wrapper {
         order: -1;
       }
@@ -197,7 +189,7 @@
 
     .pill-item span { color: var(--rose-accent); }
 
-    /* ৯:১৬ হিরো ডুয়াল ভিডিও স্লাইডার */
+    /* ৯:১৬ হিরো স্লাইডার */
     .slider-frame {
       position: relative;
       width: 100%;
@@ -246,7 +238,6 @@
 
     .action-layer.active { opacity: 1; }
 
-    /* সাউন্ড বাটন - ডিফল্ট মিউট */
     .sound-toggle {
       position: absolute;
       top: 16px;
@@ -281,7 +272,6 @@
       transform: translateX(-50%);
     }
 
-    /* মাঝখানের হ্যান্ডেল */
     .slider-knob {
       position: absolute;
       top: 50%;
@@ -343,9 +333,7 @@
       margin-top: 10px;
     }
 
-    /* ==========================================================================
-       ২. প্রেস অ্যান্ড অথরিটি লোগো (স্ক্রিনশট ১৮)
-       ========================================================================== */
+    /* প্রেস বার */
     .press-bar {
       border-top: 1px solid var(--card-border);
       border-bottom: 1px solid var(--card-border);
@@ -380,9 +368,7 @@
       text-transform: uppercase;
     }
 
-    /* ==========================================================================
-       ৩. ইনফিনিট কেস স্টাডিজ মারকুই (স্ক্রিনশট ১৮)
-       ========================================================================== */
+    /* ইনফিনিট মারকুই */
     .marquee-wrapper {
       position: relative;
       width: 100%;
@@ -394,7 +380,7 @@
       display: flex;
       gap: 20px;
       width: max-content;
-      animation: scrollMarquee 35s linear infinite;
+      animation: scrollMarquee 38s linear infinite;
     }
 
     .marquee-wrapper:hover .marquee-track {
@@ -420,13 +406,14 @@
       width: 100%;
       height: 230px;
       position: relative;
-      background: #EAE6DF;
+      background: #141316;
     }
 
     .case-img-box img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      display: block;
     }
 
     .case-badge {
@@ -441,6 +428,7 @@
       font-size: 0.6rem;
       text-transform: uppercase;
       letter-spacing: 0.08em;
+      z-index: 2;
     }
 
     .case-info {
@@ -461,9 +449,7 @@
       color: var(--text-light);
     }
 
-    /* ==========================================================================
-       ৪. ১০০% ডিসক্রিট ভিআইপি সুইট (স্ক্রিনশট ১৯) & সেফটি (স্ক্রিনশট ২১)
-       ========================================================================== */
+    /* গ্রিড ও কার্ড স্টাইল */
     .grid-3-col {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -508,9 +494,6 @@
       line-height: 1.7;
     }
 
-    /* ==========================================================================
-       ৫. নন-সার্জিক্যাল ডুয়াল-পাথওয়ে (স্ক্রিনশট ২০)
-       ========================================================================== */
     .grid-2-col {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -556,9 +539,6 @@
       font-weight: bold;
     }
 
-    /* ==========================================================================
-       ৬. গুগল ৫-স্টার রিভিউ মারকুই (স্ক্রিনশট ২৪)
-       ========================================================================== */
     .review-card {
       width: 320px;
       flex-shrink: 0;
@@ -598,9 +578,6 @@
       text-transform: uppercase;
     }
 
-    /* ==========================================================================
-       ৭. সেলফ-অ্যাসেসমেন্ট কার্ড (স্ক্রিনশট ২৪)
-       ========================================================================== */
     .self-card {
       max-width: 720px;
       margin: 0 auto;
@@ -639,12 +616,8 @@
 </head>
 <body>
 
-  <!-- ==========================================================================
-       ১. HERO FLAGSHIP SECTION (স্ক্রিনশট ১৭)
-       ========================================================================== -->
+  <!-- হিরো সেকশন -->
   <section class="hero-section">
-    
-    <!-- বাম পাশের টেক্সট এরিয়া -->
     <div class="hero-content">
       <div class="hero-pre-tag">• BEVERLY HILLS PRIVATE PRACTICE</div>
       
@@ -667,37 +640,33 @@
       </div>
     </div>
 
-    <!-- ডান পাশের ৯:১৬ ডুয়াল ভিডিও স্লাইডার -->
+    <!-- ৯:১৬ ভিডিও স্লাইডার (কালো না হওয়ার জন্য নির্ভরযোগ্য অটোপ্লে স্ট্রিম) -->
     <div class="hero-video-wrapper">
       <div class="slider-frame" id="sliderWrapper">
         
-        <!-- সাউন্ড বাটন - সর্বদা ডিফল্ট মিউট থাকবে -->
         <div class="sound-toggle" id="soundBtn">
           <span id="soundIcon">🔇</span>
           <span id="soundText">Sound Off</span>
         </div>
 
-        <!-- বাম পাশ: Before (লুপ + ডানে ড্র্যাগ অ্যাকশন) -->
         <div class="pane-video pane-left">
           <video id="beforeLoop" autoplay muted loop playsinline preload="auto">
-            <source src="https://assets.mixkit.co/videos/preview/mixkit-portrait-of-a-woman-in-a-studio-setting-39877-large.mp4" type="video/mp4">
+            <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4">
           </video>
           <video id="beforeAction" class="pane-video action-layer" muted loop playsinline preload="auto">
-            <source src="https://assets.mixkit.co/videos/preview/mixkit-woman-applying-makeup-with-a-sponge-41712-large.mp4" type="video/mp4">
+            <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4" type="video/mp4">
           </video>
         </div>
 
-        <!-- ডান পাশ: After (লুপ + বামে ড্র্যাগ অ্যাকশন) -->
         <div class="pane-video pane-right" id="afterPane">
           <video id="afterLoop" autoplay muted loop playsinline preload="auto">
-            <source src="https://assets.mixkit.co/videos/preview/mixkit-fashion-model-in-a-photo-studio-39874-large.mp4" type="video/mp4">
+            <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4" type="video/mp4">
           </video>
           <video id="afterAction" class="pane-video action-layer" muted loop playsinline preload="auto">
-            <source src="https://assets.mixkit.co/videos/preview/mixkit-young-woman-touching-her-face-gently-42617-large.mp4" type="video/mp4">
+            <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyBlazes.mp4" type="video/mp4">
           </video>
         </div>
 
-        <!-- ডিভাইডার ও সেন্ট্রাল ড্র্যাগ হ্যান্ডেল -->
         <div class="slider-divider-bar" id="dividerLine"></div>
         <div class="slider-knob" id="sliderKnob">
           <div class="knob-arrows">
@@ -706,7 +675,6 @@
           </div>
         </div>
 
-        <!-- নিচের ট্যাগ -->
         <div class="bottom-tags">
           <div class="b-tag">Pre-Treatment</div>
           <div class="b-tag">Post-Restoration</div>
@@ -715,12 +683,9 @@
       </div>
       <div class="drag-hint">⟵ Drag Left for Glow • Drag Right for Regret ⟶</div>
     </div>
-
   </section>
 
-  <!-- ==========================================================================
-       ২. প্রেস অ্যান্ড মিডিয়া অথরিটি স্ট্রিপ (স্ক্রিনশট ১৮)
-       ========================================================================== -->
+  <!-- প্রেস বার -->
   <div class="press-bar">
     <div class="press-text">Discreet Luxury Aesthetics • Trusted By Industry Leaders & Celebrities</div>
     <div class="press-list">
@@ -733,9 +698,7 @@
     </div>
   </div>
 
-  <!-- ==========================================================================
-       ৩. ইনফিনিট কেস স্টাডিজ মারকুই (স্ক্রিনশট ১৮)
-       ========================================================================== -->
+  <!-- ইনফিনিট কেস স্টাডি মারকুই (আপনার আসল ছবিগুলো সরাসরি কানেক্টেড) -->
   <section style="padding: 70px 0 30px 0; text-align: center;">
     <div class="section-header" style="margin-bottom: 30px;">
       <span class="sub-tag">Clinical Case Studies</span>
@@ -743,15 +706,14 @@
       <p class="section-desc">Swipe horizontally or hover to pause and examine surgical outcomes.</p>
     </div>
 
-    <!-- ইনফিনিট লুপ মারকুই (কখনো শেষ হবে না) -->
     <div class="marquee-wrapper">
       <div class="marquee-track">
         
-        <!-- কার্ড ১ -->
+        <!-- ১. sc30.jpg -->
         <div class="case-card">
           <div class="case-img-box">
             <span class="case-badge">Submentoplasty</span>
-            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=500&auto=format&fit=crop" alt="Case 1">
+            <img src="sc30.jpg" alt="Jawline Case">
           </div>
           <div class="case-info">
             <div class="case-title">Jawline & Cervical Definition</div>
@@ -759,11 +721,11 @@
           </div>
         </div>
 
-        <!-- কার্ড ২ -->
+        <!-- ২. images.jfif -->
         <div class="case-card">
           <div class="case-img-box">
             <span class="case-badge">Natural Harmony</span>
-            <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=500&auto=format&fit=crop" alt="Case 2">
+            <img src="images.jfif" alt="Facial Balancing Case">
           </div>
           <div class="case-info">
             <div class="case-title">Complete Facial Balancing</div>
@@ -771,11 +733,11 @@
           </div>
         </div>
 
-        <!-- কার্ড ৩ -->
+        <!-- ৩. istockphoto-2159264716-612x612.jpg -->
         <div class="case-card">
           <div class="case-img-box">
             <span class="case-badge">Full Face Renewal</span>
-            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=500&auto=format&fit=crop" alt="Case 3">
+            <img src="istockphoto-2159264716-612x612.jpg" alt="SMAS Neck Lift Case">
           </div>
           <div class="case-info">
             <div class="case-title">Structural SMAS & Neck Lift</div>
@@ -783,11 +745,11 @@
           </div>
         </div>
 
-        <!-- কার্ড ৪ -->
+        <!-- ৪. istockphoto-1210828134-612x612.jpg -->
         <div class="case-card">
           <div class="case-img-box">
             <span class="case-badge">Lateral Elevation</span>
-            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop" alt="Case 4">
+            <img src="istockphoto-1210828134-612x612.jpg" alt="Lateral Profile Case">
           </div>
           <div class="case-info">
             <div class="case-title">Lateral Profile & Brow Angle</div>
@@ -795,11 +757,11 @@
           </div>
         </div>
 
-        <!-- কার্ড ৫ -->
+        <!-- ৫. images (1).jfif -->
         <div class="case-card">
           <div class="case-img-box">
             <span class="case-badge">Perioral Detail</span>
-            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=500&auto=format&fit=crop" alt="Case 5">
+            <img src="images (1).jfif" alt="Micro Texture Case">
           </div>
           <div class="case-info">
             <div class="case-title">Micro Texture Smoothing</div>
@@ -807,11 +769,35 @@
           </div>
         </div>
 
-        <!-- সিমলেস লুপের জন্য ডুপ্লিকেট সেট -->
+        <!-- ৬. denise-richard-feature-2026-lead-sidebyside.webp -->
+        <div class="case-card">
+          <div class="case-img-box">
+            <span class="case-badge">Deep-Plane Lift</span>
+            <img src="denise-richard-feature-2026-lead-sidebyside.webp" alt="Midface Case">
+          </div>
+          <div class="case-info">
+            <div class="case-title">Midface & Jaw Restoration</div>
+            <div class="case-meta">Age 52 • Structural SMAS release</div>
+          </div>
+        </div>
+
+        <!-- ৭. Makeup.webp -->
+        <div class="case-card">
+          <div class="case-img-box">
+            <span class="case-badge">Dual-Pathway</span>
+            <img src="Makeup.webp" alt="Volume Radiance Case">
+          </div>
+          <div class="case-info">
+            <div class="case-title">Volume & Radiance Harmony</div>
+            <div class="case-meta">Age 46 • Natural biostimulatory glow</div>
+          </div>
+        </div>
+
+        <!-- লুপের ধারাবাহিকতার জন্য ডুপ্লিকেট সেট -->
         <div class="case-card">
           <div class="case-img-box">
             <span class="case-badge">Submentoplasty</span>
-            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=500&auto=format&fit=crop" alt="Case 1">
+            <img src="sc30.jpg" alt="Jawline Case">
           </div>
           <div class="case-info">
             <div class="case-title">Jawline & Cervical Definition</div>
@@ -822,7 +808,7 @@
         <div class="case-card">
           <div class="case-img-box">
             <span class="case-badge">Natural Harmony</span>
-            <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=500&auto=format&fit=crop" alt="Case 2">
+            <img src="images.jfif" alt="Facial Balancing Case">
           </div>
           <div class="case-info">
             <div class="case-title">Complete Facial Balancing</div>
@@ -834,9 +820,7 @@
     </div>
   </section>
 
-  <!-- ==========================================================================
-       ৪. ১০০% ডিসক্রিট ভিআইপি সেঞ্চুয়ারি (স্ক্রিনশট ১৯)
-       ========================================================================== -->
+  <!-- ১০০% ডিসক্রিট ভিআইপি সেঞ্চুয়ারি -->
   <section class="section-container" style="padding-top: 20px;">
     <div class="section-header">
       <span class="sub-tag">Uncompromising Privacy</span>
@@ -864,9 +848,7 @@
     </div>
   </section>
 
-  <!-- ==========================================================================
-       ৫. নন-সার্জিক্যাল ডুয়াল-পাথওয়ে (স্ক্রিনশট ২০)
-       ========================================================================== -->
+  <!-- নন-সার্জিক্যাল ডুয়াল-পাথওয়ে -->
   <section class="section-container" style="padding-top: 20px;">
     <div class="section-header">
       <span class="sub-tag">Zero Scalpel • Zero Downtime</span>
@@ -875,7 +857,6 @@
     </div>
 
     <div class="grid-2-col">
-      <!-- Pathway A -->
       <div class="white-card">
         <span class="path-pill">Pathway A</span>
         <h3 class="white-card-title" style="font-size: 1.7rem;">Liquid Biostimulatory Lift</h3>
@@ -890,7 +871,6 @@
         <a href="#candidate-section" class="gold-btn" style="width: 100%;">Explore Liquid Pathway →</a>
       </div>
 
-      <!-- Pathway B -->
       <div class="white-card">
         <span class="path-pill">Pathway B</span>
         <h3 class="white-card-title" style="font-size: 1.7rem;">Precision Micro-Laser Architecture</h3>
@@ -907,9 +887,7 @@
     </div>
   </section>
 
-  <!-- ==========================================================================
-       ৬. সার্জিক্যাল সেফটি & QUAD-A স্ট্যান্ডার্ডস (স্ক্রিনশট ২১)
-       ========================================================================== -->
+  <!-- সার্জিক্যাল সেফটি & QUAD-A -->
   <section class="section-container" style="padding-top: 20px;">
     <div class="section-header">
       <span class="sub-tag">Clinical Excellence</span>
@@ -937,9 +915,7 @@
     </div>
   </section>
 
-  <!-- ==========================================================================
-       ৭. বডি আর্কিটেকচার & মমি মেকওভার (স্ক্রিনশট ২২)
-       ========================================================================== -->
+  <!-- বডি আর্কিটেকচার & মমি মেকওভার -->
   <section class="section-container" style="padding-top: 20px;">
     <div class="section-header">
       <span class="sub-tag">Full-Body Harmony</span>
@@ -972,9 +948,7 @@
     </div>
   </section>
 
-  <!-- ==========================================================================
-       ৮. দ্য "FLY-IN" এক্সিকিউটিভ সেঞ্চুয়ারি (স্ক্রিনশট ২৩)
-       ========================================================================== -->
+  <!-- দ্য FLY-IN সেঞ্চুয়ারি -->
   <section class="section-container" style="padding-top: 20px;">
     <div class="section-header">
       <span class="sub-tag">Global Destination</span>
@@ -1003,19 +977,15 @@
     </div>
   </section>
 
-  <!-- ==========================================================================
-       ৯. গুগল ৫-স্টার রিভিউ ইনফিনিট মারকুই (স্ক্রিনশট ২৪)
-       ========================================================================== -->
+  <!-- গুগল ৫-স্টার রিভিউ মারকুই -->
   <section style="padding: 60px 0 40px 0; text-align: center;">
     <div class="section-header" style="margin-bottom: 30px;">
       <span class="sub-tag">Verified Feedback</span>
       <h2 class="section-title">Google 5-Star Elite Testimonials</h2>
     </div>
 
-    <!-- রিভিউর ইনফিনিট মারকুই -->
     <div class="marquee-wrapper">
       <div class="marquee-track">
-        
         <div class="review-card">
           <div class="stars">★★★★★</div>
           <div class="review-quote">"The anonymous valet entry changed everything. Zero public waiting, and the deep-plane restoration looks breathtakingly natural."</div>
@@ -1044,7 +1014,6 @@
           <div class="reviewer-loc">New York, NY • Verified Patient</div>
         </div>
 
-        <!-- সিমলেস লুপের জন্য ডুপ্লিকেট সেট -->
         <div class="review-card">
           <div class="stars">★★★★★</div>
           <div class="review-quote">"The anonymous valet entry changed everything. Zero public waiting, and the deep-plane restoration looks breathtakingly natural."</div>
@@ -1058,14 +1027,11 @@
           <div class="reviewer-name">Marcus V.</div>
           <div class="reviewer-loc">Zurich, Switzerland • Verified Patient</div>
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- ==========================================================================
-       ১০. "AM I A CANDIDATE?" সেলফ-অ্যাসেসমেন্ট (স্ক্রিনশট ২৪)
-       ========================================================================== -->
+  <!-- সেলফ-অ্যাসেসমেন্ট -->
   <section class="section-container" id="candidate-section" style="padding-top: 20px; padding-bottom: 90px;">
     <div class="self-card">
       <span class="sub-tag">Self-Assessment</span>
@@ -1092,9 +1058,7 @@
     </div>
   </section>
 
-  <!-- ==========================================================================
-       জাভাস্ক্রিপ্ট: স্প্রিং-স্ন্যাপ ব্যাক মেকানিজম ও সাউন্ড লজিক
-       ========================================================================== -->
+  <!-- জাভাস্ক্রিপ্ট -->
   <script>
     const wrapper = document.getElementById('sliderWrapper');
     const knob = document.getElementById('sliderKnob');
@@ -1111,9 +1075,8 @@
     const soundText = document.getElementById('soundText');
 
     let isDragging = false;
-    let isMuted = true; // পেজ লোড বা রিফ্রেশে সবসময় বাধ্যতামূলক মিউট থাকবে
+    let isMuted = true;
 
-    // ১. শুধু সেন্ট্রাল নব ধরলেই মুভ করবে (স্ক্রিনের যেখানে সেখানে টাচ করলে লাফ দেবে না)
     knob.addEventListener('mousedown', startDrag);
     knob.addEventListener('touchstart', startDrag, { passive: false });
 
@@ -1128,12 +1091,10 @@
       e.preventDefault();
     }
 
-    // ২. হাত বা মাউস ছেড়ে দিলেই "ঠাস করে" ৫০% মাঝখানে বাউন্স ব্যাক করবে
     function snapBackToCenter() {
       if (!isDragging) return;
       isDragging = false;
 
-      // স্প্রিং অ্যানিমেশন দিয়ে স্মুথলি মাঝখানে (৫০%) নিয়ে আসা
       knob.style.transition = 'left 0.45s cubic-bezier(0.34, 1.56, 0.64, 1)';
       divider.style.transition = 'left 0.45s cubic-bezier(0.34, 1.56, 0.64, 1)';
       afterPane.style.transition = 'clip-path 0.45s cubic-bezier(0.34, 1.56, 0.64, 1)';
@@ -1142,7 +1103,6 @@
       divider.style.left = '50%';
       afterPane.style.clipPath = 'polygon(50% 0, 100% 0, 100% 100%, 50% 100%)';
 
-      // ট্রানজিশন শেষে অ্যাকশন ভিডিও বন্ধ হয়ে ন্যাচারাল লুপে ফিরে আসবে
       setTimeout(() => {
         beforeAction.classList.remove('active');
         beforeAction.pause();
@@ -1152,7 +1112,6 @@
         afterAction.pause();
         afterAction.currentTime = 0;
 
-        // ড্র্যাগিংয়ের সময় ট্রানজিশন বন্ধ রাখতে রিসেট
         knob.style.transition = '';
         divider.style.transition = '';
         afterPane.style.transition = '';
@@ -1173,8 +1132,6 @@
       divider.style.left = percentage + '%';
       afterPane.style.clipPath = `polygon(${percentage}% 0, 100% 0, 100% 100%, ${percentage}% 100%)`;
 
-      // ৩. ডিরেকশন অ্যাকশন ভিডিও লজিক:
-      // বামে টানলে (percentage < 45%): আফটার-এর মুখে হাত দেওয়ার পার্ট প্লে হবে
       if (percentage < 45) {
         if (!afterAction.classList.contains('active')) {
           afterAction.classList.add('active');
@@ -1182,18 +1139,14 @@
         }
         beforeAction.classList.remove('active');
         beforeAction.pause();
-      }
-      // ডানে টানলে (percentage > 55%): বিফোর-এর মুখে হাত দেওয়ার পার্ট প্লে হবে
-      else if (percentage > 55) {
+      } else if (percentage > 55) {
         if (!beforeAction.classList.contains('active')) {
           beforeAction.classList.add('active');
           beforeAction.play().catch(() => {});
         }
         afterAction.classList.remove('active');
         afterAction.pause();
-      }
-      // মাঝখানে থাকলে দুটো অ্যাকশন ভিডিও বন্ধ হয়ে ন্যাচারাল লুপ চলবে
-      else {
+      } else {
         beforeAction.classList.remove('active');
         beforeAction.pause();
         afterAction.classList.remove('active');
@@ -1201,7 +1154,6 @@
       }
     }
 
-    // ৪. সাউন্ড মিউট/আনমিউট কন্ট্রোল
     soundBtn.addEventListener('click', (e) => {
       e.stopPropagation();
       isMuted = !isMuted;
