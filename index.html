@@ -411,12 +411,15 @@
       100% { transform: translateX(-50%); }
     }
 
-    /* Case Studies Marquee */
+    /* ========================================================
+       INFINITE NON-STOP SMOOTH MARQUEES (PAUSE ON HOVER/TOUCH)
+       ======================================================== */
     .marquee-wrapper {
       position: relative;
       width: 100%;
       overflow: hidden;
       padding: 10px 0 30px 0;
+      touch-action: pan-y;
     }
 
     .marquee-track {
@@ -424,10 +427,13 @@
       gap: 20px;
       width: max-content;
       animation: scrollMarquee 38s linear infinite;
+      will-change: transform;
     }
 
-    .marquee-wrapper:hover .marquee-track {
-      animation-play-state: paused;
+    /* Hover and Touch hold pauses the track */
+    .marquee-wrapper:hover .marquee-track,
+    .marquee-wrapper:active .marquee-track {
+      animation-play-state: paused !important;
     }
 
     @keyframes scrollMarquee {
@@ -574,12 +580,13 @@
       font-weight: bold;
     }
 
-    /* Testimonials Horizontal Snap Carousel */
+    /* Testimonials Infinite Marquee */
     .testimonial-wrapper {
       position: relative;
       width: 100%;
       overflow: hidden;
       padding: 10px 0 30px 0;
+      touch-action: pan-y;
     }
 
     .testimonial-track {
@@ -587,10 +594,12 @@
       gap: 20px;
       width: max-content;
       animation: scrollMarquee 42s linear infinite;
+      will-change: transform;
     }
 
-    .testimonial-wrapper:hover .testimonial-track {
-      animation-play-state: paused;
+    .testimonial-wrapper:hover .testimonial-track,
+    .testimonial-wrapper:active .testimonial-track {
+      animation-play-state: paused !important;
     }
 
     .review-card {
@@ -668,7 +677,7 @@
     }
 
     /* ========================================================
-       APPLE UI MOBILE & FULL SCREEN TIKTOK / SHORTS STYLE HERO
+       APPLE-GRADE RESPONSIVE MOBILE OPTIMIZATION
        ======================================================== */
     @media (max-width: 768px) {
       .site-nav {
@@ -678,11 +687,12 @@
         font-size: 1rem;
       }
 
-      /* Hero Section Edge-to-Edge */
+      /* Hero Section Edge-to-Edge with Perfect Center Alignment */
       .hero-section {
         grid-template-columns: 1fr;
-        padding: 0 0 32px 0 !important;
-        gap: 20px;
+        padding: 0 0 36px 0 !important;
+        gap: 24px;
+        text-align: center;
       }
 
       .hero-video-wrapper {
@@ -703,102 +713,116 @@
         border-top: none !important;
       }
 
+      /* Hero Content: Centered Apple-Grade Layout */
       .hero-content {
-        padding: 0 18px !important;
+        padding: 0 20px !important;
         gap: 14px;
+        align-items: center;
+        text-align: center;
+      }
+
+      .hero-pre-tag {
+        margin: 0 auto;
+        text-align: center;
       }
 
       .hero-title {
-        font-size: 2.15rem !important;
-        line-height: 1.12 !important;
+        font-size: 2.2rem !important;
+        line-height: 1.14 !important;
+        text-align: center !important;
+        margin: 0 auto;
       }
 
       .hero-desc {
-        font-size: 0.88rem;
+        font-size: 0.9rem;
+        text-align: center !important;
+        margin: 0 auto;
+      }
+
+      .hero-pills {
+        justify-content: center !important;
+        margin: 8px auto !important;
+      }
+
+      .pill-item {
+        font-size: 0.7rem;
+        padding: 6px 14px;
+      }
+
+      .hero-content > div:last-child {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      }
+
+      .gold-btn {
+        width: 100% !important;
+        max-width: 380px;
+        padding: 15px 24px !important;
+        font-size: 0.76rem !important;
+        margin: 0 auto;
+      }
+
+      /* Non-stop infinite marquees on mobile too */
+      .case-card {
+        width: 220px !important;
+      }
+      .case-img-box {
+        height: 200px !important;
+      }
+      .review-card {
+        width: 280px !important;
+        padding: 20px !important;
       }
 
       /* Section Spacing */
       .section-container {
-        padding: 34px 18px !important;
+        padding: 36px 18px !important;
       }
 
       .section-header {
-        margin-bottom: 20px !important;
+        margin-bottom: 24px !important;
       }
 
       .section-title {
-        font-size: 1.85rem !important;
+        font-size: 1.9rem !important;
         line-height: 1.18 !important;
         margin-bottom: 8px !important;
       }
 
       .grid-3-col, .grid-2-col {
         grid-template-columns: 1fr !important;
-        gap: 14px !important;
+        gap: 16px !important;
       }
 
       .white-card {
-        padding: 24px 18px !important;
+        padding: 26px 20px !important;
         border-radius: 14px !important;
       }
 
       .card-icon {
-        font-size: 1.45rem !important;
-        margin-bottom: 10px !important;
+        font-size: 1.5rem !important;
+        margin-bottom: 12px !important;
       }
 
       .white-card-title {
-        font-size: 1.15rem !important;
-      }
-
-      /* Testimonials Centered Snap Carousel */
-      .testimonial-wrapper {
-        overflow-x: auto !important;
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch;
-        padding: 8px 18px 20px 18px !important;
-        scrollbar-width: none;
-      }
-
-      .testimonial-wrapper::-webkit-scrollbar {
-        display: none;
-      }
-
-      .testimonial-track {
-        animation: none !important;
-        display: flex !important;
-        gap: 14px !important;
-        width: max-content !important;
-      }
-
-      .review-card {
-        width: 82vw !important;
-        max-width: 300px !important;
-        scroll-snap-align: center;
-        padding: 20px !important;
-        border-radius: 14px !important;
+        font-size: 1.2rem !important;
       }
 
       /* Self-Assessment Card */
       .self-card {
-        padding: 26px 18px !important;
+        padding: 28px 18px !important;
         border-radius: 16px !important;
       }
 
       .self-list {
         margin: 18px auto 22px auto !important;
-        gap: 12px !important;
+        gap: 14px !important;
       }
 
       .self-list li {
-        font-size: 0.85rem !important;
+        font-size: 0.86rem !important;
         line-height: 1.5 !important;
-      }
-
-      .gold-btn {
-        width: 100% !important;
-        padding: 14px 20px !important;
-        font-size: 0.74rem !important;
       }
     }
   </style>
@@ -832,7 +856,7 @@
         <div class="pill-item"><span>🩺</span> MD Anesthesiologist Only</div>
       </div>
 
-      <div style="margin-top: 10px;">
+      <div style="margin-top: 10px; width: 100%;">
         <a href="#candidate-section" class="gold-btn">Reserve VIP Consultation →</a>
       </div>
     </div>
@@ -907,17 +931,18 @@
     </div>
   </div>
 
-  <!-- 3. Case Studies Infinite Marquee -->
+  <!-- 3. Case Studies Infinite Marquee (Non-Stop Seamless Loop) -->
   <section style="padding: 44px 0 16px 0; text-align: center;">
     <div class="section-header" style="margin-bottom: 20px;">
       <span class="sub-tag">Clinical Case Studies</span>
       <h2 class="section-title">Architectural Facial Transformations</h2>
-      <p class="section-desc">Swipe horizontally or hover to pause and examine surgical outcomes.</p>
+      <p class="section-desc">Swipe horizontally or hover/touch to pause and examine surgical outcomes.</p>
     </div>
 
     <div class="marquee-wrapper">
       <div class="marquee-track">
         
+        <!-- Track Set 1 -->
         <div class="case-card">
           <div class="case-img-box">
             <span class="case-badge">Submentoplasty</span>
@@ -995,7 +1020,7 @@
           </div>
         </div>
 
-        <!-- Duplicate Set for Continuous Loop -->
+        <!-- Track Set 2 (Identical Duplicate for Seamless Infinite Loop) -->
         <div class="case-card">
           <div class="case-img-box">
             <span class="case-badge">Submentoplasty</span>
@@ -1015,6 +1040,61 @@
           <div class="case-info">
             <div class="case-title">Complete Facial Balancing</div>
             <div class="case-meta">Age 44 • Restored resting symmetry</div>
+          </div>
+        </div>
+
+        <div class="case-card">
+          <div class="case-img-box">
+            <span class="case-badge">Full Face Renewal</span>
+            <img src="istockphoto-2159264716-612x612.jpg" alt="SMAS Neck Lift Case">
+          </div>
+          <div class="case-info">
+            <div class="case-title">Structural SMAS & Neck Lift</div>
+            <div class="case-meta">Age 51 • Deep-cellular restoration</div>
+          </div>
+        </div>
+
+        <div class="case-card">
+          <div class="case-img-box">
+            <span class="case-badge">Lateral Elevation</span>
+            <img src="istockphoto-1210828134-612x612.jpg" alt="Lateral Profile Case">
+          </div>
+          <div class="case-info">
+            <div class="case-title">Lateral Profile & Brow Angle</div>
+            <div class="case-meta">Age 49 • Eliminating heavy hooding</div>
+          </div>
+        </div>
+
+        <div class="case-card">
+          <div class="case-img-box">
+            <span class="case-badge">Perioral Detail</span>
+            <img src="images (1).jfif" alt="Micro Texture Case">
+          </div>
+          <div class="case-info">
+            <div class="case-title">Micro Texture Smoothing</div>
+            <div class="case-meta">Age 55 • Precision erbium structural fix</div>
+          </div>
+        </div>
+
+        <div class="case-card">
+          <div class="case-img-box">
+            <span class="case-badge">Deep-Plane Lift</span>
+            <img src="denise-richard-feature-2026-lead-sidebyside.webp" alt="Midface Case">
+          </div>
+          <div class="case-info">
+            <div class="case-title">Midface & Jaw Restoration</div>
+            <div class="case-meta">Age 52 • Structural SMAS release</div>
+          </div>
+        </div>
+
+        <div class="case-card">
+          <div class="case-img-box">
+            <span class="case-badge">Dual-Pathway</span>
+            <img src="Makeup.webp" alt="Volume Radiance Case">
+          </div>
+          <div class="case-info">
+            <div class="case-title">Volume & Radiance Harmony</div>
+            <div class="case-meta">Age 46 • Natural biostimulatory glow</div>
           </div>
         </div>
 
@@ -1179,15 +1259,18 @@
     </div>
   </section>
 
-  <!-- 9. Google 5-Star Reviews (Snap Swipe Carousel) -->
+  <!-- 9. Google 5-Star Reviews (Infinite Smooth Marquee) -->
   <section style="padding: 34px 0 20px 0; text-align: center;">
     <div class="section-header" style="margin-bottom: 20px;">
       <span class="sub-tag">Verified Feedback</span>
       <h2 class="section-title">Google 5-Star Elite Testimonials</h2>
+      <p class="section-desc">Hover or touch to hold and read patient experiences.</p>
     </div>
 
     <div class="testimonial-wrapper">
       <div class="testimonial-track">
+        
+        <!-- Review Set 1 -->
         <div class="review-card">
           <div class="stars">★★★★★</div>
           <div class="review-quote">"The anonymous valet entry changed everything. Zero public waiting, and the deep-plane restoration looks breathtakingly natural."</div>
@@ -1215,6 +1298,36 @@
           <div class="reviewer-name">Anonymous Executive</div>
           <div class="reviewer-loc">New York, NY • Verified Patient</div>
         </div>
+
+        <!-- Review Set 2 (Duplicate for Seamless Infinite Loop) -->
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <div class="review-quote">"The anonymous valet entry changed everything. Zero public waiting, and the deep-plane restoration looks breathtakingly natural."</div>
+          <div class="reviewer-name">Lady E. Sterling</div>
+          <div class="reviewer-loc">London, UK • Verified Patient</div>
+        </div>
+
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <div class="review-quote">"Flown in via private jet charter coordinated directly by their concierge. The recovery suite and private nurses were pure 5-star luxury."</div>
+          <div class="reviewer-name">Marcus V.</div>
+          <div class="reviewer-loc">Zurich, Switzerland • Verified Patient</div>
+        </div>
+
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <div class="review-quote">"No pulled 'windswept' look whatsoever. The architectural facial harmony achieved here is genuine medical art."</div>
+          <div class="reviewer-name">Dr. Alistair M.</div>
+          <div class="reviewer-loc">Beverly Hills, CA • Verified Patient</div>
+        </div>
+
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <div class="review-quote">"Absolute discretion from start to finish. Strict legal NDAs gave me complete peace of mind during recovery."</div>
+          <div class="reviewer-name">Anonymous Executive</div>
+          <div class="reviewer-loc">New York, NY • Verified Patient</div>
+        </div>
+
       </div>
     </div>
   </section>
