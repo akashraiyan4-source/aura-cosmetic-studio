@@ -362,7 +362,7 @@
       margin-top: 14px;
     }
 
-    /* প্রেস সেকশন: ১০০% ফ্লুইড ইনফিনিট মারকুই অ্যানিমেশন */
+    /* প্রেস সেকশন: ১০০% ফ্লুইড ইনফিনিট মারকুই */
     .press-bar {
       border-top: 1px solid var(--card-border);
       border-bottom: 1px solid var(--card-border);
@@ -411,7 +411,7 @@
       100% { transform: translateX(-50%); }
     }
 
-    /* মারকুই ও কার্ডস */
+    /* কেস স্টাডি মারকুই */
     .marquee-wrapper {
       position: relative;
       width: 100%;
@@ -492,7 +492,7 @@
       color: var(--text-light);
     }
 
-    /* কার্ডস ও গ্রিড */
+    /* ৩-কলাম ও ২-কলাম গ্রিড */
     .grid-3-col {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -574,6 +574,25 @@
       font-weight: bold;
     }
 
+    /* টেস্টিমোনিয়াল ক্যারোজেল */
+    .testimonial-wrapper {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      padding: 10px 0 30px 0;
+    }
+
+    .testimonial-track {
+      display: flex;
+      gap: 20px;
+      width: max-content;
+      animation: scrollMarquee 42s linear infinite;
+    }
+
+    .testimonial-wrapper:hover .testimonial-track {
+      animation-play-state: paused;
+    }
+
     .review-card {
       width: 320px;
       flex-shrink: 0;
@@ -649,7 +668,7 @@
     }
 
     /* ========================================================
-       APPLE UI MOBILE DESIGN SPECIFICATIONS (MAX 768px)
+       APPLE UI MOBILE OPTIMIZATIONS (MAX 768px)
        ======================================================== */
     @media (max-width: 768px) {
       .site-nav {
@@ -661,8 +680,8 @@
 
       .hero-section {
         grid-template-columns: 1fr;
-        padding: 24px 18px 40px 18px;
-        gap: 28px;
+        padding: 24px 18px 36px 18px;
+        gap: 24px;
       }
 
       .hero-video-wrapper {
@@ -670,12 +689,12 @@
       }
 
       .hero-title {
-        font-size: 2.3rem !important;
+        font-size: 2.2rem !important;
         line-height: 1.12 !important;
       }
 
       .hero-desc {
-        font-size: 0.9rem;
+        font-size: 0.88rem;
       }
 
       .slider-frame {
@@ -683,46 +702,88 @@
         border-radius: 16px;
       }
 
+      /* সেকশন অতিরিক্ত গ্যাপ দূর করা */
       .section-container {
-        padding: 44px 18px;
+        padding: 34px 18px !important;
       }
 
       .section-header {
-        margin-bottom: 26px;
+        margin-bottom: 20px !important;
       }
 
       .section-title {
-        font-size: 1.9rem;
-        line-height: 1.18;
+        font-size: 1.85rem !important;
+        line-height: 1.18 !important;
+        margin-bottom: 8px !important;
       }
 
       .grid-3-col, .grid-2-col {
         grid-template-columns: 1fr !important;
-        gap: 16px !important;
+        gap: 14px !important;
       }
 
       .white-card {
-        padding: 26px 20px;
-        border-radius: 14px;
+        padding: 24px 18px !important;
+        border-radius: 14px !important;
       }
 
       .card-icon {
-        font-size: 1.5rem;
-        margin-bottom: 12px;
+        font-size: 1.45rem !important;
+        margin-bottom: 10px !important;
       }
 
       .white-card-title {
-        font-size: 1.15rem;
+        font-size: 1.15rem !important;
       }
 
+      /* টেস্টিমোনিয়াল: কেটে যাওয়া দূর করে সেন্টারিং ও টাচ স্ন্যাপ স্ক্রোল */
+      .testimonial-wrapper {
+        overflow-x: auto !important;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        padding: 8px 18px 20px 18px !important;
+        scrollbar-width: none;
+      }
+
+      .testimonial-wrapper::-webkit-scrollbar {
+        display: none;
+      }
+
+      .testimonial-track {
+        animation: none !important;
+        display: flex !important;
+        gap: 14px !important;
+        width: max-content !important;
+      }
+
+      .review-card {
+        width: 82vw !important;
+        max-width: 300px !important;
+        scroll-snap-align: center;
+        padding: 20px !important;
+        border-radius: 14px !important;
+      }
+
+      /* সেলফ-অ্যাসেসমেন্ট কার্ড প্রিমিয়াম ব্যালান্স */
       .self-card {
-        padding: 30px 18px;
+        padding: 26px 18px !important;
+        border-radius: 16px !important;
+      }
+
+      .self-list {
+        margin: 18px auto 22px auto !important;
+        gap: 12px !important;
+      }
+
+      .self-list li {
+        font-size: 0.85rem !important;
+        line-height: 1.5 !important;
       }
 
       .gold-btn {
-        width: 100%;
-        padding: 14px 20px;
-        font-size: 0.75rem;
+        width: 100% !important;
+        padding: 14px 20px !important;
+        font-size: 0.74rem !important;
       }
     }
   </style>
@@ -735,7 +796,6 @@
       <div class="brand-monogram">A</div>
       <div class="brand-title">AURA • BEVERLY HILLS</div>
     </a>
-    <a href="#candidate-section" class="gold-btn" style="padding: 9px 18px; font-size: 0.68rem; display: none;">Book</a>
   </header>
 
   <!-- ১. HERO FLAGSHIP SECTION -->
@@ -821,7 +881,6 @@
         <span class="p-brand">Harper's Bazaar</span>
         <span class="p-brand">Netflix</span>
       </div>
-      <!-- লুপের ধারাবাহিকতার জন্য ডুপ্লিকেট গ্রুপ -->
       <div class="press-group">
         <span class="p-brand">Vogue</span>
         <span class="p-brand">Haute Living</span>
@@ -834,8 +893,8 @@
   </div>
 
   <!-- ৩. ইনফিনিট কেস স্টাডি মারকুই -->
-  <section style="padding: 50px 0 20px 0; text-align: center;">
-    <div class="section-header" style="margin-bottom: 24px;">
+  <section style="padding: 44px 0 16px 0; text-align: center;">
+    <div class="section-header" style="margin-bottom: 20px;">
       <span class="sub-tag">Clinical Case Studies</span>
       <h2 class="section-title">Architectural Facial Transformations</h2>
       <p class="section-desc">Swipe horizontally or hover to pause and examine surgical outcomes.</p>
@@ -921,7 +980,7 @@
           </div>
         </div>
 
-        <!-- ইনফিনিট লুপের জন্য সেট -->
+        <!-- ইনফিনিট লুপের জন্য ডুপ্লিকেট সেট -->
         <div class="case-card">
           <div class="case-img-box">
             <span class="case-badge">Submentoplasty</span>
@@ -977,7 +1036,7 @@
   </section>
 
   <!-- ৫. নন-সার্জিক্যাল ডুয়াল-পাথওয়ে -->
-  <section class="section-container" style="padding-top: 10px;">
+  <section class="section-container">
     <div class="section-header">
       <span class="sub-tag">Zero Scalpel • Zero Downtime</span>
       <h2 class="section-title">The Non-Surgical Dual-Pathway</h2>
@@ -987,7 +1046,7 @@
     <div class="grid-2-col">
       <div class="white-card">
         <span class="path-pill">Pathway A</span>
-        <h3 class="white-card-title" style="font-size: 1.5rem;">Liquid Biostimulatory Lift</h3>
+        <h3 class="white-card-title" style="font-size: 1.45rem;">Liquid Biostimulatory Lift</h3>
         <p class="white-card-text">High-density structural volumization using bio-stimulators that stimulate your body's native type-1 collagen synthesis over 90 days.</p>
         
         <ul class="checklist">
@@ -1001,7 +1060,7 @@
 
       <div class="white-card">
         <span class="path-pill">Pathway B</span>
-        <h3 class="white-card-title" style="font-size: 1.5rem;">Precision Micro-Laser Architecture</h3>
+        <h3 class="white-card-title" style="font-size: 1.45rem;">Precision Micro-Laser Architecture</h3>
         <p class="white-card-text">Multi-layered fractional laser & RF thermal remodeling targeting dermal laxity, deep creping, and neck band slackening.</p>
         
         <ul class="checklist">
@@ -1016,7 +1075,7 @@
   </section>
 
   <!-- ৬. সার্জিক্যাল সেফটি & QUAD-A -->
-  <section class="section-container" style="padding-top: 10px;">
+  <section class="section-container">
     <div class="section-header">
       <span class="sub-tag">Clinical Excellence</span>
       <h2 class="section-title">Surgical Safety & Quad-A Standards</h2>
@@ -1044,7 +1103,7 @@
   </section>
 
   <!-- ৭. বডি আর্কিটেকচার & মমি মেকওভার -->
-  <section class="section-container" style="padding-top: 10px;">
+  <section class="section-container">
     <div class="section-header">
       <span class="sub-tag">Full-Body Harmony</span>
       <h2 class="section-title">Body Architecture & Mommy Makeover</h2>
@@ -1071,13 +1130,13 @@
       </div>
     </div>
 
-    <div style="text-align: center; margin-top: 32px;">
+    <div style="text-align: center; margin-top: 30px;">
       <a href="#candidate-section" class="gold-btn">Inquire for Body Architecture Suite →</a>
     </div>
   </section>
 
   <!-- ৮. দ্য FLY-IN সেঞ্চুয়ারি -->
-  <section class="section-container" style="padding-top: 10px;">
+  <section class="section-container">
     <div class="section-header">
       <span class="sub-tag">Global Destination</span>
       <h2 class="section-title">The "Fly-In" Executive Sanctuary</h2>
@@ -1105,15 +1164,15 @@
     </div>
   </section>
 
-  <!-- ৯. গুগল ৫-স্টার রিভিউ মারকুই -->
-  <section style="padding: 40px 0; text-align: center;">
-    <div class="section-header" style="margin-bottom: 24px;">
+  <!-- ৯. গুগল ৫-স্টার রিভিউ (স্ন্যাপ সোয়াইপ ক্যারোজেল) -->
+  <section style="padding: 34px 0 20px 0; text-align: center;">
+    <div class="section-header" style="margin-bottom: 20px;">
       <span class="sub-tag">Verified Feedback</span>
       <h2 class="section-title">Google 5-Star Elite Testimonials</h2>
     </div>
 
-    <div class="marquee-wrapper">
-      <div class="marquee-track">
+    <div class="testimonial-wrapper">
+      <div class="testimonial-track">
         <div class="review-card">
           <div class="stars">★★★★★</div>
           <div class="review-quote">"The anonymous valet entry changed everything. Zero public waiting, and the deep-plane restoration looks breathtakingly natural."</div>
@@ -1141,26 +1200,12 @@
           <div class="reviewer-name">Anonymous Executive</div>
           <div class="reviewer-loc">New York, NY • Verified Patient</div>
         </div>
-
-        <div class="review-card">
-          <div class="stars">★★★★★</div>
-          <div class="review-quote">"The anonymous valet entry changed everything. Zero public waiting, and the deep-plane restoration looks breathtakingly natural."</div>
-          <div class="reviewer-name">Lady E. Sterling</div>
-          <div class="reviewer-loc">London, UK • Verified Patient</div>
-        </div>
-
-        <div class="review-card">
-          <div class="stars">★★★★★</div>
-          <div class="review-quote">"Flown in via private jet charter coordinated directly by their concierge. The recovery suite and private nurses were pure 5-star luxury."</div>
-          <div class="reviewer-name">Marcus V.</div>
-          <div class="reviewer-loc">Zurich, Switzerland • Verified Patient</div>
-        </div>
       </div>
     </div>
   </section>
 
   <!-- ১০. সেলফ-অ্যাসেসমেন্ট -->
-  <section class="section-container" id="candidate-section" style="padding-top: 10px; padding-bottom: 70px;">
+  <section class="section-container" id="candidate-section" style="padding-top: 10px; padding-bottom: 60px;">
     <div class="self-card">
       <span class="sub-tag">Self-Assessment</span>
       <h2 class="section-title" style="font-size: 2.1rem;">Am I A Candidate For Architectural Rejuvenation?</h2>
@@ -1205,10 +1250,10 @@
     let isDragging = false;
     let isMuted = true;
 
-    // মোবাইল ও ব্রাউজার অটোপ্লে নিশ্চিত করার লজিক
     function forcePlayVideos() {
       const vids = [beforeLoop, afterLoop];
       vids.forEach(v => {
+        if (!v) return;
         v.muted = true;
         const playPromise = v.play();
         if (playPromise !== undefined) {
@@ -1304,7 +1349,7 @@
       isMuted = !isMuted;
 
       [beforeLoop, beforeAction, afterLoop, afterAction].forEach(v => {
-        v.muted = isMuted;
+        if (v) v.muted = isMuted;
       });
 
       if (!isMuted) {
