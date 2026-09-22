@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Beverly Hills Private Practice | Discreet Facial Architecture</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -10,9 +10,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-    /* ==========================================================================
-       স্ক্রিনশটের অরিজিনাল সফট গ্রেডিয়েন্ট ও লাক্সারি প্যালেট
-       ========================================================================== */
     :root {
       --bg-cream: #FAF8F5;
       --bg-card: #FFFFFF;
@@ -21,11 +18,10 @@
       --text-light: #8E8A85;
       
       --rose-accent: #E33F6C;
-    --card-border: rgba(227, 63, 108, 0.22);
+      --card-border: rgba(227, 63, 108, 0.18);
 
-    /* বামে হালকা #E0BDC2 এবং ডানে গাঢ় #E33F6C */
-    --rose-btn: linear-gradient(90deg, #E0BDC2 0%, #E33F6C 100%);
-    --rose-glow: 0 12px 28px -4px rgba(227, 63, 108, 0.42);
+      --rose-btn: linear-gradient(90deg, #E0BDC2 0%, #E33F6C 100%);
+      --rose-glow: 0 12px 28px -4px rgba(227, 63, 108, 0.42);
       
       --spring-snap: cubic-bezier(0.34, 1.56, 0.64, 1);
     }
@@ -52,18 +48,60 @@
       letter-spacing: -0.01em;
     }
 
-    /* স্ক্রিনশটের হুবহু সেই সফট রোজ-গোল্ড গ্রেডিয়েন্ট বাটন */
+    /* প্রিমিয়াম লাক্সারি হেডার ও লোগো */
+    .site-nav {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 22px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(20, 19, 22, 0.05);
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text-main);
+    }
+
+    .brand-monogram {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: #FFFFFF;
+      border: 1.5px solid var(--rose-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--rose-accent);
+      box-shadow: 0 4px 12px rgba(227, 63, 108, 0.15);
+    }
+
+    .brand-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+    }
+
     .gold-btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       background: var(--rose-btn) !important;
       color: #FFFFFF !important;
-      padding: 13px 28px;
-      border-radius: 4px;
+      padding: 14px 28px;
+      border-radius: 50px;
       border: none;
       font-family: 'Montserrat', sans-serif;
-      font-size: 0.76rem;
+      font-size: 0.78rem;
       font-weight: 600;
       letter-spacing: 0.14em;
       text-transform: uppercase;
@@ -71,23 +109,24 @@
       cursor: pointer;
       box-shadow: var(--rose-glow) !important;
       transition: transform 0.4s var(--spring-snap), box-shadow 0.4s ease;
+      text-align: center;
     }
 
     .gold-btn:hover {
       transform: translateY(-2px) scale(1.02);
-      box-shadow: 0 16px 32px -4px rgba(140, 83, 88, 0.6) !important;
+      box-shadow: 0 16px 32px -4px rgba(227, 63, 108, 0.55) !important;
     }
 
     .section-container {
       max-width: 1280px;
       margin: 0 auto;
-      padding: 80px 24px;
+      padding: 70px 24px;
     }
 
     .section-header {
       text-align: center;
       max-width: 780px;
-      margin: 0 auto 50px auto;
+      margin: 0 auto 40px auto;
     }
 
     .sub-tag {
@@ -97,7 +136,7 @@
       text-transform: uppercase;
       letter-spacing: 0.2em;
       color: var(--rose-accent);
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
     .section-title {
@@ -117,31 +156,17 @@
     .hero-section {
       max-width: 1320px;
       margin: 0 auto;
-      padding: 50px 24px 70px 24px;
+      padding: 40px 24px 60px 24px;
       display: grid;
       grid-template-columns: 1.1fr 0.9fr;
-      gap: 50px;
+      gap: 48px;
       align-items: center;
-    }
-
-    @media (max-width: 991px) {
-      .hero-section {
-        grid-template-columns: 1fr;
-        padding: 30px 16px 50px 16px;
-        gap: 36px;
-      }
-      .hero-video-wrapper {
-        order: -1;
-      }
-      .hero-title {
-        font-size: 2.8rem !important;
-      }
     }
 
     .hero-content {
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 18px;
     }
 
     .hero-pre-tag {
@@ -150,9 +175,6 @@
       letter-spacing: 0.18em;
       font-weight: 600;
       color: var(--rose-accent);
-      display: flex;
-      align-items: center;
-      gap: 6px;
     }
 
     .hero-title {
@@ -172,24 +194,24 @@
     .hero-pills {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
-      margin: 8px 0;
+      gap: 10px;
+      margin: 6px 0;
     }
 
     .pill-item {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 7px 14px;
+      padding: 8px 16px;
       background: #FFFFFF;
       border: 1px solid var(--card-border);
       border-radius: 50px;
       font-size: 0.72rem;
       font-weight: 600;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
       color: var(--text-main);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
     }
 
     .pill-item span { color: var(--rose-accent); }
@@ -198,10 +220,10 @@
     .slider-frame {
       position: relative;
       width: 100%;
-      max-width: 400px;
+      max-width: 390px;
       margin: 0 auto;
       aspect-ratio: 9 / 16;
-      border-radius: 12px;
+      border-radius: 18px;
       overflow: hidden;
       box-shadow: 0 25px 60px -15px rgba(20, 19, 22, 0.22);
       border: 1px solid var(--card-border);
@@ -227,6 +249,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center;
       display: block;
     }
 
@@ -248,9 +271,9 @@
       position: absolute;
       top: 16px;
       right: 16px;
-      padding: 6px 12px;
+      padding: 6px 14px;
       border-radius: 50px;
-      background: rgba(20, 19, 22, 0.6);
+      background: rgba(20, 19, 22, 0.65);
       backdrop-filter: blur(6px);
       border: 1px solid rgba(255, 255, 255, 0.2);
       color: #FFFFFF;
@@ -319,7 +342,7 @@
 
     .b-tag {
       padding: 5px 12px;
-      background: rgba(20, 19, 22, 0.65);
+      background: rgba(20, 19, 22, 0.7);
       backdrop-filter: blur(6px);
       border: 1px solid rgba(255, 255, 255, 0.15);
       color: #FFFFFF;
@@ -334,35 +357,44 @@
       text-align: center;
       font-size: 0.7rem;
       color: var(--text-light);
-      letter-spacing: 0.12em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      margin-top: 10px;
+      margin-top: 14px;
     }
 
-    /* প্রেস বার */
+    /* প্রেস সেকশন: ১০০% ফ্লুইড ইনফিনিট মারকুই অ্যানিমেশন */
     .press-bar {
       border-top: 1px solid var(--card-border);
       border-bottom: 1px solid var(--card-border);
       background: #FFFFFF;
-      padding: 30px 20px;
-      text-align: center;
+      padding: 24px 0;
+      overflow: hidden;
+      white-space: nowrap;
+      position: relative;
     }
 
     .press-text {
+      text-align: center;
       font-size: 0.72rem;
       text-transform: uppercase;
       letter-spacing: 0.22em;
       font-weight: 600;
       color: var(--rose-accent);
       margin-bottom: 16px;
+      padding: 0 16px;
     }
 
-    .press-list {
+    .press-track {
       display: flex;
-      justify-content: center;
+      width: max-content;
+      animation: pressScroll 22s linear infinite;
+    }
+
+    .press-group {
+      display: flex;
       align-items: center;
-      gap: 40px;
-      flex-wrap: wrap;
+      gap: 50px;
+      padding-right: 50px;
     }
 
     .p-brand {
@@ -374,12 +406,17 @@
       text-transform: uppercase;
     }
 
-    /* ইনফিনিট কেস স্টাডি মারকুই */
+    @keyframes pressScroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* মারকুই ও কার্ডস */
     .marquee-wrapper {
       position: relative;
       width: 100%;
       overflow: hidden;
-      padding: 20px 0 40px 0;
+      padding: 10px 0 30px 0;
     }
 
     .marquee-track {
@@ -403,7 +440,7 @@
       flex-shrink: 0;
       background: #FFFFFF;
       border: 1px solid var(--card-border);
-      border-radius: 6px;
+      border-radius: 12px;
       overflow: hidden;
       box-shadow: 0 6px 18px rgba(0,0,0,0.03);
     }
@@ -428,8 +465,8 @@
       left: 10px;
       background: rgba(20, 19, 22, 0.7);
       backdrop-filter: blur(4px);
-      padding: 3px 8px;
-      border-radius: 3px;
+      padding: 4px 10px;
+      border-radius: 50px;
       color: #FFF;
       font-size: 0.6rem;
       text-transform: uppercase;
@@ -438,12 +475,12 @@
     }
 
     .case-info {
-      padding: 14px 16px;
+      padding: 16px;
       text-align: left;
     }
 
     .case-title {
-      font-size: 0.82rem;
+      font-size: 0.85rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.05em;
@@ -451,45 +488,48 @@
     }
 
     .case-meta {
-      font-size: 0.72rem;
+      font-size: 0.74rem;
       color: var(--text-light);
     }
 
-    /* ৩-কলাম ও ২-কলাম গ্রিড */
+    /* কার্ডস ও গ্রিড */
     .grid-3-col {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 28px;
     }
 
-    @media (max-width: 900px) {
-      .grid-3-col { grid-template-columns: 1fr; gap: 20px; }
+    .grid-2-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
     }
 
     .white-card {
       background: var(--bg-card);
       border: 1px solid var(--card-border);
-      border-radius: 8px;
-      padding: 40px 30px;
+      border-radius: 16px;
+      padding: 38px 28px;
       box-shadow: 0 8px 24px rgba(20, 19, 22, 0.02);
       transition: transform 0.4s var(--spring-snap), box-shadow 0.4s ease;
       text-align: left;
     }
 
     .white-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 16px 36px var(--rose-glow);
-}
+      transform: translateY(-6px);
+      box-shadow: 0 16px 36px rgba(227, 63, 108, 0.28) !important;
+    }
+
     .card-icon {
       font-size: 1.8rem;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
       display: inline-block;
     }
 
     .white-card-title {
-      font-size: 1.4rem;
+      font-size: 1.35rem;
       text-transform: uppercase;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       line-height: 1.25;
     }
 
@@ -499,19 +539,9 @@
       line-height: 1.7;
     }
 
-    .grid-2-col {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 32px;
-    }
-
-    @media (max-width: 900px) {
-      .grid-2-col { grid-template-columns: 1fr; }
-    }
-
     .path-pill {
       display: inline-block;
-      padding: 4px 12px;
+      padding: 4px 14px;
       border: 1px solid var(--rose-accent);
       border-radius: 50px;
       font-size: 0.68rem;
@@ -524,7 +554,7 @@
 
     .checklist {
       list-style: none;
-      margin: 22px 0 28px 0;
+      margin: 20px 0 26px 0;
       display: flex;
       flex-direction: column;
       gap: 12px;
@@ -549,7 +579,7 @@
       flex-shrink: 0;
       background: #FFFFFF;
       border: 1px solid var(--card-border);
-      border-radius: 6px;
+      border-radius: 12px;
       padding: 24px;
       text-align: left;
       box-shadow: 0 4px 14px rgba(0,0,0,0.02);
@@ -558,7 +588,7 @@
     .stars {
       color: #D4AF37;
       font-size: 1.1rem;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       letter-spacing: 2px;
     }
 
@@ -588,8 +618,8 @@
       margin: 0 auto;
       background: #FFFFFF;
       border: 1px solid var(--card-border);
-      border-radius: 8px;
-      padding: 50px 40px;
+      border-radius: 18px;
+      padding: 44px 32px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.03);
       text-align: center;
     }
@@ -597,7 +627,7 @@
     .self-list {
       list-style: none;
       text-align: left;
-      margin: 30px auto;
+      margin: 26px auto;
       max-width: 580px;
       display: flex;
       flex-direction: column;
@@ -617,9 +647,96 @@
       color: var(--rose-accent);
       font-weight: bold;
     }
+
+    /* ========================================================
+       APPLE UI MOBILE DESIGN SPECIFICATIONS (MAX 768px)
+       ======================================================== */
+    @media (max-width: 768px) {
+      .site-nav {
+        padding: 16px 20px;
+      }
+      .brand-title {
+        font-size: 1.05rem;
+      }
+
+      .hero-section {
+        grid-template-columns: 1fr;
+        padding: 24px 18px 40px 18px;
+        gap: 28px;
+      }
+
+      .hero-video-wrapper {
+        order: -1;
+      }
+
+      .hero-title {
+        font-size: 2.3rem !important;
+        line-height: 1.12 !important;
+      }
+
+      .hero-desc {
+        font-size: 0.9rem;
+      }
+
+      .slider-frame {
+        max-width: 320px;
+        border-radius: 16px;
+      }
+
+      .section-container {
+        padding: 44px 18px;
+      }
+
+      .section-header {
+        margin-bottom: 26px;
+      }
+
+      .section-title {
+        font-size: 1.9rem;
+        line-height: 1.18;
+      }
+
+      .grid-3-col, .grid-2-col {
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
+      }
+
+      .white-card {
+        padding: 26px 20px;
+        border-radius: 14px;
+      }
+
+      .card-icon {
+        font-size: 1.5rem;
+        margin-bottom: 12px;
+      }
+
+      .white-card-title {
+        font-size: 1.15rem;
+      }
+
+      .self-card {
+        padding: 30px 18px;
+      }
+
+      .gold-btn {
+        width: 100%;
+        padding: 14px 20px;
+        font-size: 0.75rem;
+      }
+    }
   </style>
 </head>
 <body>
+
+  <!-- ০. টপ নেভিগেশন ও লাক্সারি ব্র্যান্ড লোগো -->
+  <header class="site-nav">
+    <a href="#" class="brand-logo">
+      <div class="brand-monogram">A</div>
+      <div class="brand-title">AURA • BEVERLY HILLS</div>
+    </a>
+    <a href="#candidate-section" class="gold-btn" style="padding: 9px 18px; font-size: 0.68rem; display: none;">Book</a>
+  </header>
 
   <!-- ১. HERO FLAGSHIP SECTION -->
   <section class="hero-section">
@@ -640,12 +757,12 @@
         <div class="pill-item"><span>🩺</span> MD Anesthesiologist Only</div>
       </div>
 
-      <div style="margin-top: 14px;">
+      <div style="margin-top: 10px;">
         <a href="#candidate-section" class="gold-btn">Reserve VIP Consultation →</a>
       </div>
     </div>
 
-    <!-- ৯:১৬ ভিডিও স্লাইডার (সরাসরি প্লে হওয়া নির্ভরযোগ্য স্ট্রিমিং ও পোস্টার ফলব্যাক) -->
+    <!-- ৯:১৬ ভিডিও স্লাইডার -->
     <div class="hero-video-wrapper">
       <div class="slider-frame" id="sliderWrapper">
         
@@ -654,21 +771,23 @@
           <span id="soundText">Sound Off</span>
         </div>
 
+        <!-- বাম পাশ: Before Video -->
         <div class="pane-video pane-left">
-          <video id="beforeLoop" autoplay muted loop playsinline preload="auto" poster="denise-richard-feature-2026-lead-sidebyside.webp">
-            <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4">
+          <video id="beforeLoop" autoplay muted loop playsinline webkit-playsinline preload="auto">
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-portrait-of-a-woman-in-a-studio-setting-39877-large.mp4" type="video/mp4">
           </video>
-          <video id="beforeAction" class="pane-video action-layer" muted loop playsinline preload="auto">
-            <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4" type="video/mp4">
+          <video id="beforeAction" class="pane-video action-layer" muted loop playsinline webkit-playsinline preload="auto">
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-woman-applying-makeup-with-a-sponge-41712-large.mp4" type="video/mp4">
           </video>
         </div>
 
+        <!-- ডান পাশ: After Video -->
         <div class="pane-video pane-right" id="afterPane">
-          <video id="afterLoop" autoplay muted loop playsinline preload="auto" poster="Makeup.webp">
-            <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4" type="video/mp4">
+          <video id="afterLoop" autoplay muted loop playsinline webkit-playsinline preload="auto">
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-fashion-model-in-a-photo-studio-39874-large.mp4" type="video/mp4">
           </video>
-          <video id="afterAction" class="pane-video action-layer" muted loop playsinline preload="auto">
-            <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyBlazes.mp4" type="video/mp4">
+          <video id="afterAction" class="pane-video action-layer" muted loop playsinline webkit-playsinline preload="auto">
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-young-woman-touching-her-face-gently-42617-large.mp4" type="video/mp4">
           </video>
         </div>
 
@@ -690,22 +809,33 @@
     </div>
   </section>
 
-  <!-- ২. প্রেস বার -->
+  <!-- ২. প্রেস বার: মসৃণ ইনফিনিট ডান-থেকে-বামে স্ক্রল -->
   <div class="press-bar">
     <div class="press-text">Discreet Luxury Aesthetics • Trusted By Industry Leaders & Celebrities</div>
-    <div class="press-list">
-      <span class="p-brand">Vogue</span>
-      <span class="p-brand">Haute Living</span>
-      <span class="p-brand">Elle</span>
-      <span class="p-brand">Los Angeles Times</span>
-      <span class="p-brand">Harper's Bazaar</span>
-      <span class="p-brand">Netflix</span>
+    <div class="press-track">
+      <div class="press-group">
+        <span class="p-brand">Vogue</span>
+        <span class="p-brand">Haute Living</span>
+        <span class="p-brand">Elle</span>
+        <span class="p-brand">Los Angeles Times</span>
+        <span class="p-brand">Harper's Bazaar</span>
+        <span class="p-brand">Netflix</span>
+      </div>
+      <!-- লুপের ধারাবাহিকতার জন্য ডুপ্লিকেট গ্রুপ -->
+      <div class="press-group">
+        <span class="p-brand">Vogue</span>
+        <span class="p-brand">Haute Living</span>
+        <span class="p-brand">Elle</span>
+        <span class="p-brand">Los Angeles Times</span>
+        <span class="p-brand">Harper's Bazaar</span>
+        <span class="p-brand">Netflix</span>
+      </div>
     </div>
   </div>
 
   <!-- ৩. ইনফিনিট কেস স্টাডি মারকুই -->
-  <section style="padding: 70px 0 30px 0; text-align: center;">
-    <div class="section-header" style="margin-bottom: 30px;">
+  <section style="padding: 50px 0 20px 0; text-align: center;">
+    <div class="section-header" style="margin-bottom: 24px;">
       <span class="sub-tag">Clinical Case Studies</span>
       <h2 class="section-title">Architectural Facial Transformations</h2>
       <p class="section-desc">Swipe horizontally or hover to pause and examine surgical outcomes.</p>
@@ -791,7 +921,7 @@
           </div>
         </div>
 
-        <!-- ইনফিনিট লুপের জন্য ডুপ্লিকেট সেট -->
+        <!-- ইনফিনিট লুপের জন্য সেট -->
         <div class="case-card">
           <div class="case-img-box">
             <span class="case-badge">Submentoplasty</span>
@@ -818,8 +948,8 @@
     </div>
   </section>
 
-  <!-- ৪. ১০০% ডিসক্রিট ভিআইপি সেঞ্চুয়ারি -->
-  <section class="section-container" style="padding-top: 20px;">
+  <!-- ৪. ১০০% ডিসক্রিট ভিআইপি সেঞ্চুয়ারি -->
+  <section class="section-container">
     <div class="section-header">
       <span class="sub-tag">Uncompromising Privacy</span>
       <h2 class="section-title">100% Discreet VIP Sanctuary</h2>
@@ -847,7 +977,7 @@
   </section>
 
   <!-- ৫. নন-সার্জিক্যাল ডুয়াল-পাথওয়ে -->
-  <section class="section-container" style="padding-top: 20px;">
+  <section class="section-container" style="padding-top: 10px;">
     <div class="section-header">
       <span class="sub-tag">Zero Scalpel • Zero Downtime</span>
       <h2 class="section-title">The Non-Surgical Dual-Pathway</h2>
@@ -857,7 +987,7 @@
     <div class="grid-2-col">
       <div class="white-card">
         <span class="path-pill">Pathway A</span>
-        <h3 class="white-card-title" style="font-size: 1.7rem;">Liquid Biostimulatory Lift</h3>
+        <h3 class="white-card-title" style="font-size: 1.5rem;">Liquid Biostimulatory Lift</h3>
         <p class="white-card-text">High-density structural volumization using bio-stimulators that stimulate your body's native type-1 collagen synthesis over 90 days.</p>
         
         <ul class="checklist">
@@ -871,7 +1001,7 @@
 
       <div class="white-card">
         <span class="path-pill">Pathway B</span>
-        <h3 class="white-card-title" style="font-size: 1.7rem;">Precision Micro-Laser Architecture</h3>
+        <h3 class="white-card-title" style="font-size: 1.5rem;">Precision Micro-Laser Architecture</h3>
         <p class="white-card-text">Multi-layered fractional laser & RF thermal remodeling targeting dermal laxity, deep creping, and neck band slackening.</p>
         
         <ul class="checklist">
@@ -886,7 +1016,7 @@
   </section>
 
   <!-- ৬. সার্জিক্যাল সেফটি & QUAD-A -->
-  <section class="section-container" style="padding-top: 20px;">
+  <section class="section-container" style="padding-top: 10px;">
     <div class="section-header">
       <span class="sub-tag">Clinical Excellence</span>
       <h2 class="section-title">Surgical Safety & Quad-A Standards</h2>
@@ -914,7 +1044,7 @@
   </section>
 
   <!-- ৭. বডি আর্কিটেকচার & মমি মেকওভার -->
-  <section class="section-container" style="padding-top: 20px;">
+  <section class="section-container" style="padding-top: 10px;">
     <div class="section-header">
       <span class="sub-tag">Full-Body Harmony</span>
       <h2 class="section-title">Body Architecture & Mommy Makeover</h2>
@@ -941,13 +1071,13 @@
       </div>
     </div>
 
-    <div style="text-align: center; margin-top: 40px;">
+    <div style="text-align: center; margin-top: 32px;">
       <a href="#candidate-section" class="gold-btn">Inquire for Body Architecture Suite →</a>
     </div>
   </section>
 
-  <!-- ৮. দ্য FLY-IN সেঞ্চুয়ারি -->
-  <section class="section-container" style="padding-top: 20px;">
+  <!-- ৮. দ্য FLY-IN সেঞ্চুয়ারি -->
+  <section class="section-container" style="padding-top: 10px;">
     <div class="section-header">
       <span class="sub-tag">Global Destination</span>
       <h2 class="section-title">The "Fly-In" Executive Sanctuary</h2>
@@ -976,8 +1106,8 @@
   </section>
 
   <!-- ৯. গুগল ৫-স্টার রিভিউ মারকুই -->
-  <section style="padding: 60px 0 40px 0; text-align: center;">
-    <div class="section-header" style="margin-bottom: 30px;">
+  <section style="padding: 40px 0; text-align: center;">
+    <div class="section-header" style="margin-bottom: 24px;">
       <span class="sub-tag">Verified Feedback</span>
       <h2 class="section-title">Google 5-Star Elite Testimonials</h2>
     </div>
@@ -1030,10 +1160,10 @@
   </section>
 
   <!-- ১০. সেলফ-অ্যাসেসমেন্ট -->
-  <section class="section-container" id="candidate-section" style="padding-top: 20px; padding-bottom: 90px;">
+  <section class="section-container" id="candidate-section" style="padding-top: 10px; padding-bottom: 70px;">
     <div class="self-card">
       <span class="sub-tag">Self-Assessment</span>
-      <h2 class="section-title" style="font-size: 2.2rem;">Am I A Candidate For Architectural Rejuvenation?</h2>
+      <h2 class="section-title" style="font-size: 2.1rem;">Am I A Candidate For Architectural Rejuvenation?</h2>
 
       <ul class="self-list">
         <li>
@@ -1075,16 +1205,22 @@
     let isDragging = false;
     let isMuted = true;
 
-    // ব্রাউজার অটোপ্লে এনফোর্সমেন্ট
-    function ensurePlay() {
-      [beforeLoop, afterLoop].forEach(v => {
+    // মোবাইল ও ব্রাউজার অটোপ্লে নিশ্চিত করার লজিক
+    function forcePlayVideos() {
+      const vids = [beforeLoop, afterLoop];
+      vids.forEach(v => {
         v.muted = true;
-        v.play().catch(() => {});
+        const playPromise = v.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(() => {});
+        }
       });
     }
-    window.addEventListener('DOMContentLoaded', ensurePlay);
-    window.addEventListener('touchstart', ensurePlay, { once: true });
-    window.addEventListener('click', ensurePlay, { once: true });
+
+    window.addEventListener('DOMContentLoaded', forcePlayVideos);
+    window.addEventListener('load', forcePlayVideos);
+    document.body.addEventListener('touchstart', forcePlayVideos, { once: true });
+    document.body.addEventListener('click', forcePlayVideos, { once: true });
 
     knob.addEventListener('mousedown', startDrag);
     knob.addEventListener('touchstart', startDrag, { passive: false });
