@@ -6,7 +6,7 @@ import dotenv from 'dotenv';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-// বিদ্যমান সব মডিউল
+// Bidyoman shob modules
 import leadsRouter from './modules/leads.js';
 import geminiRouter from './modules/geminiConcierge.js';
 import missedRouter from './modules/missedCall.js';
@@ -29,12 +29,20 @@ import smileSimulatorRouter from './modules/smileSimulator.js';
 import vectorKnowledgeRouter from './modules/vectorKnowledge.js';
 import whatsappRouter from './modules/whatsappIntegration.js';
 
-// ৩টি আপগ্রেডেড মডিউল ইন্টিগ্রেশন
+// Upgraded modules integration
 import voiceAgentRouter from './modules/voiceAgentBridge.js';
 import { sendStaffAlert } from './modules/staffAlert.js';
 
-// পার্ট ৩: অটোমেটেড রিকল ইঞ্জিন ও অ্যাপয়েন্টমেন্ট শিডিউলার
+// Recall engine & scheduler
 import { initRecallEngine, scheduleAppointment } from './modules/recallEngine.js';
+
+// ========================================================
+// Notun 4-ti Beverly Hills Luxury Modules Import
+// ========================================================
+import NDAProtocol from './modules/ndaProtocol.js';
+import FlyInConcierge from './modules/flyInConcierge.js';
+import SpeedToLead from './modules/speedToLead.js';
+import LongTermNurture from './modules/longTermNurture.js';
 
 dotenv.config();
 
@@ -44,13 +52,13 @@ const PORT = process.env.PORT || 5000;
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// ১. Helmet সিকিউরিটি
+// 1. Helmet Security
 app.use(helmet({
   contentSecurityPolicy: false,
   crossOriginEmbedderPolicy: false
 }));
 
-// ২. সুরক্ষিত CORS কনফিগারেশন
+// 2. CORS Configuration
 const allowedOrigins = [
   'http://localhost:5000',
   'http://127.0.0.1:5000',
@@ -67,21 +75,21 @@ app.use(cors({
   }
 }));
 
-// ৩. ইনপুট সাইজ গার্ড (সর্বোচ্চ 10KB)
+// 3. Input Size Guards
 app.use(express.json({ limit: '10kb' }));
 app.use(express.urlencoded({ extended: true, limit: '10kb' }));
 
-// ৪. চ্যাটবট রেট লিমিটিং (১৫ মিনিটে সর্বোচ্চ ২৫ রিকোয়েস্ট)
+// 4. Rate Limiter
 const chatLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 25,
   message: { success: false, error: 'Too many chat requests. Please try again after 15 minutes.' }
 });
 
-// স্ট্যাটিক ফ্রন্টএন্ড পরিবেশন (কসমেটিক রুট ডিরেক্টরি থেকে সরাসরি পরিবেশন)
+// Static frontend serving
 app.use(express.static(__dirname));
 
-// ৫. রিয়েল-টাইম VIP বুকিং ক্রিয়েট এন্ডপয়েন্ট (কসমেটিক স্যুট রিজার্ভেশন ও স্টাফ অ্যালার্ট অটোমেশন)
+// 5. VIP Booking Endpoint
 app.post('/api/booking/create', async (req, res) => {
   try {
     const { name, fullName, phone, niche, appointmentDate, treatment } = req.body;
@@ -91,7 +99,6 @@ app.post('/api/booking/create', async (req, res) => {
       return res.status(400).json({ success: false, error: 'Missing required booking fields (Name and Phone are required).' });
     }
 
-    // ১. ব্যাকগ্রাউন্ড রিকল শিডিউলার যুক্ত করা
     const scheduledBooking = scheduleAppointment({ 
       name: clientName, 
       phone: phone.trim(), 
@@ -99,7 +106,6 @@ app.post('/api/booking/create', async (req, res) => {
       appointmentDate: appointmentDate || new Date().toISOString().split('T')[0]
     });
 
-    // ২. ইন-মেমোরি বুকিং ডাটাবেজে রেকর্ড সংরক্ষণ
     const newAppointment = {
       id: `apt_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`,
       fullName: clientName,
@@ -112,7 +118,6 @@ app.post('/api/booking/create', async (req, res) => {
     };
     appointmentsDatabase.push(newAppointment);
 
-    // ৩. আপগ্রেডেড স্টাফ অ্যালার্ট মডিউল ট্রিগার (ক্লিনিক টিম ও সার্জনের মোবাইলে তাৎক্ষণিক SMS অ্যালার্ট)
     await sendStaffAlert({
       fullName: clientName,
       phone: phone.trim(),
@@ -134,13 +139,53 @@ app.post('/api/booking/create', async (req, res) => {
   }
 });
 
-// API Routes
+// ========================================================
+// Notun 4-ti Luxury Funnel API Endpoints
+// ========================================================
+
+// Sequence 1: Speed To Lead (<45 Sec Trigger)
+app.post('/api/speed-to-lead', async (req, res) => {
+  try {
+    const result = await SpeedToLead.triggerIntakeRecovery(req.body);
+    res.json({ success: true, data: result });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// Sequence 2: VIP NDA & Private Valet PIN Generation
+app.post('/api/issue-nda', async (req, res) => {
+  try {
+    const dossier = await NDAProtocol.issueMutualNDA(req.body);
+    res.json({ success: true, dossier });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// Module 4: Fly-In Executive Chauffeur & Logistics
+app.post('/api/fly-in-logistics', async (req, res) => {
+  try {
+    const plan = await FlyInConcierge.scheduleArrival(req.body);
+    res.json({ success: true, plan });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// Sequence 4: 90-Day Drip Nurture Asset Fetch
+app.get('/api/nurture/:week', (req, res) => {
+  const weekNum = parseInt(req.params.week) || 1;
+  const asset = LongTermNurture.getWeeklyAsset(weekNum);
+  res.json({ success: true, asset });
+});
+
+// API Routes mounting
 app.use('/api/leads', leadsRouter);
 app.use('/api/twilio', geminiRouter);
 app.use('/api/voice-missed', missedRouter);
 app.use('/api/ai', chatLimiter, aiConciergeRouter);
 
-// আপগ্রেডেড বুকিং ও ভয়েস রাউটার মাউন্টিং (Twilio ওয়েবহুক পাথের সাথে সিঙ্ক)
 app.use('/api/booking', bookingRouter);
 app.use('/api/voice', voiceAgentRouter); 
 
@@ -161,7 +206,7 @@ app.use('/api/simulation', smileSimulatorRouter);
 app.use('/api/rag', vectorKnowledgeRouter);
 app.use('/api/whatsapp', whatsappRouter);
 
-// কসমেটিক ফ্রন্টএন্ড পরিবেশন (সরাসরি রুট ডিরেক্টরির index.html)
+// Frontend route
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
@@ -171,7 +216,7 @@ app.get('/status', (req, res) => {
   res.json({ status: 'Online', system: 'AURA Beverly Hills VIP Concierge Engine v2.0' });
 });
 
-// ক্রন রিকল ব্যাকগ্রাউন্ড শিডিউলার চালু
+// Background Cron Recall
 initRecallEngine();
 
 app.listen(PORT, () => {
