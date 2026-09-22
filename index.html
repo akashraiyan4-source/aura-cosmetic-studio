@@ -48,7 +48,7 @@
       letter-spacing: -0.01em;
     }
 
-    /* প্রিমিয়াম লাক্সারি হেডার ও লোগো */
+    /* Premium Luxury Header & Logo */
     .site-nav {
       max-width: 1320px;
       margin: 0 auto;
@@ -152,7 +152,7 @@
       font-weight: 400;
     }
 
-    /* হিরো সেকশন */
+    /* Hero Section */
     .hero-section {
       max-width: 1320px;
       margin: 0 auto;
@@ -216,7 +216,7 @@
 
     .pill-item span { color: var(--rose-accent); }
 
-    /* ৯:১৬ হিরো স্লাইডার ফ্রেম */
+    /* 9:16 Hero Slider Frame Desktop */
     .slider-frame {
       position: relative;
       width: 100%;
@@ -362,7 +362,7 @@
       margin-top: 14px;
     }
 
-    /* প্রেস সেকশন: ১০০% ফ্লুইড ইনফিনিট মারকুই */
+    /* Press Bar Infinite Marquee */
     .press-bar {
       border-top: 1px solid var(--card-border);
       border-bottom: 1px solid var(--card-border);
@@ -411,7 +411,7 @@
       100% { transform: translateX(-50%); }
     }
 
-    /* কেস স্টাডি মারকুই */
+    /* Case Studies Marquee */
     .marquee-wrapper {
       position: relative;
       width: 100%;
@@ -492,7 +492,7 @@
       color: var(--text-light);
     }
 
-    /* ৩-কলাম ও ২-কলাম গ্রিড */
+    /* Grids */
     .grid-3-col {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -574,7 +574,7 @@
       font-weight: bold;
     }
 
-    /* টেস্টিমোনিয়াল ক্যারোজেল */
+    /* Testimonials Horizontal Snap Carousel */
     .testimonial-wrapper {
       position: relative;
       width: 100%;
@@ -668,28 +668,48 @@
     }
 
     /* ========================================================
-       APPLE UI MOBILE OPTIMIZATIONS (MAX 768px)
+       APPLE UI MOBILE & FULL SCREEN TIKTOK / SHORTS STYLE HERO
        ======================================================== */
     @media (max-width: 768px) {
       .site-nav {
-        padding: 16px 20px;
+        padding: 14px 18px;
       }
       .brand-title {
-        font-size: 1.05rem;
+        font-size: 1rem;
       }
 
+      /* Hero Section Edge-to-Edge */
       .hero-section {
         grid-template-columns: 1fr;
-        padding: 24px 18px 36px 18px;
-        gap: 24px;
+        padding: 0 0 32px 0 !important;
+        gap: 20px;
       }
 
       .hero-video-wrapper {
         order: -1;
+        width: 100vw;
+        margin-left: calc(-50vw + 50%);
+      }
+
+      /* TikTok / YouTube Shorts Style Display */
+      .slider-frame {
+        max-width: 100% !important;
+        width: 100% !important;
+        height: 75vh !important;
+        aspect-ratio: auto !important;
+        border-radius: 0 0 24px 24px !important;
+        border-left: none !important;
+        border-right: none !important;
+        border-top: none !important;
+      }
+
+      .hero-content {
+        padding: 0 18px !important;
+        gap: 14px;
       }
 
       .hero-title {
-        font-size: 2.2rem !important;
+        font-size: 2.15rem !important;
         line-height: 1.12 !important;
       }
 
@@ -697,12 +717,7 @@
         font-size: 0.88rem;
       }
 
-      .slider-frame {
-        max-width: 320px;
-        border-radius: 16px;
-      }
-
-      /* সেকশন অতিরিক্ত গ্যাপ দূর করা */
+      /* Section Spacing */
       .section-container {
         padding: 34px 18px !important;
       }
@@ -736,7 +751,7 @@
         font-size: 1.15rem !important;
       }
 
-      /* টেস্টিমোনিয়াল: কেটে যাওয়া দূর করে সেন্টারিং ও টাচ স্ন্যাপ স্ক্রোল */
+      /* Testimonials Centered Snap Carousel */
       .testimonial-wrapper {
         overflow-x: auto !important;
         scroll-snap-type: x mandatory;
@@ -764,7 +779,7 @@
         border-radius: 14px !important;
       }
 
-      /* সেলফ-অ্যাসেসমেন্ট কার্ড প্রিমিয়াম ব্যালান্স */
+      /* Self-Assessment Card */
       .self-card {
         padding: 26px 18px !important;
         border-radius: 16px !important;
@@ -790,7 +805,7 @@
 </head>
 <body>
 
-  <!-- ০. টপ নেভিগেশন ও লাক্সারি ব্র্যান্ড লোগো -->
+  <!-- 0. Top Navigation & Brand Logo -->
   <header class="site-nav">
     <a href="#" class="brand-logo">
       <div class="brand-monogram">A</div>
@@ -798,7 +813,7 @@
     </a>
   </header>
 
-  <!-- ১. HERO FLAGSHIP SECTION -->
+  <!-- 1. HERO FLAGSHIP SECTION (TikTok / Shorts Full Screen Mobile Hero) -->
   <section class="hero-section">
     <div class="hero-content">
       <div class="hero-pre-tag">• BEVERLY HILLS PRIVATE PRACTICE</div>
@@ -822,7 +837,7 @@
       </div>
     </div>
 
-    <!-- ৯:১৬ ভিডিও স্লাইডার -->
+    <!-- TikTok/Shorts Edge-to-Edge Hero Video Slider with Local Files -->
     <div class="hero-video-wrapper">
       <div class="slider-frame" id="sliderWrapper">
         
@@ -831,23 +846,23 @@
           <span id="soundText">Sound Off</span>
         </div>
 
-        <!-- বাম পাশ: Before Video -->
+        <!-- Left: Before Local Videos -->
         <div class="pane-video pane-left">
           <video id="beforeLoop" autoplay muted loop playsinline webkit-playsinline preload="auto">
-            <source src="https://assets.mixkit.co/videos/preview/mixkit-portrait-of-a-woman-in-a-studio-setting-39877-large.mp4" type="video/mp4">
+            <source src="cosmetic befor loop.mp4" type="video/mp4">
           </video>
           <video id="beforeAction" class="pane-video action-layer" muted loop playsinline webkit-playsinline preload="auto">
-            <source src="https://assets.mixkit.co/videos/preview/mixkit-woman-applying-makeup-with-a-sponge-41712-large.mp4" type="video/mp4">
+            <source src="cosmetic before swap.mp4" type="video/mp4">
           </video>
         </div>
 
-        <!-- ডান পাশ: After Video -->
+        <!-- Right: After Local Videos -->
         <div class="pane-video pane-right" id="afterPane">
           <video id="afterLoop" autoplay muted loop playsinline webkit-playsinline preload="auto">
-            <source src="https://assets.mixkit.co/videos/preview/mixkit-fashion-model-in-a-photo-studio-39874-large.mp4" type="video/mp4">
+            <source src="cosmetic after loop.mp4" type="video/mp4">
           </video>
           <video id="afterAction" class="pane-video action-layer" muted loop playsinline webkit-playsinline preload="auto">
-            <source src="https://assets.mixkit.co/videos/preview/mixkit-young-woman-touching-her-face-gently-42617-large.mp4" type="video/mp4">
+            <source src="cosmetic after swap.mp4" type="video/mp4">
           </video>
         </div>
 
@@ -869,7 +884,7 @@
     </div>
   </section>
 
-  <!-- ২. প্রেস বার: মসৃণ ইনফিনিট ডান-থেকে-বামে স্ক্রল -->
+  <!-- 2. Press Bar: Smooth Infinite Right-to-Left Scroll -->
   <div class="press-bar">
     <div class="press-text">Discreet Luxury Aesthetics • Trusted By Industry Leaders & Celebrities</div>
     <div class="press-track">
@@ -892,7 +907,7 @@
     </div>
   </div>
 
-  <!-- ৩. ইনফিনিট কেস স্টাডি মারকুই -->
+  <!-- 3. Case Studies Infinite Marquee -->
   <section style="padding: 44px 0 16px 0; text-align: center;">
     <div class="section-header" style="margin-bottom: 20px;">
       <span class="sub-tag">Clinical Case Studies</span>
@@ -980,7 +995,7 @@
           </div>
         </div>
 
-        <!-- ইনফিনিট লুপের জন্য ডুপ্লিকেট সেট -->
+        <!-- Duplicate Set for Continuous Loop -->
         <div class="case-card">
           <div class="case-img-box">
             <span class="case-badge">Submentoplasty</span>
@@ -1007,7 +1022,7 @@
     </div>
   </section>
 
-  <!-- ৪. ১০০% ডিসক্রিট ভিআইপি সেঞ্চুয়ারি -->
+  <!-- 4. 100% Discreet VIP Sanctuary -->
   <section class="section-container">
     <div class="section-header">
       <span class="sub-tag">Uncompromising Privacy</span>
@@ -1035,7 +1050,7 @@
     </div>
   </section>
 
-  <!-- ৫. নন-সার্জিক্যাল ডুয়াল-পাথওয়ে -->
+  <!-- 5. Non-Surgical Dual-Pathway -->
   <section class="section-container">
     <div class="section-header">
       <span class="sub-tag">Zero Scalpel • Zero Downtime</span>
@@ -1074,7 +1089,7 @@
     </div>
   </section>
 
-  <!-- ৬. সার্জিক্যাল সেফটি & QUAD-A -->
+  <!-- 6. Surgical Safety & QUAD-A -->
   <section class="section-container">
     <div class="section-header">
       <span class="sub-tag">Clinical Excellence</span>
@@ -1102,7 +1117,7 @@
     </div>
   </section>
 
-  <!-- ৭. বডি আর্কিটেকচার & মমি মেকওভার -->
+  <!-- 7. Body Architecture & Mommy Makeover -->
   <section class="section-container">
     <div class="section-header">
       <span class="sub-tag">Full-Body Harmony</span>
@@ -1135,7 +1150,7 @@
     </div>
   </section>
 
-  <!-- ৮. দ্য FLY-IN সেঞ্চুয়ারি -->
+  <!-- 8. The Fly-In Sanctuary -->
   <section class="section-container">
     <div class="section-header">
       <span class="sub-tag">Global Destination</span>
@@ -1164,7 +1179,7 @@
     </div>
   </section>
 
-  <!-- ৯. গুগল ৫-স্টার রিভিউ (স্ন্যাপ সোয়াইপ ক্যারোজেল) -->
+  <!-- 9. Google 5-Star Reviews (Snap Swipe Carousel) -->
   <section style="padding: 34px 0 20px 0; text-align: center;">
     <div class="section-header" style="margin-bottom: 20px;">
       <span class="sub-tag">Verified Feedback</span>
@@ -1204,7 +1219,7 @@
     </div>
   </section>
 
-  <!-- ১০. সেলফ-অ্যাসেসমেন্ট -->
+  <!-- 10. Self-Assessment -->
   <section class="section-container" id="candidate-section" style="padding-top: 10px; padding-bottom: 60px;">
     <div class="self-card">
       <span class="sub-tag">Self-Assessment</span>
@@ -1231,7 +1246,7 @@
     </div>
   </section>
 
-  <!-- জাভাস্ক্রিপ্ট লজিক -->
+  <!-- JavaScript Logic -->
   <script>
     const wrapper = document.getElementById('sliderWrapper');
     const knob = document.getElementById('sliderKnob');
