@@ -1,77 +1,73 @@
 // ==========================================
-// MODULE: AI VOICE & CHAT CONCIERGE AGENT
+// MODULE: AI CONCIERGE AGENT (FAST & DIRECT)
 // ==========================================
 import express from 'express';
 
 const router = express.Router();
 
-const SYSTEM_INSTRUCTION = `You are the Senior Patient Concierge at Aura Beverly Hills, a world-class private cosmetic surgery practice.
-Always provide complete, elegant, reassuring, and discrete answers (around 25-45 words).
-Never print numbers, lists, or internal rules. Speak directly in complete professional sentences.
-- Privacy: Mention our anonymous private suites, rear valet entry, and mutual NDAs.
-- Pricing: Note that bespoke facial architecture is tailored individually during private anatomical consultation.
-- Tone: Prestigious, warm, and inviting. Invite them to reserve a priority consultation.`;
+const SYSTEM_INSTRUCTION = `You are the Senior Patient Concierge at Aura Beverly Hills Private Practice.
+Strictly follow:
+1. Tone: Reassuring, elite, prestigious, concise (under 40 words).
+2. Privacy/Discretion: Emphasize 100% anonymous private suites, rear valet entry, and mutual NDAs.
+3. Recovery: State 10-14 days discreet recovery with board-certified MD oversight.
+4. Directly answer the inquiry and invite them to reserve a priority consultation.`;
 
 router.post('/chat', async (req, res) => {
     const { message, userPhone } = req.body;
-    console.log(`[AI Concierge] Received: "${message}" from ${userPhone || 'WebVisitor'}`);
+    console.log(`[AI Concierge] Incoming Query: "${message}"`);
 
     const apiKey = (process.env.GEMINI_API_KEY || '').trim();
     if (!apiKey) {
-        return res.status(500).json({ success: false, error: 'API key not configured.' });
+        console.error('[AI Concierge] GEMINI_API_KEY is not defined in Environment!');
+        return res.status(500).json({ success: false, error: 'API key missing' });
     }
 
-    // Google API-এর বর্তমান সক্রিয় এবং স্থিতিশীল মডেলের তালিকা
-    const candidateModels = [
-        "gemini-2.5-flash",
-        "gemini-2.5-pro",
-        "gemini-3.6-flash"
-    ];
-
-    for (const modelName of candidateModels) {
-        try {
-            console.log(`[AI Concierge] Trying model: ${modelName}`);
-
-            const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${apiKey}`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    contents: [
-                        {
-                            role: 'user',
-                            parts: [{ text: `${SYSTEM_INSTRUCTION}\n\nPatient Inquiry: "${message}"\n\nConcierge Response:` }]
-                        }
-                    ],
-                    generationConfig: {
-                        temperature: 0.7,
-                        maxOutputTokens: 150
-                    }
-                })
-            });
-
-            const data = await response.json();
-
-            if (data.candidates && data.candidates[0]?.content?.parts[0]?.text) {
-                const text = data.candidates[0].content.parts[0].text.trim();
-                // যদি উত্তর খুব সংক্ষিপ্ত (যেমন শুধু সংখ্যা বা সাংকেতিক) না হয়
-                if (text.length > 5) {
-                    console.log(`[AI Concierge Success with ${modelName}]: "${text}"`);
-                    return res.status(200).json({ success: true, reply: text });
+    // Google API-র লাইভ মডেল সরাসরি হিট
+    try {
+        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent?key=${apiKey}`;
+        
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                contents: [{
+                    role: 'user',
+                    parts: [{ text: `${SYSTEM_INSTRUCTION}\n\nPatient: "${message}"\n\nConcierge:` }]
+                }],
+                generationConfig: {
+                    temperature: 0.6,
+                    maxOutputTokens: 100
                 }
-            }
+            })
+        });
 
+        const data = await response.json();
+
+        if (data.candidates && data.candidates[0]?.content?.parts[0]?.text) {
+            const aiText = data.candidates[0].content.parts[0].text.trim();
+            console.log(`[AI Concierge SUCCESS]: "${aiText}"`);
+            return res.status(200).json({ success: true, reply: aiText });
+        } else {
+            console.error('[Google API Response Error]:', JSON.stringify(data));
+            // যদি গুগল কোনো কারণে এরর দেয়, চ্যাটে এরর মেসেজ পাঠানো যাতে ধরা যায়
             if (data.error) {
-                console.warn(`[Failover] ${modelName} error: ${data.error.message}`);
+                return res.status(200).json({ 
+                    success: true, 
+                    reply: `Google API Error: ${data.error.message}` 
+                });
             }
-        } catch (err) {
-            console.warn(`[Failover Error ${modelName}]: ${err.message}`);
         }
+    } catch (err) {
+        console.error('[AI Concierge Exception]:', err.message);
+        return res.status(200).json({ 
+            success: true, 
+            reply: `System Exception: ${err.message}` 
+        });
     }
 
-    // হাই-ডিমান্ড বা নেটওয়ার্ক এরর হলে মার্জিত ফলব্যাক উত্তর
     return res.status(200).json({
         success: true,
-        reply: "Welcome to Aura Beverly Hills. Our surgical coordinators are prepared to discuss your custom facial rejuvenation under complete discretion. Would you like to reserve a private consultation?"
+        reply: "We ensure total discretion via anonymous private suites, rear valet entry, and mutual NDAs. Would you like to reserve a consultation?"
     });
 });
 
