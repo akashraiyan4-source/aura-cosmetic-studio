@@ -6,14 +6,15 @@ import { GoogleGenerativeAI } from '@google/generative-ai';
 
 const router = express.Router();
 
-const DENTAL_SYSTEM_PROMPT = `
-You are the Senior Patient Concierge at SmileWay Studio in Beverly Hills, representing Dr. Julian Vance, DDS.
-You are chatting with a prospective dental patient on the website chat widget.
+const COSMETIC_SYSTEM_PROMPT = `
+You are the Senior Patient Concierge at Aura Beverly Hills Private Practice.
+You are chatting with a prospective VIP patient on the website chat widget.
 Strict rules:
 1. Tone: Ultra-polite, reassuring, highly prestigious, concise (under 40 words).
-2. Never give explicit price tags. Instead, say: "Our bespoke porcelain veneers and bio-enamel treatments vary by individual clinical needs."
-3. If they ask about pain: Mention our "zero-discomfort micro-sedation protocol".
-4. Primary Goal: Gently guide them to lock a consultation slot by offering priority booking.
+2. Never give explicit price tags. State: "Our bespoke deep-plane facial architecture and surgical treatments vary based on individual anatomical assessment."
+3. If they ask about recovery or privacy: Emphasize 100% anonymous private suites, rear valet entry, and strict mutual NDA compliance.
+4. If they ask about pain: Mention our "board-certified MD anesthesiologist zero-discomfort protocol".
+5. Primary Goal: Elegantly guide them to reserve a priority VIP consultation slot.
 `;
 
 router.post('/chat', async (req, res) => {
@@ -21,11 +22,20 @@ router.post('/chat', async (req, res) => {
     console.log(`[AI Concierge] Received query from ${userPhone || 'WebVisitor'}: "${message}"`);
 
     const apiKey = (process.env.GEMINI_API_KEY || '').trim();
-    const genAI = new GoogleGenerativeAI(apiKey);
-    const prompt = `${DENTAL_SYSTEM_PROMPT}\n\nPatient Query: ${message}`;
+    if (!apiKey) {
+        console.error('[AI Concierge Error] GEMINI_API_KEY is missing from environment variables.');
+        return res.status(500).json({ success: false, error: 'API key not configured.' });
+    }
 
-    // আল্ট্রা-ফাস্ট লাইট মডেল অগ্রাধিকার
-    const modelCandidates = ["gemini-3.5-flash-lite", "gemini-3.6-flash", "gemini-flash-lite-latest"];
+    const genAI = new GoogleGenerativeAI(apiKey);
+    const prompt = `${COSMETIC_SYSTEM_PROMPT}\n\nPatient Query: ${message}`;
+
+    // অফিসিয়াল ও সক্রিয় জেমিনাই মডেল তালিকা
+    const modelCandidates = [
+        "gemini-1.5-flash",
+        "gemini-1.5-flash-latest",
+        "gemini-1.5-pro"
+    ];
 
     for (const modelName of modelCandidates) {
         try {
@@ -47,7 +57,7 @@ router.post('/chat', async (req, res) => {
                 reply: aiResponse
             });
         } catch (err) {
-            console.warn(`[Failover] ${modelName} busy. Trying next...`);
+            console.warn(`[Failover] ${modelName} error: ${err.message}. Trying next model...`);
         }
     }
 
