@@ -334,12 +334,12 @@
       will-change: left;
     }
 
-    /* Completely invisible transparent grab handle (No white circle, no pink ring, no arrows covering nose/mouth) */
+    /* Transparent wide grab handle with clean floating arrow symbol in the absolute center */
     .slider-knob {
       position: absolute;
       top: 50%;
       left: 50%;
-      width: 60px;
+      width: 70px;
       height: 100%;
       z-index: 20;
       transform: translate(-50%, -50%);
@@ -350,6 +350,21 @@
       touch-action: none !important;
       will-change: left;
       pointer-events: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Minimal floating arrows indicator right on the divider line (No background box/circle) */
+    .knob-arrows {
+      display: flex;
+      gap: 2px;
+      color: #FFFFFF;
+      font-size: 14px;
+      font-weight: 900;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+      pointer-events: none;
+      letter-spacing: 1px;
     }
 
     .bottom-tags {
@@ -1327,9 +1342,13 @@
           </video>
         </div>
 
-        <!-- Clean slim dividing line without any distracting circles or arrows covering the face -->
+        <!-- Clean dividing line with minimalist floating double arrows (No white circle, no pink ring, clean luxury look) -->
         <div class="slider-divider-bar" id="dividerLine"></div>
-        <div class="slider-knob" id="sliderKnob"></div>
+        <div class="slider-knob" id="sliderKnob">
+          <div class="knob-arrows">
+            <span>&lsaquo;&rsaquo;</span>
+          </div>
+        </div>
 
         <div class="bottom-tags">
           <div class="b-tag">Pre-Treatment</div>
@@ -1337,7 +1356,7 @@
         </div>
 
       </div>
-      <div class="drag-hint">⟵ Drag Anywhere on Video Left for Glow • Right for Regret ⟶</div>
+      <div class="drag-hint">⟵ Drag Knob Left for Glow • Drag Right for Regret ⟶</div>
     </div>
   </section>
 
@@ -2304,7 +2323,7 @@
       aiChatBox.scrollTop = aiChatBox.scrollHeight;
 
       try {
-        const res = await fetch('/api/ai/chat', {
+        const res =zych('/api/ai/chat', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
