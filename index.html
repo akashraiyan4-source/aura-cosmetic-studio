@@ -334,37 +334,41 @@
       will-change: left;
     }
 
-    /* Transparent wide grab handle with clean floating arrow symbol in the absolute center */
+    /* Perfect size slider knob with clean arrow badge in the middle, zero background box/circle */
     .slider-knob {
       position: absolute;
       top: 50%;
       left: 50%;
-      width: 70px;
-      height: 100%;
-      z-index: 20;
-      transform: translate(-50%, -50%);
-      cursor: ew-resize;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
       background: transparent !important;
       border: none !important;
       box-shadow: none !important;
-      touch-action: none !important;
-      will-change: left;
-      pointer-events: auto;
+      z-index: 20;
+      transform: translate(-50%, -50%);
+      cursor: grab;
       display: flex;
       align-items: center;
       justify-content: center;
+      touch-action: none !important;
+      will-change: left;
+      pointer-events: auto;
     }
 
-    /* Minimal floating arrows indicator right on the divider line (No background box/circle) */
+    .slider-knob:active {
+      cursor: grabbing;
+    }
+
+    /* Clean prominent floating arrows (exact ideal size as requested) */
     .knob-arrows {
       display: flex;
-      gap: 2px;
+      gap: 4px;
       color: #FFFFFF;
-      font-size: 14px;
-      font-weight: 900;
-      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+      font-size: 15px;
+      font-weight: 800;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.75);
       pointer-events: none;
-      letter-spacing: 1px;
     }
 
     .bottom-tags {
@@ -1342,7 +1346,6 @@
           </video>
         </div>
 
-        <!-- Clean dividing line with minimalist floating double arrows (No white circle, no pink ring, clean luxury look) -->
         <div class="slider-divider-bar" id="dividerLine"></div>
         <div class="slider-knob" id="sliderKnob">
           <div class="knob-arrows">
@@ -2323,7 +2326,7 @@
       aiChatBox.scrollTop = aiChatBox.scrollHeight;
 
       try {
-        const res =zych('/api/ai/chat', {
+        const res = await fetch('/api/ai/chat', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
