@@ -236,7 +236,7 @@
 
     .pill-item span { color: var(--rose-accent); }
 
-    /* Ultra-Responsive 1:1 Zero-Lag Slider Frame */
+    /* Ultra-Responsive 1:1 Instant Tracking Slider Frame */
     .slider-frame {
       position: relative;
       width: 100%;
@@ -249,7 +249,7 @@
       border: 1px solid var(--card-border);
       user-select: none;
       -webkit-user-select: none;
-      touch-action: pan-y !important; /* Screen scrolls vertically with butter smoothness */
+      touch-action: pan-y !important;
       background: var(--bg-cream) !important;
       transform: translate3d(0, 0, 0);
       -webkit-transform: translate3d(0, 0, 0);
@@ -350,7 +350,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      touch-action: none !important; /* Knob initiates immediate drag without latency */
+      touch-action: none !important;
       will-change: left;
       pointer-events: auto;
     }
@@ -769,7 +769,7 @@
     }
 
     /* ========================================================
-       PRECISE ANCHORED SIDE TRIGGER (NO BLACK BOX, NEVER JUMPS)
+       TRANSPARENT PURE ROBOT HEAD (NO BLACK BOX BACKGROUND)
        ======================================================== */
     .side-dock-container {
       position: fixed !important;
@@ -786,36 +786,38 @@
       pointer-events: auto !important;
     }
 
-    /* Pure circular robot head peeking slightly from the right edge */
+    /* Pure circular transparent robot head peeking from the right edge */
     .peeking-tab-handle {
       width: 48px !important;
       height: 48px !important;
       border-radius: 50% !important;
-      background: #141316 !important;
+      background: transparent !important; /* Completely transparent background */
       border: 2px solid var(--rose-accent) !important;
-      box-shadow: -4px 8px 24px rgba(227, 63, 108, 0.4) !important;
+      box-shadow: 0 8px 24px rgba(227, 63, 108, 0.35) !important;
       display: flex !important;
       align-items: center !important;
       justify-content: center !important;
       cursor: pointer !important;
-      font-size: 1.45rem !important;
+      font-size: 1.5rem !important;
       user-select: none !important;
-      transform: translateX(10px) !important; /* Peeks elegantly */
-      transition: transform 0.25s var(--spring-snap), box-shadow 0.25s ease !important;
+      transform: translateX(8px) !important;
+      transition: transform 0.25s var(--spring-snap), background 0.2s ease !important;
     }
 
     .peeking-tab-handle:hover {
-      transform: translateX(2px) scale(1.06) !important;
+      transform: translateX(2px) scale(1.08) !important;
+      background: rgba(255, 255, 255, 0.85) !important;
     }
 
     .side-dock-container.expanded .peeking-tab-handle {
       transform: translateX(0) rotate(180deg) scale(1.05) !important;
+      background: #FFFFFF !important;
     }
 
     /* Slide-out Options */
     .dock-popout-options {
       position: absolute !important;
-      right: 58px !important;
+      right: 56px !important;
       display: flex !important;
       gap: 10px !important;
       opacity: 0 !important;
@@ -864,6 +866,14 @@
       text-transform: uppercase !important;
       letter-spacing: 0.08em !important;
       white-space: nowrap !important;
+      pointer-events: none !important;
+    }
+
+    /* CRITICAL HIDE: Completely hide robot trigger when AI or ADA is active */
+    body.ai-active .side-dock-container,
+    body.ada-active .side-dock-container {
+      display: none !important;
+      opacity: 0 !important;
       pointer-events: none !important;
     }
 
@@ -1306,7 +1316,7 @@
       </div>
     </div>
 
-    <!-- Hero Video Slider Frame (Always Fallback to Seamless Cream) -->
+    <!-- Hero Video Slider Frame -->
     <div class="hero-video-wrapper">
       <div class="slider-frame" id="sliderWrapper">
         
@@ -1315,7 +1325,6 @@
           <span id="soundText">Sound Off</span>
         </div>
 
-        <!-- Left Base Layer (Strict Pre-Treatment Before Video & Poster) -->
         <div class="pane-video pane-left">
           <video id="beforeLoop" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="before-poster.jpg">
             <source src="cosmetic befor loop.mp4" type="video/mp4">
@@ -1325,7 +1334,6 @@
           </video>
         </div>
 
-        <!-- Right Reveal Layer (Strict Post-Restoration After Video & Poster) -->
         <div class="pane-video pane-right" id="afterPane">
           <video id="afterLoop" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="after-poster.jpg">
             <source src="cosmetic after loop.mp4" type="video/mp4">
@@ -1353,7 +1361,7 @@
     </div>
   </section>
 
-  <!-- Surgical Authority Trust Cluster (American Surgery Standards) -->
+  <!-- Surgical Authority Trust Cluster -->
   <section class="authority-trust-section">
     <div class="authority-grid">
       <div class="authority-card">
@@ -1402,7 +1410,7 @@
     </div>
   </div>
 
-  <!-- 3. Case Studies Infinite Inertial Marquee -->
+  <!-- 3. Case Studies Infinite Marquee -->
   <section style="padding: 44px 0 16px 0; text-align: center;">
     <div class="section-header" style="margin-bottom: 20px;">
       <span class="sub-tag">Clinical Case Studies</span>
@@ -1490,7 +1498,7 @@
           </div>
         </div>
 
-        <!-- Duplicated Set for Seamless Infinite Inertial Loop -->
+        <!-- Duplicated Set -->
         <div class="case-card">
           <div class="case-img-box">
             <span class="case-badge">Submentoplasty</span>
@@ -1729,7 +1737,7 @@
     </div>
   </section>
 
-  <!-- 9. Google 5-Star Reviews (Infinite Inertial Marquee) -->
+  <!-- 9. Google 5-Star Reviews (Infinite Marquee) -->
   <section style="padding: 34px 0 20px 0; text-align: center;">
     <div class="section-header" style="margin-bottom: 20px;">
       <span class="sub-tag">Verified Feedback</span>
@@ -1840,7 +1848,7 @@
     </a>
   </section>
 
-  <!-- 12. PURE CIRCULAR ROBOT HEAD DOCKED TRIGGER (NO BLACK BOX) -->
+  <!-- 12. PURE TRANSPARENT ROBOT HEAD TRIGGER (NO BLACK BOX) -->
   <div class="side-dock-container" id="sideDock">
     <!-- Popout Options -->
     <div class="dock-popout-options">
@@ -1857,7 +1865,7 @@
       </button>
     </div>
 
-    <!-- Pure circular robot head peeking from the side -->
+    <!-- Pure circular transparent robot head peeking from the side -->
     <div class="peeking-tab-handle" id="peekingHandle" title="VIP Concierge & ADA">
       🤖
     </div>
@@ -1927,7 +1935,7 @@
 
   <!-- JavaScript Logic -->
   <script>
-    /* 1. HERO 9:16 VIDEO SLIDER LOGIC - ULTRA-SMOOTH HARDWARE ACCELERATED KNOB DRAG */
+    /* 1. HERO 9:16 VIDEO SLIDER LOGIC - ULTRA-FAST 0.18s SPRING SNAP & ZERO-LAG RENDER */
     const wrapper = document.getElementById('sliderWrapper');
     const knob = document.getElementById('sliderKnob');
     const divider = document.getElementById('dividerLine');
@@ -1964,7 +1972,6 @@
     document.body.addEventListener('touchstart', forcePlayVideos, { once: true });
     document.body.addEventListener('click', forcePlayVideos, { once: true });
 
-    // Smooth instantaneous visual sync via requestAnimationFrame
     function renderSlider() {
       knob.style.left = currentPercentage + '%';
       divider.style.left = currentPercentage + '%';
@@ -2006,7 +2013,7 @@
       }
     }
 
-    // STRICT: Only initiates drag when touching the Knob itself
+    // STRICT: Only initiates drag when touching the central Knob
     knob.addEventListener('pointerdown', (e) => {
       e.stopPropagation();
       isDragging = true;
@@ -2165,7 +2172,7 @@
       initInertialMarquee('reviewsScrollBox', 'reviewsScrollInner', 0.5);
     });
 
-    /* 3. PURE CIRCULAR ROBOT HEAD TRIGGER (ANCHORED, NO BLACK BOX) */
+    /* 3. SIDE-DOCKED AUTO-DISMISSIVE PEEKING TAB SYSTEM */
     const sideDock = document.getElementById('sideDock');
     const peekingHandle = document.getElementById('peekingHandle');
     const dockAdaBtn = document.getElementById('dockAdaBtn');
@@ -2181,6 +2188,7 @@
       adaModal.classList.remove('show');
       aiModal.classList.remove('show');
       sideDock.classList.remove('expanded');
+      document.body.classList.remove('ai-active', 'ada-active');
     }
 
     peekingHandle.addEventListener('click', (e) => {
@@ -2197,6 +2205,8 @@
       aiModal.classList.remove('show');
       adaModal.classList.add('show');
       sideDock.classList.remove('expanded');
+      document.body.classList.remove('ai-active');
+      document.body.classList.add('ada-active');
     });
 
     dockAiBtn.addEventListener('click', (e) => {
@@ -2204,6 +2214,8 @@
       adaModal.classList.remove('show');
       aiModal.classList.add('show');
       sideDock.classList.remove('expanded');
+      document.body.classList.remove('ada-active');
+      document.body.classList.add('ai-active');
       setTimeout(() => {
         const input = document.getElementById('aiChatInput');
         if (input) input.focus();
@@ -2213,7 +2225,7 @@
     // Auto-dismiss on click-outside
     document.addEventListener('click', (e) => {
       if (!sideDock.contains(e.target) && !adaModal.contains(e.target) && !aiModal.contains(e.target)) {
-        sideDock.classList.remove('expanded');
+        closeAllSideModals();
       }
     });
 
@@ -2224,6 +2236,8 @@
         adaModal.classList.remove('show');
         aiModal.classList.add('show');
         sideDock.classList.remove('expanded');
+        document.body.classList.remove('ada-active');
+        document.body.classList.add('ai-active');
         setTimeout(() => {
           const input = document.getElementById('aiChatInput');
           if (input) input.focus();
