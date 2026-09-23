@@ -28,53 +28,40 @@ router.post('/chat', async (req, res) => {
 
     const fullPrompt = `${COSMETIC_SYSTEM_PROMPT}\n\nPatient Query: ${message}`;
 
-    try {
-        // Step 1: Google theke apnar API key diye valid model list ene dynamically select kora
-        let targetModel = "gemini-pro";
+    // গুগলের নির্দেশিত সক্রিয় মডেল তালিকা
+    const modelCandidates = [
+        "gemini-3.6-flash",
+        "gemini-2.5-flash",
+        "gemini-flash-latest"
+    ];
+
+    for (const modelName of modelCandidates) {
         try {
-            const listRes = await fetch(`https://generativelanguage.googleapis.com/v1beta/models?key=${apiKey}`);
-            const listData = await listRes.json();
-            if (listData.models && Array.isArray(listData.models)) {
-                const supported = listData.models
-                    .filter(m => m.supportedGenerationMethods && m.supportedGenerationMethods.includes('generateContent'))
-                    .map(m => m.name.replace('models/', ''));
-                
-                console.log(`[Available Models for Key]:`, supported);
+            console.log(`[AI Concierge] Querying Google API with model: ${modelName}`);
 
-                // Priority: flash 1.5 -> pro 1.5 -> gemini-pro -> default prothomti
-                targetModel = supported.find(m => m.includes('flash')) || 
-                              supported.find(m => m.includes('pro')) || 
-                              supported[0] || "gemini-pro";
+            const apiRes = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${apiKey}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    contents: [{ role: 'user', parts: [{ text: fullPrompt }] }],
+                    generationConfig: { maxOutputTokens: 120, temperature: 0.6 }
+                })
+            });
+
+            const data = await apiRes.json();
+
+            if (data.candidates && data.candidates[0]?.content?.parts[0]?.text) {
+                const aiResponse = data.candidates[0].content.parts[0].text.trim();
+                console.log(`[AI Concierge Reply using ${modelName}] "${aiResponse}"`);
+                return res.status(200).json({ success: true, reply: aiResponse });
             }
-        } catch (e) {
-            console.warn("[Model Detection Failed, using fallback]:", e.message);
+
+            if (data.error) {
+                console.warn(`[Failover Model ${modelName}] Error: ${data.error.message}`);
+            }
+        } catch (err) {
+            console.warn(`[Network/Model Error ${modelName}]: ${err.message}`);
         }
-
-        console.log(`[AI Concierge] Attempting generation with detected model: ${targetModel}`);
-
-        // Step 2: Exact detected model-e direct call
-        const apiRes = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${targetModel}:generateContent?key=${apiKey}`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                contents: [{ role: 'user', parts: [{ text: fullPrompt }] }],
-                generationConfig: { maxOutputTokens: 100, temperature: 0.6 }
-            })
-        });
-
-        const data = await apiRes.json();
-        
-        if (data.candidates && data.candidates[0]?.content?.parts[0]?.text) {
-            const aiResponse = data.candidates[0].content.parts[0].text.trim();
-            console.log(`[AI Concierge Reply] "${aiResponse}"`);
-            return res.status(200).json({ success: true, reply: aiResponse });
-        }
-
-        if (data.error) {
-            console.error(`[Google API Error Direct]`, data.error);
-        }
-    } catch (err) {
-        console.error(`[AI Concierge Fatal Exception]:`, err);
     }
 
     return res.status(500).json({ success: false, error: 'AI Concierge temporarily busy.' });
