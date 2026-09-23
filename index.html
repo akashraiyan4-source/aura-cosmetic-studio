@@ -689,225 +689,191 @@
     }
 
     /* ========================================================
-       LOCATION & GPS MAPPING SECTION (EXACT REFERENCE STYLE)
+       ULTRA-CLEAN FULL-CARD CLICKABLE GPS MAP SECTION
        ======================================================== */
-    .gps-section-container {
-      max-width: 900px;
-      margin: 40px auto 60px auto;
+    .gps-clean-container {
+      max-width: 920px;
+      margin: 30px auto 60px auto;
       padding: 0 20px;
     }
 
-    .gps-card-frame {
-      border: 1px solid var(--card-border);
-      border-radius: 14px;
-      overflow: hidden;
-      box-shadow: 0 14px 40px rgba(20, 19, 22, 0.08);
-      background: #0D1624;
-    }
-
-    .gps-header-banner {
-      background: #0B1320;
-      color: #FFFFFF;
-      text-align: center;
-      padding: 16px 20px;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.55rem;
-      font-weight: 700;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      border-bottom: 2px solid rgba(227, 63, 108, 0.4);
-    }
-
-    .gps-map-viewport {
+    .gps-interactive-card {
       position: relative;
+      display: block;
       width: 100%;
       height: 380px;
-      background: #E8ECEF;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--card-border);
+      box-shadow: 0 15px 35px rgba(20, 19, 22, 0.08);
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.35s var(--spring-snap), box-shadow 0.35s ease;
+      background: #e5e3df;
     }
 
-    .gps-map-viewport iframe {
+    .gps-interactive-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 45px rgba(227, 63, 108, 0.22);
+    }
+
+    .gps-interactive-card iframe {
       width: 100%;
       height: 100%;
       border: none;
-      filter: saturate(1.1);
+      pointer-events: none; /* Allows entire card click through to the link */
     }
 
-    .map-overlay-btn {
+    .gps-click-shield {
       position: absolute;
-      top: 18px;
-      left: 18px;
-      z-index: 10;
-      background: #FFFFFF;
-      color: #141316;
-      border: 1px solid rgba(20, 19, 22, 0.15);
-      border-radius: 6px;
-      padding: 9px 18px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.18);
-      transition: all 0.3s ease;
-    }
-
-    .map-overlay-btn:hover {
-      background: #141316;
-      color: #FFFFFF;
-    }
-
-    .uber-overlay-btn {
-      position: absolute;
-      top: 18px;
-      right: 18px;
-      z-index: 10;
-      width: 58px;
-      height: 58px;
-      border-radius: 50%;
-      background: #000000;
-      color: #FFFFFF;
-      border: 2px solid #FFFFFF;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 0.72rem;
-      line-height: 1;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.3);
-      transition: transform 0.3s var(--spring-snap);
-    }
-
-    .uber-overlay-btn:hover {
-      transform: scale(1.08);
-    }
-
-    .gps-footer-banner {
-      background: #0B1320;
-      color: #FFFFFF;
-      text-align: center;
-      padding: 14px 20px;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.35rem;
-      font-weight: 600;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    .gps-serving-areas {
-      background: #121F33;
-      padding: 22px 20px;
-      text-align: center;
-      color: #DDE5ED;
-    }
-
-    .gps-serving-title {
-      font-size: 1.05rem;
-      font-family: 'Cormorant Garamond', serif;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-bottom: 6px;
-      color: #FFFFFF;
-    }
-
-    .gps-serving-list {
-      font-size: 0.78rem;
-      color: #9FB2C8;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 14px;
-    }
-
-    .gps-contact-action {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: #FFFFFF;
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-decoration: none;
-      padding: 8px 18px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      border-radius: 6px;
-      transition: all 0.3s ease;
-    }
-
-    .gps-contact-action:hover {
-      background: rgba(255, 255, 255, 0.1);
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 5;
     }
 
     /* ========================================================
-       DUAL-PURPOSE FLOATING TRIGGER & POPUP WIDGET (ADA + AI)
+       PREMIUM SPEED-DIAL FLOATING ROBOT TRIGGER & MODALS
        ======================================================== */
-    .dual-floating-trigger {
+    .floating-dial-container {
       position: fixed;
       bottom: 24px;
       right: 24px;
       z-index: 99999;
-      background: #141316;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .dial-options {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(20px) scale(0.85);
+      transition: all 0.35s var(--spring-snap);
+    }
+
+    .floating-dial-container.open .dial-options {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0) scale(1);
+    }
+
+    .dial-btn {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: #FFFFFF;
       border: 1.5px solid var(--rose-accent);
-      border-radius: 40px;
-      padding: 10px 18px;
+      color: #141316;
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
       display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: 10px;
+      justify-content: center;
       cursor: pointer;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-      transition: transform 0.3s var(--spring-snap), box-shadow 0.3s ease;
+      font-size: 1.25rem;
+      transition: transform 0.25s var(--spring-snap), background 0.2s ease;
+      position: relative;
     }
 
-    .dual-floating-trigger:hover {
-      transform: translateY(-3px) scale(1.03);
-      box-shadow: 0 14px 34px rgba(227, 63, 108, 0.4);
+    .dial-btn:hover {
+      transform: scale(1.1);
+      background: #FFF5F7;
     }
 
-    .trigger-icons {
+    .dial-btn-badge {
+      position: absolute;
+      right: 58px;
+      background: #141316;
+      color: #FFFFFF;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.65rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+      pointer-events: none;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .robot-main-trigger {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: #141316;
+      border: 2px solid var(--rose-accent);
+      color: #FFFFFF;
+      box-shadow: var(--rose-glow);
       display: flex;
       align-items: center;
-      gap: 6px;
-      font-size: 1.25rem;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1.6rem;
+      transition: transform 0.35s var(--spring-snap);
+      user-select: none;
     }
 
-    .trigger-text {
-      color: #FFFFFF;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
+    .robot-main-trigger:hover {
+      transform: scale(1.08);
     }
 
-    .unified-modal {
+    .floating-dial-container.open .robot-main-trigger {
+      transform: rotate(45deg);
+    }
+
+    /* Standalone ADA Accessibility Modal */
+    .ada-popup-modal {
       position: fixed;
-      bottom: 84px;
+      bottom: 96px;
       right: 24px;
-      width: 360px;
-      max-width: calc(100vw - 32px);
-      max-height: 82vh;
+      width: 320px;
+      max-width: calc(100vw - 36px);
       background: #FFFFFF;
       border: 1px solid var(--card-border);
-      border-radius: 18px;
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
+      border-radius: 16px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
       z-index: 99998;
       display: none;
       flex-direction: column;
       overflow: hidden;
-      animation: modalFadeUp 0.35s var(--spring-snap);
+      animation: modalFade 0.3s var(--spring-snap);
     }
 
-    .unified-modal.open {
-      display: flex;
+    .ada-popup-modal.show { display: flex; }
+
+    /* Standalone AI Concierge Chat Modal */
+    .ai-popup-modal {
+      position: fixed;
+      bottom: 96px;
+      right: 24px;
+      width: 350px;
+      max-width: calc(100vw - 36px);
+      background: #FFFFFF;
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+      z-index: 99998;
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      animation: modalFade 0.3s var(--spring-snap);
     }
 
-    @keyframes modalFadeUp {
-      from { opacity: 0; transform: translateY(20px) scale(0.96); }
+    .ai-popup-modal.show { display: flex; }
+
+    @keyframes modalFade {
+      from { opacity: 0; transform: translateY(15px) scale(0.95); }
       to { opacity: 1; transform: translateY(0) scale(1); }
     }
 
-    .modal-head {
+    .panel-head {
       background: #141316;
       color: #FFFFFF;
       padding: 14px 18px;
@@ -917,15 +883,15 @@
       border-bottom: 2px solid var(--rose-accent);
     }
 
-    .modal-head-title {
+    .panel-head span {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.1rem;
+      font-size: 1.15rem;
+      font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      font-weight: 700;
     }
 
-    .modal-close-btn {
+    .panel-close {
       background: none;
       border: none;
       color: #FFFFFF;
@@ -934,56 +900,23 @@
       line-height: 1;
     }
 
-    .modal-scroll-body {
-      overflow-y: auto;
+    .panel-content {
       padding: 16px;
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 12px;
     }
 
-    /* Top: ADA Accessibility Box */
-    .ada-block {
-      background: #FDFBF8;
-      border: 1px solid rgba(0, 0, 0, 0.08);
-      border-radius: 12px;
-      padding: 14px;
-    }
-
-    .ada-title-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 12px;
-    }
-
-    .ada-title-bar span {
-      font-size: 0.72rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: #141316;
-    }
-
-    .ada-reset-link {
-      background: none;
-      border: none;
-      color: var(--rose-accent);
-      font-size: 0.68rem;
-      font-weight: 600;
-      cursor: pointer;
-      text-decoration: underline;
-    }
-
-    .ada-actions-grid {
+    .ada-tiles-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 8px;
+      margin-top: 6px;
     }
 
-    .ada-tile {
-      background: #FFFFFF;
-      border: 1px solid rgba(0, 0, 0, 0.09);
+    .ada-card-tile {
+      background: #FAF8F5;
+      border: 1px solid rgba(0, 0, 0, 0.08);
       border-radius: 8px;
       padding: 10px 4px;
       text-align: center;
@@ -995,102 +928,80 @@
       gap: 4px;
     }
 
-    .ada-tile:hover {
+    .ada-card-tile:hover {
       border-color: var(--rose-accent);
       background: #FFF5F7;
     }
 
-    .ada-tile.active {
+    .ada-card-tile.active {
       background: var(--rose-accent);
       color: #FFFFFF;
       border-color: var(--rose-accent);
     }
 
-    .ada-tile-icon {
-      font-size: 1.1rem;
-    }
+    .ada-card-icon { font-size: 1.1rem; }
+    .ada-card-title { font-size: 0.62rem; font-weight: 600; text-transform: uppercase; }
 
-    .ada-tile-name {
-      font-size: 0.62rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-    }
-
-    /* Bottom: Real-Time AI Concierge Engine */
-    .ai-chat-block {
-      border: 1px solid rgba(227, 63, 108, 0.2);
-      border-radius: 12px;
-      padding: 14px;
-      background: #FFFFFF;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .ai-chat-title {
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
+    .ada-reset-action {
+      background: none;
+      border: none;
       color: var(--rose-accent);
-      display: flex;
-      align-items: center;
-      gap: 6px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: underline;
+      align-self: flex-end;
     }
 
-    .chat-messages {
-      height: 140px;
+    /* AI Chat window elements */
+    .chat-box {
+      height: 180px;
       overflow-y: auto;
       display: flex;
       flex-direction: column;
       gap: 8px;
-      padding: 6px 4px;
+      padding: 8px;
       background: #FAF8F5;
       border-radius: 8px;
-      font-size: 0.78rem;
+      font-size: 0.8rem;
     }
 
-    .chat-bubble {
+    .chat-msg {
       padding: 8px 12px;
       border-radius: 10px;
-      max-width: 88%;
+      max-width: 85%;
       line-height: 1.4;
     }
 
-    .chat-bot {
+    .chat-msg.bot {
       background: #FFFFFF;
       color: #141316;
-      border: 1px solid rgba(0, 0, 0, 0.08);
+      border: 1px solid rgba(0,0,0,0.08);
       align-self: flex-start;
     }
 
-    .chat-user {
+    .chat-msg.user {
       background: var(--rose-accent);
       color: #FFFFFF;
       align-self: flex-end;
     }
 
-    .chat-input-bar {
+    .chat-input-row {
       display: flex;
       gap: 6px;
     }
 
-    .chat-input-bar input {
+    .chat-input-row input {
       flex: 1;
       padding: 9px 12px;
-      border: 1px solid rgba(0, 0, 0, 0.12);
+      border: 1px solid rgba(0,0,0,0.12);
       border-radius: 8px;
       font-size: 0.78rem;
       font-family: inherit;
       outline: none;
     }
 
-    .chat-input-bar input:focus {
-      border-color: var(--rose-accent);
-    }
-
-    .chat-send-btn {
+    .chat-input-row button {
       background: var(--rose-accent);
       color: #FFF;
       border: none;
@@ -1100,7 +1011,7 @@
       cursor: pointer;
     }
 
-    .compliance-footer-text {
+    .compliance-footer-strip {
       font-size: 0.62rem;
       color: #8E8A85;
       text-align: center;
@@ -1256,14 +1167,21 @@
         line-height: 1.5 !important;
       }
 
-      .dual-floating-trigger {
+      .gps-clean-container {
+        padding: 0 16px;
+        margin: 20px auto 40px auto;
+      }
+      .gps-interactive-card {
+        height: 300px;
+      }
+
+      .floating-dial-container {
         bottom: 18px;
         right: 18px;
-        padding: 9px 14px;
       }
-      .unified-modal {
+      .ada-popup-modal, .ai-popup-modal {
         right: 16px;
-        bottom: 76px;
+        bottom: 86px;
       }
     }
   </style>
@@ -1770,7 +1688,7 @@
   </section>
 
   <!-- 10. Self-Assessment -->
-  <section class="section-container" id="candidate-section" style="padding-top: 10px; padding-bottom: 40px;">
+  <section class="section-container" id="candidate-section" style="padding-top: 10px; padding-bottom: 30px;">
     <div class="self-card">
       <span class="sub-tag">Self-Assessment</span>
       <h2 class="section-title" style="font-size: 2.1rem;">Am I A Candidate For Architectural Rejuvenation?</h2>
@@ -1790,143 +1708,112 @@
         </li>
       </ul>
 
-      <button type="button" class="gold-btn" id="aiConciergeBtn" style="padding: 16px 36px;">
+      <button type="button" class="gold-btn" id="aiCandidacyTriggerBtn" style="padding: 16px 36px;">
         Check Candidacy with AI Concierge →
       </button>
     </div>
   </section>
 
-  <!-- 11. GPS LOCATION & MAPS SECTION (Exact Reference Architecture) -->
-  <section class="gps-section-container">
-    <div class="gps-card-frame">
-      <!-- Top Banner -->
-      <div class="gps-header-banner">
-        BEVERLY HILLS, CA
-      </div>
-
-      <!-- Live Interactive Map Viewport -->
-      <div class="gps-map-viewport">
-        <!-- Open in Maps Direct Action Button -->
-        <a href="https://maps.google.com/?q=Wilshire+Blvd,+Beverly+Hills,+CA+90212" target="_blank" rel="noopener noreferrer" class="map-overlay-btn">
-          <span>Open in Maps</span>
-          <span>↗</span>
-        </a>[cite: 13, 14]
-
-        <!-- Instant Uber Ride Action Button -->
-        <a href="https://m.uber.com/ul/?action=setPickup&pickup=my_location&dropoff[formatted_address]=Beverly%20Hills%2C%20CA" target="_blank" rel="noopener noreferrer" class="uber-overlay-btn">
-          <span>Uber</span>
-          <span>→</span>
-        </a>[cite: 13, 14]
-
-        <!-- Embedded Map Centered on Beverly Hills Medical Golden Triangle -->
-        <iframe 
-          title="Aura Beverly Hills GPS Location"
-          src="https://maps.google.com/maps?q=9400%20Wilshire%20Blvd,%20Beverly%20Hills,%20CA%2090212&t=&z=15&ie=UTF8&iwloc=&output=embed"
-          loading="lazy">
-        </iframe>
-      </div>
-
-      <!-- Bottom Banner -->
-      <div class="gps-footer-banner">
-        WILSHIRE & RODEO SANCTUARY
-      </div>
-
-      <!-- Areas We Serve Footer Strip -->
-      <div class="gps-serving-areas">
-        <div class="gps-serving-title">Areas We Serve:[cite: 13, 14]</div>
-        <div class="gps-serving-list">
-          Beverly Hills • Bel Air • Brentwood • Holmby Hills • Hollywood Hills • Malibu
-        </div>
-        <a href="#candidate-section" class="gps-contact-action">
-          <span>✉ Contact VIP Concierge</span>[cite: 13, 14]
-        </a>
-      </div>
-    </div>
+  <!-- 11. ULTRA-CLEAN FULL-CARD CLICKABLE GPS MAP (NO EXTRA TEXT) -->
+  <section class="gps-clean-container">
+    <a href="https://maps.google.com/?q=9400+Wilshire+Blvd,+Beverly+Hills,+CA+90212" target="_blank" rel="noopener noreferrer" class="gps-interactive-card" title="Click anywhere to open in Google Maps">
+      <div class="gps-click-shield"></div>
+      <iframe 
+        title="Beverly Hills Practice GPS Map"
+        src="https://maps.google.com/maps?q=9400%20Wilshire%20Blvd,%20Beverly%20Hills,%20CA%2090212&t=&z=15&ie=UTF8&iwloc=&output=embed"
+        loading="lazy">
+      </iframe>
+    </a>
   </section>
 
-  <!-- 12. DUAL-PURPOSE FLOATING TRIGGER BUTTON (ADA + AI) -->
-  <div class="dual-floating-trigger" id="dualWidgetTrigger">
-    <div class="trigger-icons">
-      <span>♿</span>
-      <span>✨</span>
+  <!-- 12. SPEED-DIAL FLOATING ROBOT TRIGGER -->
+  <div class="floating-dial-container" id="floatingDial">
+    <!-- Vertically Popping Action Options -->
+    <div class="dial-options">
+      <!-- Top: ADA Accessibility -->
+      <button type="button" class="dial-btn" id="dialAdaBtn" title="ADA Accessibility">
+        <span>♿</span>
+        <span class="dial-btn-badge">ADA Menu</span>
+      </button>
+
+      <!-- Bottom: AI Concierge -->
+      <button type="button" class="dial-btn" id="dialAiBtn" title="VIP AI Concierge">
+        <span>✨</span>
+        <span class="dial-btn-badge">AI Assistant</span>
+      </button>
     </div>
-    <div class="trigger-text">ADA & Concierge AI</div>
+
+    <!-- Main Robot Head Trigger -->
+    <div class="robot-main-trigger" id="robotTrigger" title="Concierge & Accessibility">
+      🤖
+    </div>
   </div>
 
-  <!-- 13. COMBINED FLOATING MODAL (ADA CONTROLS + AI CONCIERGE) -->
-  <div class="unified-modal" id="unifiedModal">
-    <div class="modal-head">
-      <div class="modal-head-title">Accessibility & VIP AI</div>
-      <button type="button" class="modal-close-btn" id="modalCloseBtn">&times;</button>
+  <!-- 13. STANDALONE ADA ACCESSIBILITY MODAL -->
+  <div class="ada-popup-modal" id="adaModal">
+    <div class="panel-head">
+      <span>ADA Accessibility</span>
+      <button type="button" class="panel-close" id="adaCloseBtn">&times;</button>
     </div>
-
-    <div class="modal-scroll-body">
-      <!-- Section 1: ADA Accessibility Suite (US Lawsuit Protection) -->
-      <div class="ada-block">
-        <div class="ada-title-bar">
-          <span>Accessibility Menu</span>[cite: 12]
-          <button type="button" class="ada-reset-link" id="adaResetBtn">Reset</button>[cite: 12]
+    <div class="panel-content">
+      <button type="button" class="ada-reset-action" id="adaReset">Reset All</button>
+      <div class="ada-tiles-grid">
+        <div class="ada-card-tile" id="adaTileCursor">
+          <span class="ada-card-icon">⮹</span>
+          <span class="ada-card-title">Cursor</span>
         </div>
-
-        <div class="ada-actions-grid">
-          <div class="ada-tile" id="adaCursor">
-            <span class="ada-tile-icon">⮹</span>
-            <span class="ada-tile-name">Cursor</span>[cite: 12]
-          </div>
-          <div class="ada-tile" id="adaContrast">
-            <span class="ada-tile-icon">◑</span>
-            <span class="ada-tile-name">Contrast +</span>[cite: 12]
-          </div>
-          <div class="ada-tile" id="adaTextSize">
-            <span class="ada-tile-icon">🔍</span>
-            <span class="ada-tile-name">Bigger Text</span>[cite: 12]
-          </div>
-          <div class="ada-tile" id="adaDesaturate">
-            <span class="ada-tile-icon">◐</span>
-            <span class="ada-tile-name">Desaturate</span>[cite: 12]
-          </div>
-          <div class="ada-tile" id="adaLinks">
-            <span class="ada-tile-icon">🔗</span>
-            <span class="ada-tile-name">Highlight Links</span>[cite: 12]
-          </div>
-          <div class="ada-tile" id="adaRead">
-            <span class="ada-tile-icon">🔊</span>
-            <span class="ada-tile-name">Read Page</span>[cite: 12]
-          </div>
+        <div class="ada-card-tile" id="adaTileContrast">
+          <span class="ada-card-icon">◑</span>
+          <span class="ada-card-title">Contrast +</span>
+        </div>
+        <div class="ada-card-tile" id="adaTileText">
+          <span class="ada-card-icon">🔍</span>
+          <span class="ada-card-title">Bigger Text</span>
+        </div>
+        <div class="ada-card-tile" id="adaTileDesaturate">
+          <span class="ada-card-icon">◐</span>
+          <span class="ada-card-title">Desaturate</span>
+        </div>
+        <div class="ada-card-tile" id="adaTileLinks">
+          <span class="ada-card-icon">🔗</span>
+          <span class="ada-card-title">Highlight Links</span>
+        </div>
+        <div class="ada-card-tile" id="adaTileAudio">
+          <span class="ada-card-icon">🔊</span>
+          <span class="ada-card-title">Read Page</span>
         </div>
       </div>
+      <div class="compliance-footer-strip">
+        ADA Title III Compliant • Strict USA Accessibility Standards
+      </div>
+    </div>
+  </div>
 
-      <!-- Section 2: Real-time VIP AI Concierge & Direct Booking Engine -->
-      <div class="ai-chat-block">
-        <div class="ai-chat-title">
-          <span>✨</span>
-          <span>AURA AI Clinical Assistant</span>
-        </div>
-
-        <div class="chat-messages" id="chatMessages">
-          <div class="chat-bubble chat-bot">
-            Welcome to Aura Beverly Hills. I am your discreet concierge assistant. How may I assist your facial harmony inquiry today?
-          </div>
-        </div>
-
-        <div class="chat-input-bar">
-          <input type="text" id="chatInput" placeholder="Ask about SMAS lift, downtime, NDA..." />
-          <button type="button" class="chat-send-btn" id="chatSendBtn">Send</button>
+  <!-- 14. STANDALONE VIP AI CONCIERGE CHAT MODAL -->
+  <div class="ai-popup-modal" id="aiModal">
+    <div class="panel-head">
+      <span>VIP AI Concierge</span>
+      <button type="button" class="panel-close" id="aiCloseBtn">&times;</button>
+    </div>
+    <div class="panel-content">
+      <div class="chat-box" id="aiChatBox">
+        <div class="chat-msg bot">
+          Welcome to Aura Beverly Hills. How may I discreetly guide your consultation candidacy today?
         </div>
       </div>
-
-      <!-- US Mandatory Legal & Medical Disclaimers -->
-      <div class="compliance-footer-text">
-        ADA Title III Compliant • Strict HIPAA Privacy Standards • *Informational AI Concierge. Not Medical Advice. In Emergency, Call 911 immediately.
+      <div class="chat-input-row">
+        <input type="text" id="aiChatInput" placeholder="Ask about procedure, downtime, NDA..." />
+        <button type="button" id="aiChatSend">Send</button>
+      </div>
+      <div class="compliance-footer-strip">
+        HIPAA Discreet Protocol • *Informational only. Not medical advice. In emergency call 911.
       </div>
     </div>
   </div>
 
   <!-- JavaScript Logic -->
   <script>
-    /* ========================================================
-       1. HERO 9:16 VIDEO SLIDER LOGIC
-       ======================================================== */
+    /* 1. HERO 9:16 VIDEO SLIDER LOGIC */
     const wrapper = document.getElementById('sliderWrapper');
     const knob = document.getElementById('sliderKnob');
     const divider = document.getElementById('dividerLine');
@@ -2055,134 +1942,143 @@
       }
     });
 
-    /* ========================================================
-       2. UNIFIED MODAL (ADA & AI CONCIERGE) CONTROLS
-       ======================================================== */
-    const dualWidgetTrigger = document.getElementById('dualWidgetTrigger');
-    const unifiedModal = document.getElementById('unifiedModal');
-    const modalCloseBtn = document.getElementById('modalCloseBtn');
-    const aiConciergeBtn = document.getElementById('aiConciergeBtn');
+    /* 2. SPEED-DIAL FLOATING ROBOT CONTROLS */
+    const floatingDial = document.getElementById('floatingDial');
+    const robotTrigger = document.getElementById('robotTrigger');
+    const dialAdaBtn = document.getElementById('dialAdaBtn');
+    const dialAiBtn = document.getElementById('dialAiBtn');
 
-    function toggleUnifiedModal() {
-      unifiedModal.classList.toggle('open');
-    }
+    const adaModal = document.getElementById('adaModal');
+    const adaCloseBtn = document.getElementById('adaCloseBtn');
+    const aiModal = document.getElementById('aiModal');
+    const aiCloseBtn = document.getElementById('aiCloseBtn');
+    const aiCandidacyTriggerBtn = document.getElementById('aiCandidacyTriggerBtn');
 
-    dualWidgetTrigger.addEventListener('click', toggleUnifiedModal);
-    modalCloseBtn.addEventListener('click', () => unifiedModal.classList.remove('open'));
-    
-    if (aiConciergeBtn) {
-      aiConciergeBtn.addEventListener('click', (e) => {
+    robotTrigger.addEventListener('click', () => {
+      floatingDial.classList.toggle('open');
+    });
+
+    dialAdaBtn.addEventListener('click', () => {
+      adaModal.classList.add('show');
+      aiModal.classList.remove('show');
+      floatingDial.classList.remove('open');
+    });
+
+    dialAiBtn.addEventListener('click', () => {
+      aiModal.classList.add('show');
+      adaModal.classList.remove('show');
+      floatingDial.classList.remove('open');
+      document.getElementById('aiChatInput').focus();
+    });
+
+    if (aiCandidacyTriggerBtn) {
+      aiCandidacyTriggerBtn.addEventListener('click', (e) => {
         e.preventDefault();
-        unifiedModal.classList.add('open');
-        document.getElementById('chatInput').focus();
+        aiModal.classList.add('show');
+        adaModal.classList.remove('show');
+        document.getElementById('aiChatInput').focus();
       });
     }
 
-    /* ADA Accessibility Feature Handlers */
-    const adaCursor = document.getElementById('adaCursor');
-    const adaContrast = document.getElementById('adaContrast');
-    const adaTextSize = document.getElementById('adaTextSize');
-    const adaDesaturate = document.getElementById('adaDesaturate');
-    const adaLinks = document.getElementById('adaLinks');
-    const adaRead = document.getElementById('adaRead');
-    const adaResetBtn = document.getElementById('adaResetBtn');
+    adaCloseBtn.addEventListener('click', () => adaModal.classList.remove('show'));
+    aiCloseBtn.addEventListener('click', () => aiModal.classList.remove('show'));
 
-    adaCursor.addEventListener('click', () => {
+    /* 3. ADA ACCESSIBILITY ENGINE */
+    const adaTileCursor = document.getElementById('adaTileCursor');
+    const adaTileContrast = document.getElementById('adaTileContrast');
+    const adaTileText = document.getElementById('adaTileText');
+    const adaTileDesaturate = document.getElementById('adaTileDesaturate');
+    const adaTileLinks = document.getElementById('adaTileLinks');
+    const adaTileAudio = document.getElementById('adaTileAudio');
+    const adaReset = document.getElementById('adaReset');
+
+    adaTileCursor.addEventListener('click', () => {
       document.body.classList.toggle('large-cursor');
-      adaCursor.classList.toggle('active');
+      adaTileCursor.classList.toggle('active');
     });
 
-    adaContrast.addEventListener('click', () => {
+    adaTileContrast.addEventListener('click', () => {
       document.body.classList.toggle('high-contrast');
-      adaContrast.classList.toggle('active');
+      adaTileContrast.classList.toggle('active');
     });
 
-    adaTextSize.addEventListener('click', () => {
+    adaTileText.addEventListener('click', () => {
       document.body.classList.toggle('large-text');
-      adaTextSize.classList.toggle('active');
+      adaTileText.classList.toggle('active');
     });
 
-    adaDesaturate.addEventListener('click', () => {
+    adaTileDesaturate.addEventListener('click', () => {
       document.body.classList.toggle('desaturate');
-      adaDesaturate.classList.toggle('active');
+      adaTileDesaturate.classList.toggle('active');
     });
 
-    adaLinks.addEventListener('click', () => {
+    adaTileLinks.addEventListener('click', () => {
       document.body.classList.toggle('highlight-links');
-      adaLinks.classList.toggle('active');
+      adaTileLinks.classList.toggle('active');
     });
 
-    adaRead.addEventListener('click', () => {
+    adaTileAudio.addEventListener('click', () => {
       if ('speechSynthesis' in window) {
         window.speechSynthesis.cancel();
         const mainText = document.querySelector('.hero-title').innerText + ". " + document.querySelector('.hero-desc').innerText;
         const utterance = new SpeechSynthesisUtterance(mainText);
         utterance.rate = 0.95;
         window.speechSynthesis.speak(utterance);
-        adaRead.classList.toggle('active');
+        adaTileAudio.classList.toggle('active');
       } else {
-        alert("Text-to-speech is not supported on this browser.");
+        alert("Audio narration not supported.");
       }
     });
 
-    adaResetBtn.addEventListener('click', () => {
+    adaReset.addEventListener('click', () => {
       document.body.classList.remove('large-cursor', 'high-contrast', 'large-text', 'desaturate', 'highlight-links');
-      [adaCursor, adaContrast, adaTextSize, adaDesaturate, adaLinks, adaRead].forEach(btn => btn.classList.remove('active'));
-      if ('speechSynthesis' in window) {
-        window.speechSynthesis.cancel();
-      }
+      [adaTileCursor, adaTileContrast, adaTileText, adaTileDesaturate, adaTileLinks, adaTileAudio].forEach(el => el.classList.remove('active'));
+      if ('speechSynthesis' in window) window.speechSynthesis.cancel();
     });
 
-    /* Real-Time AI Concierge Chat Automation */
-    const chatInput = document.getElementById('chatInput');
-    const chatSendBtn = document.getElementById('chatSendBtn');
-    const chatMessages = document.getElementById('chatMessages');
+    /* 4. REAL-TIME AI CONCIERGE CHAT ENGINE */
+    const aiChatInput = document.getElementById('aiChatInput');
+    const aiChatSend = document.getElementById('aiChatSend');
+    const aiChatBox = document.getElementById('aiChatBox');
 
-    async function sendAiMessage() {
-      const message = chatInput.value.trim();
-      if (!message) return;
+    async function sendAiChat() {
+      const txt = aiChatInput.value.trim();
+      if (!txt) return;
 
-      // Append user bubble
-      const userBubble = document.createElement('div');
-      userBubble.className = 'chat-bubble chat-user';
-      userBubble.innerText = message;
-      chatMessages.appendChild(userBubble);
-      chatInput.value = '';
-      chatMessages.scrollTop = chatMessages.scrollHeight;
+      const userDiv = document.createElement('div');
+      userDiv.className = 'chat-msg user';
+      userDiv.innerText = txt;
+      aiChatBox.appendChild(userDiv);
+      aiChatInput.value = '';
+      aiChatBox.scrollTop = aiChatBox.scrollHeight;
 
-      // Bot thinking bubble
-      const botBubble = document.createElement('div');
-      botBubble.className = 'chat-bubble chat-bot';
-      botBubble.innerText = "Analyzing Beverly Hills clinical schedule...";
-      chatMessages.appendChild(botBubble);
-      chatMessages.scrollTop = chatMessages.scrollHeight;
+      const botDiv = document.createElement('div');
+      botDiv.className = 'chat-msg bot';
+      botDiv.innerText = "Reviewing Beverly Hills schedule...";
+      aiChatBox.appendChild(botDiv);
+      aiChatBox.scrollTop = aiChatBox.scrollHeight;
 
       try {
-        const response = await fetch('/api/booking/create', {
+        const res = await fetch('/api/booking/create', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            clientName: "VIP Web Client",
+            clientName: "VIP Inquiry",
             treatment: "Facial Architecture",
-            notes: message
+            notes: txt
           })
         });
-
-        const data = await response.json();
-        if (data && (data.message || data.recommendation || data.status)) {
-          botBubble.innerText = data.recommendation || data.message || "Consultation priority flagged. Our surgical coordinator will discreetly review your candidacy.";
-        } else {
-          botBubble.innerText = "Thank you. Our Beverly Hills surgical concierge has reserved your anonymous inquiry slot.";
-        }
+        const data = await res.json();
+        botDiv.innerText = data.recommendation || data.message || "Priority inquiry dispatched to Beverly Hills surgical coordinator.";
       } catch (err) {
-        botBubble.innerText = "Inquiry noted under anonymous VIP protocol. Our staff is notified.";
+        botDiv.innerText = "Inquiry logged under VIP protocol. Our staff is notified.";
       }
-      chatMessages.scrollTop = chatMessages.scrollHeight;
+      aiChatBox.scrollTop = aiChatBox.scrollHeight;
     }
 
-    chatSendBtn.addEventListener('click', sendAiMessage);
-    chatInput.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') sendAiMessage();
+    aiChatSend.addEventListener('click', sendAiChat);
+    aiChatInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') sendAiChat();
     });
   </script>
 </body>
