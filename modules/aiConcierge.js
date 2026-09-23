@@ -30,22 +30,26 @@ router.post('/chat', async (req, res) => {
     const genAI = new GoogleGenerativeAI(apiKey);
     const prompt = `${COSMETIC_SYSTEM_PROMPT}\n\nPatient Query: ${message}`;
 
-    // অফিসিয়াল ও সক্রিয় জেমিনাই মডেল তালিকা
+    // 404 error thekate v1beta support shoho model list
     const modelCandidates = [
         "gemini-1.5-flash",
         "gemini-1.5-flash-latest",
-        "gemini-1.5-pro"
+        "gemini-pro"
     ];
 
     for (const modelName of modelCandidates) {
         try {
-            const model = genAI.getGenerativeModel({ 
-                model: modelName,
-                generationConfig: {
-                    maxOutputTokens: 100,
-                    temperature: 0.6
-                }
-            });
+            const model = genAI.getGenerativeModel(
+                { 
+                    model: modelName,
+                    generationConfig: {
+                        maxOutputTokens: 100,
+                        temperature: 0.6
+                    }
+                },
+                { apiVersion: 'v1beta' }
+            );
+
             const result = await model.generateContent(prompt);
             const response = await result.response;
             const aiResponse = response.text().trim();
