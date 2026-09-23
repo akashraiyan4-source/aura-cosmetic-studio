@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, interactive-widget=resizes-content" />
   <title>Beverly Hills Private Practice | Discreet Facial Architecture</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -688,9 +688,7 @@
       font-weight: bold;
     }
 
-    /* ========================================================
-       ULTRA-CLEAN FULL-CARD CLICKABLE GPS MAP SECTION
-       ======================================================== */
+    /* GPS Map Container */
     .gps-clean-container {
       max-width: 920px;
       margin: 30px auto 60px auto;
@@ -734,17 +732,18 @@
     }
 
     /* ========================================================
-       PREMIUM SPEED-DIAL FLOATING ROBOT TRIGGER & MODALS
+       PREMIUM SPEED-DIAL FLOATING ROBOT TRIGGER & EXCLUSIVE STATES
        ======================================================== */
     .floating-dial-container {
       position: fixed;
-      bottom: 24px;
-      right: 24px;
-      z-index: 99999;
+      bottom: 20px;
+      right: 20px;
+      z-index: 999999;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 14px;
+      gap: 12px;
+      transition: opacity 0.25s ease, transform 0.25s ease;
     }
 
     .dial-options {
@@ -765,15 +764,14 @@
     }
 
     .dial-btn {
-      width: 52px;
-      height: 52px;
+      width: 48px;
+      height: 48px;
       border-radius: 50%;
       background: #FFFFFF;
       border: 1.5px solid var(--rose-accent);
       color: #141316;
       box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
       cursor: pointer;
@@ -789,7 +787,7 @@
 
     .dial-btn-badge {
       position: absolute;
-      right: 58px;
+      right: 56px;
       background: #141316;
       color: #FFFFFF;
       padding: 4px 10px;
@@ -804,8 +802,8 @@
     }
 
     .robot-main-trigger {
-      width: 60px;
-      height: 60px;
+      width: 48px;
+      height: 48px;
       border-radius: 50%;
       background: #141316;
       border: 2px solid var(--rose-accent);
@@ -815,7 +813,7 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      font-size: 1.6rem;
+      font-size: 1.45rem;
       transition: transform 0.35s var(--spring-snap);
       user-select: none;
     }
@@ -825,58 +823,84 @@
     }
 
     .floating-dial-container.open .robot-main-trigger {
-      transform: rotate(45deg);
+      transform: rotate(180deg) scale(1.05);
     }
 
-    /* Standalone ADA Accessibility Modal */
+    /* Active modal state: Rotate trigger button to show close toggle */
+    body.ai-active .robot-main-trigger,
+    body.ada-active .robot-main-trigger {
+      transform: rotate(180deg) scale(1.05);
+    }
+
+    /* Exclusive hide: Hide popping sub-buttons completely when an active panel is open */
+    body.ai-active .dial-options,
+    body.ada-active .dial-options {
+      display: none !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+    }
+
+    /* ========================================================
+       STANDALONE ADA ACCESSIBILITY MODAL
+       ======================================================== */
     .ada-popup-modal {
-      position: fixed;
-      bottom: 96px;
-      right: 24px;
-      width: 320px;
-      max-width: calc(100vw - 36px);
+      position: fixed !important;
+      bottom: 78px !important;
+      right: 20px !important;
+      left: auto !important;
+      top: auto !important;
+      inset: auto 20px 78px auto !important;
+      width: 380px !important;
+      max-width: calc(100vw - 32px) !important;
       background: #FFFFFF;
       border: 1px solid var(--card-border);
-      border-radius: 16px;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
-      z-index: 99998;
+      border-radius: 20px !important;
+      box-shadow: 0 16px 44px -8px rgba(0, 0, 0, 0.24);
+      z-index: 999998;
       display: none;
       flex-direction: column;
       overflow: hidden;
-      animation: modalFade 0.3s var(--spring-snap);
+      animation: modalFade 0.25s var(--spring-snap);
     }
 
     .ada-popup-modal.show { display: flex; }
 
-    /* Standalone AI Concierge Chat Modal */
+    /* ========================================================
+       STANDALONE VIP AI CONCIERGE CHAT MODAL (DENTAL SIZE MATCHED)
+       ======================================================== */
     .ai-popup-modal {
-      position: fixed;
-      bottom: 96px;
-      right: 24px;
-      width: 350px;
-      max-width: calc(100vw - 36px);
+      position: fixed !important;
+      bottom: 78px !important;
+      right: 20px !important;
+      left: auto !important;
+      top: auto !important;
+      inset: auto 20px 78px auto !important;
+      width: 380px !important;
+      max-width: calc(100vw - 32px) !important;
+      height: 520px !important;
+      max-height: calc(100vh - 100px) !important;
       background: #FFFFFF;
       border: 1px solid var(--card-border);
-      border-radius: 16px;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
-      z-index: 99998;
+      border-radius: 20px !important;
+      box-shadow: 0 16px 44px -8px rgba(0, 0, 0, 0.24);
+      z-index: 999998;
       display: none;
       flex-direction: column;
       overflow: hidden;
-      animation: modalFade 0.3s var(--spring-snap);
+      animation: modalFade 0.25s var(--spring-snap);
     }
 
     .ai-popup-modal.show { display: flex; }
 
     @keyframes modalFade {
-      from { opacity: 0; transform: translateY(15px) scale(0.95); }
+      from { opacity: 0; transform: translateY(14px) scale(0.96); }
       to { opacity: 1; transform: translateY(0) scale(1); }
     }
 
     .panel-head {
       background: #141316;
       color: #FFFFFF;
-      padding: 14px 18px;
+      padding: 16px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -895,37 +919,41 @@
       background: none;
       border: none;
       color: #FFFFFF;
-      font-size: 1.3rem;
+      font-size: 1.4rem;
       cursor: pointer;
       line-height: 1;
+      padding: 0 4px;
     }
 
     .panel-content {
-      padding: 16px;
+      padding: 18px;
       display: flex;
       flex-direction: column;
       gap: 12px;
+      flex: 1;
+      overflow-y: auto;
+      background: var(--bg-cream);
     }
 
     .ada-tiles-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
+      gap: 10px;
       margin-top: 6px;
     }
 
     .ada-card-tile {
-      background: #FAF8F5;
+      background: #FFFFFF;
       border: 1px solid rgba(0, 0, 0, 0.08);
-      border-radius: 8px;
-      padding: 10px 4px;
+      border-radius: 10px;
+      padding: 12px 6px;
       text-align: center;
       cursor: pointer;
       transition: all 0.2s ease;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 4px;
+      gap: 6px;
     }
 
     .ada-card-tile:hover {
@@ -939,14 +967,14 @@
       border-color: var(--rose-accent);
     }
 
-    .ada-card-icon { font-size: 1.1rem; }
-    .ada-card-title { font-size: 0.62rem; font-weight: 600; text-transform: uppercase; }
+    .ada-card-icon { font-size: 1.25rem; }
+    .ada-card-title { font-size: 0.65rem; font-weight: 600; text-transform: uppercase; }
 
     .ada-reset-action {
       background: none;
       border: none;
       color: var(--rose-accent);
-      font-size: 0.72rem;
+      font-size: 0.74rem;
       font-weight: 600;
       cursor: pointer;
       text-decoration: underline;
@@ -955,22 +983,23 @@
 
     /* AI Chat window elements */
     .chat-box {
-      height: 180px;
+      flex: 1;
       overflow-y: auto;
       display: flex;
       flex-direction: column;
-      gap: 8px;
-      padding: 8px;
+      gap: 10px;
+      padding: 10px;
       background: #FAF8F5;
-      border-radius: 8px;
-      font-size: 0.8rem;
+      border-radius: 12px;
+      font-size: 0.85rem;
+      border: 1px solid rgba(0, 0, 0, 0.05);
     }
 
     .chat-msg {
-      padding: 8px 12px;
-      border-radius: 10px;
+      padding: 10px 14px;
+      border-radius: 14px;
       max-width: 85%;
-      line-height: 1.4;
+      line-height: 1.45;
     }
 
     .chat-msg.bot {
@@ -988,38 +1017,45 @@
 
     .chat-input-row {
       display: flex;
-      gap: 6px;
+      gap: 8px;
+      padding-top: 4px;
     }
 
     .chat-input-row input {
       flex: 1;
-      padding: 9px 12px;
+      padding: 11px 14px;
       border: 1px solid rgba(0,0,0,0.12);
-      border-radius: 8px;
-      font-size: 0.78rem;
+      border-radius: 999px;
+      font-size: 0.84rem;
       font-family: inherit;
       outline: none;
+      background: #FFFFFF;
     }
 
     .chat-input-row button {
       background: var(--rose-accent);
       color: #FFF;
       border: none;
-      border-radius: 8px;
-      padding: 0 14px;
-      font-size: 0.8rem;
+      border-radius: 999px;
+      padding: 0 18px;
+      font-size: 0.84rem;
+      font-weight: 600;
       cursor: pointer;
+      box-shadow: 0 4px 14px rgba(227, 63, 108, 0.3);
     }
 
     .compliance-footer-strip {
-      font-size: 0.62rem;
+      font-size: 0.65rem;
       color: #8E8A85;
       text-align: center;
       line-height: 1.35;
-      padding-top: 4px;
-      border-top: 1px solid rgba(0, 0, 0, 0.05);
+      padding-top: 6px;
+      border-top: 1px solid rgba(0, 0, 0, 0.06);
     }
 
+    /* ========================================================
+       MOBILE RESPONSIVE & KEYBOARD ACCOMMODATION
+       ======================================================== */
     @media (max-width: 768px) {
       .site-nav {
         padding: 16px 20px;
@@ -1176,12 +1212,31 @@
       }
 
       .floating-dial-container {
-        bottom: 18px;
-        right: 18px;
+        bottom: 16px !important;
+        right: 16px !important;
       }
-      .ada-popup-modal, .ai-popup-modal {
-        right: 16px;
-        bottom: 86px;
+
+      .robot-main-trigger {
+        width: 44px !important;
+        height: 44px !important;
+      }
+
+      .dial-btn {
+        width: 44px !important;
+        height: 44px !important;
+      }
+
+      /* Mobile Sized Modals - Perfectly Docked with Backlight Visibility */
+      .ada-popup-modal, 
+      .ai-popup-modal {
+        bottom: 68px !important;
+        right: 12px !important;
+        left: 12px !important;
+        inset: auto 12px 68px 12px !important;
+        width: calc(100vw - 24px) !important;
+        max-width: calc(100vw - 24px) !important;
+        height: min(520px, 75vh) !important;
+        max-height: 75vh !important;
       }
     }
   </style>
@@ -1714,7 +1769,7 @@
     </div>
   </section>
 
-  <!-- 11. ULTRA-CLEAN FULL-CARD CLICKABLE GPS MAP (NO EXTRA TEXT) -->
+  <!-- 11. ULTRA-CLEAN FULL-CARD CLICKABLE GPS MAP -->
   <section class="gps-clean-container">
     <a href="https://maps.google.com/?q=9400+Wilshire+Blvd,+Beverly+Hills,+CA+90212" target="_blank" rel="noopener noreferrer" class="gps-interactive-card" title="Click anywhere to open in Google Maps">
       <div class="gps-click-shield"></div>
@@ -1729,7 +1784,7 @@
   <!-- 12. SPEED-DIAL FLOATING ROBOT TRIGGER -->
   <div class="floating-dial-container" id="floatingDial">
     <!-- Vertically Popping Action Options -->
-    <div class="dial-options">
+    <div class="dial-options" id="dialOptionsGroup">
       <!-- Top: ADA Accessibility -->
       <button type="button" class="dial-btn" id="dialAdaBtn" title="ADA Accessibility">
         <span>♿</span>
@@ -1789,7 +1844,7 @@
     </div>
   </div>
 
-  <!-- 14. STANDALONE VIP AI CONCIERGE CHAT MODAL -->
+  <!-- 14. STANDALONE VIP AI CONCIERGE CHAT MODAL (DENTAL SIZE MATCHED) -->
   <div class="ai-popup-modal" id="aiModal">
     <div class="panel-head">
       <span>VIP AI Concierge</span>
@@ -1942,7 +1997,7 @@
       }
     });
 
-    /* 2. SPEED-DIAL FLOATING ROBOT CONTROLS */
+    /* 2. SPEED-DIAL FLOATING ROBOT CONTROLS & EXCLUSIVE STATE ENGINE */
     const floatingDial = document.getElementById('floatingDial');
     const robotTrigger = document.getElementById('robotTrigger');
     const dialAdaBtn = document.getElementById('dialAdaBtn');
@@ -1954,34 +2009,66 @@
     const aiCloseBtn = document.getElementById('aiCloseBtn');
     const aiCandidacyTriggerBtn = document.getElementById('aiCandidacyTriggerBtn');
 
-    robotTrigger.addEventListener('click', () => {
-      floatingDial.classList.toggle('open');
-    });
-
-    dialAdaBtn.addEventListener('click', () => {
-      adaModal.classList.add('show');
+    // Close everything back to default clean state
+    function minimizeAllModals() {
+      adaModal.classList.remove('show');
       aiModal.classList.remove('show');
       floatingDial.classList.remove('open');
+      document.body.classList.remove('ai-active', 'ada-active');
+    }
+
+    // Main Robot Head Click Logic
+    robotTrigger.addEventListener('click', () => {
+      // If either chat or ADA panel is open, clicking robot button minimizes everything
+      if (aiModal.classList.contains('show') || adaModal.classList.contains('show')) {
+        minimizeAllModals();
+      } else {
+        // Toggle the speed dial options (ADA & AI options appear/disappear)
+        floatingDial.classList.toggle('open');
+      }
     });
 
-    dialAiBtn.addEventListener('click', () => {
-      aiModal.classList.add('show');
-      adaModal.classList.remove('show');
+    // Click ADA Menu Button: Exclusively open ADA, hide AI & options
+    dialAdaBtn.addEventListener('click', () => {
+      aiModal.classList.remove('show');
+      adaModal.classList.add('show');
       floatingDial.classList.remove('open');
-      document.getElementById('aiChatInput').focus();
+      document.body.classList.remove('ai-active');
+      document.body.classList.add('ada-active');
     });
 
+    // Click AI Assistant Button: Exclusively open Chat, hide ADA & options
+    dialAiBtn.addEventListener('click', () => {
+      adaModal.classList.remove('show');
+      aiModal.classList.add('show');
+      floatingDial.classList.remove('open');
+      document.body.classList.remove('ada-active');
+      document.body.classList.add('ai-active');
+      setTimeout(() => {
+        const input = document.getElementById('aiChatInput');
+        if (input) input.focus();
+      }, 150);
+    });
+
+    // Direct assessment button click
     if (aiCandidacyTriggerBtn) {
       aiCandidacyTriggerBtn.addEventListener('click', (e) => {
         e.preventDefault();
-        aiModal.classList.add('show');
         adaModal.classList.remove('show');
-        document.getElementById('aiChatInput').focus();
+        aiModal.classList.add('show');
+        floatingDial.classList.remove('open');
+        document.body.classList.remove('ada-active');
+        document.body.classList.add('ai-active');
+        setTimeout(() => {
+          const input = document.getElementById('aiChatInput');
+          if (input) input.focus();
+        }, 150);
       });
     }
 
-    adaCloseBtn.addEventListener('click', () => adaModal.classList.remove('show'));
-    aiCloseBtn.addEventListener('click', () => aiModal.classList.remove('show'));
+    // Modal Close Buttons (×)
+    adaCloseBtn.addEventListener('click', minimizeAllModals);
+    aiCloseBtn.addEventListener('click', minimizeAllModals);
 
     /* 3. ADA ACCESSIBILITY ENGINE */
     const adaTileCursor = document.getElementById('adaTileCursor');
@@ -2036,7 +2123,7 @@
       if ('speechSynthesis' in window) window.speechSynthesis.cancel();
     });
 
-    /* 4. REAL-TIME AI CONCIERGE CHAT ENGINE (FIXED TO /api/ai/chat) */
+    /* 4. REAL-TIME AI CONCIERGE CHAT ENGINE */
     const aiChatInput = document.getElementById('aiChatInput');
     const aiChatSend = document.getElementById('aiChatSend');
     const aiChatBox = document.getElementById('aiChatBox');
