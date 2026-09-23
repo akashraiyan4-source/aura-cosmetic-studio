@@ -2,7 +2,6 @@
 // MODULE: AI VOICE & CHAT CONCIERGE AGENT
 // ==========================================
 import express from 'express';
-import { GoogleGenerativeAI } from '@google/generative-ai';
 
 const router = express.Router();
 
@@ -23,50 +22,59 @@ router.post('/chat', async (req, res) => {
 
     const apiKey = (process.env.GEMINI_API_KEY || '').trim();
     if (!apiKey) {
-        console.error('[AI Concierge Error] GEMINI_API_KEY is missing from environment variables.');
+        console.error('[AI Concierge Error] GEMINI_API_KEY is missing.');
         return res.status(500).json({ success: false, error: 'API key not configured.' });
     }
 
-    const prompt = `${COSMETIC_SYSTEM_PROMPT}\n\nPatient Query: ${message}`;
-    const modelCandidates = ["gemini-1.5-flash", "gemini-1.5-pro"];
+    const fullPrompt = `${COSMETIC_SYSTEM_PROMPT}\n\nPatient Query: ${message}`;
 
-    // 1. Prothome direct REST call (v1beta) diye cheshta kora hocche jate SDK version-er 404 bypass hoy
-    for (const modelName of modelCandidates) {
-        try {
-            const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${apiKey}`;
-            const apiRes = await fetch(endpoint, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    contents: [{ role: 'user', parts: [{ text: prompt }] }],
-                    generationConfig: { maxOutputTokens: 100, temperature: 0.6 }
-                })
-            });
-
-            const data = await apiRes.json();
-            if (data.candidates && data.candidates[0]?.content?.parts[0]?.text) {
-                const aiResponse = data.candidates[0].content.parts[0].text.trim();
-                console.log(`[AI Concierge Reply using REST ${modelName}] "${aiResponse}"`);
-                return res.status(200).json({ success: true, reply: aiResponse });
-            } else if (data.error) {
-                console.warn(`[Failover REST] ${modelName} error: ${data.error.message}`);
-            }
-        } catch (err) {
-            console.warn(`[Failover REST Fetch] ${modelName}: ${err.message}`);
-        }
-    }
-
-    // 2. Fallback: SDK call with v1beta option
     try {
-        const genAI = new GoogleGenerativeAI(apiKey);
-        const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" }, { apiVersion: 'v1beta' });
-        const result = await model.generateContent(prompt);
-        const response = await result.response;
-        const aiResponse = response.text().trim();
+        // Step 1: Google theke apnar API key diye valid model list ene dynamically select kora
+        let targetModel = "gemini-pro";
+        try {
+            const listRes = await fetch(`https://generativelanguage.googleapis.com/v1beta/models?key=${apiKey}`);
+            const listData = await listRes.json();
+            if (listData.models && Array.isArray(listData.models)) {
+                const supported = listData.models
+                    .filter(m => m.supportedGenerationMethods && m.supportedGenerationMethods.includes('generateContent'))
+                    .map(m => m.name.replace('models/', ''));
+                
+                console.log(`[Available Models for Key]:`, supported);
 
-        return res.status(200).json({ success: true, reply: aiResponse });
+                // Priority: flash 1.5 -> pro 1.5 -> gemini-pro -> default prothomti
+                targetModel = supported.find(m => m.includes('flash')) || 
+                              supported.find(m => m.includes('pro')) || 
+                              supported[0] || "gemini-pro";
+            }
+        } catch (e) {
+            console.warn("[Model Detection Failed, using fallback]:", e.message);
+        }
+
+        console.log(`[AI Concierge] Attempting generation with detected model: ${targetModel}`);
+
+        // Step 2: Exact detected model-e direct call
+        const apiRes = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${targetModel}:generateContent?key=${apiKey}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                contents: [{ role: 'user', parts: [{ text: fullPrompt }] }],
+                generationConfig: { maxOutputTokens: 100, temperature: 0.6 }
+            })
+        });
+
+        const data = await apiRes.json();
+        
+        if (data.candidates && data.candidates[0]?.content?.parts[0]?.text) {
+            const aiResponse = data.candidates[0].content.parts[0].text.trim();
+            console.log(`[AI Concierge Reply] "${aiResponse}"`);
+            return res.status(200).json({ success: true, reply: aiResponse });
+        }
+
+        if (data.error) {
+            console.error(`[Google API Error Direct]`, data.error);
+        }
     } catch (err) {
-        console.error(`[AI Final Fallback Error] ${err.message}`);
+        console.error(`[AI Concierge Fatal Exception]:`, err);
     }
 
     return res.status(500).json({ success: false, error: 'AI Concierge temporarily busy.' });
