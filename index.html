@@ -236,7 +236,7 @@
 
     .pill-item span { color: var(--rose-accent); }
 
-    /* Ultra-Responsive 1:1 Instant Tracking Slider Frame */
+    /* Ultra-Responsive 1:1 Instant Tracking Slider Frame (Glitch-Free Cream Backdrop) */
     .slider-frame {
       position: relative;
       width: 100%;
@@ -249,9 +249,11 @@
       border: 1px solid var(--card-border);
       user-select: none;
       -webkit-user-select: none;
-      touch-action: none !important; /* Disables native scroll interference on the slider */
-      background: #141316;
+      touch-action: none !important;
+      background: var(--bg-cream) !important; /* Never black */
       cursor: ew-resize;
+      transform: translateZ(0);
+      -webkit-transform: translateZ(0);
     }
 
     .pane-video {
@@ -261,6 +263,7 @@
       width: 100%;
       height: 100%;
       pointer-events: none;
+      background: var(--bg-cream);
     }
 
     .pane-video video {
@@ -272,12 +275,19 @@
       object-fit: cover;
       object-position: center;
       display: block;
+      background: var(--bg-cream);
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
     }
 
-    .pane-left { z-index: 1; }
+    .pane-left { 
+      z-index: 1; 
+    }
+    
     .pane-right {
       z-index: 2;
       clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
+      -webkit-clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
       will-change: clip-path;
     }
 
@@ -297,6 +307,7 @@
       border-radius: 8px !important;
       background: rgba(20, 19, 22, 0.65);
       backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
       border: 1px solid rgba(255, 255, 255, 0.2);
       color: #FFFFFF;
       font-size: 0.68rem;
@@ -376,6 +387,7 @@
       padding: 5px 12px;
       background: rgba(20, 19, 22, 0.7);
       backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
       border: 1px solid rgba(255, 255, 255, 0.15);
       color: #FFFFFF;
       font-size: 0.65rem;
@@ -1302,7 +1314,7 @@
       </div>
     </div>
 
-    <!-- Hero Video Slider Frame -->
+    <!-- Hero Video Slider Frame (Always Fallback to Seamless Cream) -->
     <div class="hero-video-wrapper">
       <div class="slider-frame" id="sliderWrapper">
         
@@ -1311,20 +1323,22 @@
           <span id="soundText">Sound Off</span>
         </div>
 
+        <!-- Left Base Layer (Strict Pre-Treatment Before Video & Poster) -->
         <div class="pane-video pane-left">
-          <video id="beforeLoop" autoplay muted loop playsinline webkit-playsinline preload="auto">
+          <video id="beforeLoop" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="before-poster.jpg">
             <source src="cosmetic befor loop.mp4" type="video/mp4">
           </video>
-          <video id="beforeAction" class="pane-video action-layer" muted loop playsinline webkit-playsinline preload="auto">
+          <video id="beforeAction" class="pane-video action-layer" muted loop playsinline webkit-playsinline preload="auto" poster="before-poster.jpg">
             <source src="cosmetic before swap.mp4" type="video/mp4">
           </video>
         </div>
 
+        <!-- Right Reveal Layer (Strict Post-Restoration After Video & Poster) -->
         <div class="pane-video pane-right" id="afterPane">
-          <video id="afterLoop" autoplay muted loop playsinline webkit-playsinline preload="auto">
+          <video id="afterLoop" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="after-poster.jpg">
             <source src="cosmetic after loop.mp4" type="video/mp4">
           </video>
-          <video id="afterAction" class="pane-video action-layer" muted loop playsinline webkit-playsinline preload="auto">
+          <video id="afterAction" class="pane-video action-layer" muted loop playsinline webkit-playsinline preload="auto" poster="after-poster.jpg">
             <source src="cosmetic after swap.mp4" type="video/mp4">
           </video>
         </div>
@@ -1895,7 +1909,7 @@
 
   <!-- JavaScript Logic -->
   <script>
-    /* 1. HERO 9:16 VIDEO SLIDER LOGIC - UNIFIED 1:1 INSTANT TOUCH & POINTER TRACKING */
+    /* 1. HERO 9:16 VIDEO SLIDER LOGIC - UNIFIED 1:1 ZERO-LATENCY TOUCH TRACKING */
     const wrapper = document.getElementById('sliderWrapper');
     const knob = document.getElementById('sliderKnob');
     const divider = document.getElementById('dividerLine');
@@ -1930,7 +1944,7 @@
     document.body.addEventListener('touchstart', forcePlayVideos, { once: true });
     document.body.addEventListener('click', forcePlayVideos, { once: true });
 
-    // Instantly calculate and set slider position directly from touch/pointer X coordinates
+    // Smooth real-time update synced with touch coordinates
     function updateSliderPosition(clientX) {
       const rect = wrapper.getBoundingClientRect();
       let percentage = ((clientX - rect.left) / rect.width) * 100;
@@ -1940,6 +1954,7 @@
       knob.style.left = percentage + '%';
       divider.style.left = percentage + '%';
       afterPane.style.clipPath = `polygon(${percentage}% 0, 100% 0, 100% 100%, ${percentage}% 100%)`;
+      afterPane.style.webkitClipPath = `polygon(${percentage}% 0, 100% 0, 100% 100%, ${percentage}% 100%)`;
 
       if (percentage < 45) {
         if (!afterAction.classList.contains('active')) {
@@ -1990,14 +2005,15 @@
         wrapper.releasePointerCapture(e.pointerId);
       } catch (err) {}
 
-      // Smooth bounce back to middle position
+      // Smooth spring return to center (50%)
       knob.style.transition = 'left 0.45s cubic-bezier(0.34, 1.56, 0.64, 1)';
       divider.style.transition = 'left 0.45s cubic-bezier(0.34, 1.56, 0.64, 1)';
-      afterPane.style.transition = 'clip-path 0.45s cubic-bezier(0.34, 1.56, 0.64, 1)';
+      afterPane.style.transition = 'clip-path 0.45s cubic-bezier(0.34, 1.56, 0.64, 1), -webkit-clip-path 0.45s cubic-bezier(0.34, 1.56, 0.64, 1)';
 
       knob.style.left = '50%';
       divider.style.left = '50%';
       afterPane.style.clipPath = 'polygon(50% 0, 100% 0, 100% 100%, 50% 100%)';
+      afterPane.style.webkitClipPath = 'polygon(50% 0, 100% 0, 100% 100%, 50% 100%)';
 
       setTimeout(() => {
         beforeAction.classList.remove('active');
@@ -2014,6 +2030,7 @@
       }, 450);
     }
 
+    // Attach pointer listeners to wrapper for instant tracking
     wrapper.addEventListener('pointerdown', onPointerStart, { passive: false });
     wrapper.addEventListener('pointermove', onPointerMove, { passive: false });
     wrapper.addEventListener('pointerup', onPointerEnd);
