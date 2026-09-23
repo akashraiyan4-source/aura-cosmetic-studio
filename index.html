@@ -897,32 +897,47 @@
       to { opacity: 1; transform: translateY(0) scale(1); }
     }
 
+    /* UPDATED: Signature Brand Gradient Header Replacing Black Bar */
     .panel-head {
-      background: #141316;
-      color: #FFFFFF;
+      background: linear-gradient(90deg, #E0BDC2 0%, #E33F6C 100%) !important;
+      color: #FFFFFF !important;
       padding: 16px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 2px solid var(--rose-accent);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.25) !important;
+      box-shadow: 0 4px 14px rgba(227, 63, 108, 0.18);
     }
 
     .panel-head span {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.15rem;
+      font-size: 1.18rem;
       font-weight: 700;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
+      color: #FFFFFF !important;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
     }
 
     .panel-close {
-      background: none;
-      border: none;
-      color: #FFFFFF;
-      font-size: 1.4rem;
+      background: rgba(255, 255, 255, 0.2) !important;
+      border: 1px solid rgba(255, 255, 255, 0.35) !important;
+      color: #FFFFFF !important;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      font-size: 1.25rem;
       cursor: pointer;
       line-height: 1;
-      padding: 0 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .panel-close:hover {
+      background: rgba(255, 255, 255, 0.35) !important;
+      transform: scale(1.08);
     }
 
     .panel-content {
