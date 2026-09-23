@@ -769,13 +769,14 @@
     }
 
     /* ========================================================
-       TRANSPARENT PURE ROBOT HEAD (NO BLACK BOX BACKGROUND)
+       BOTTOM-RIGHT PURE TRANSPARENT ROBOT HEAD TRIGGER (ABSOLUTE CORNER)
        ======================================================== */
     .side-dock-container {
       position: fixed !important;
-      top: 50% !important;
-      right: 0 !important;
-      transform: translateY(-50%) !important;
+      bottom: 24px !important;
+      right: 24px !important;
+      top: auto !important;
+      transform: none !important;
       z-index: 999999 !important;
       display: flex !important;
       align-items: center !important;
@@ -786,50 +787,49 @@
       pointer-events: auto !important;
     }
 
-    /* Pure circular transparent robot head peeking from the right edge */
+    /* Pure circular transparent robot head at bottom-right corner */
     .peeking-tab-handle {
       width: 48px !important;
       height: 48px !important;
       border-radius: 50% !important;
-      background: transparent !important; /* Completely transparent background */
-      border: 2px solid var(--rose-accent) !important;
-      box-shadow: 0 8px 24px rgba(227, 63, 108, 0.35) !important;
+      background: transparent !important;
+      border: none !important; /* Absolutely no border ring */
+      box-shadow: none !important; /* No shadow background box */
       display: flex !important;
       align-items: center !important;
       justify-content: center !important;
       cursor: pointer !important;
-      font-size: 1.5rem !important;
+      font-size: 1.95rem !important; /* Pure clean robot emoji */
       user-select: none !important;
-      transform: translateX(8px) !important;
-      transition: transform 0.25s var(--spring-snap), background 0.2s ease !important;
+      transition: transform 0.25s var(--spring-snap) !important;
     }
 
     .peeking-tab-handle:hover {
-      transform: translateX(2px) scale(1.08) !important;
-      background: rgba(255, 255, 255, 0.85) !important;
+      transform: scale(1.15) !important;
     }
 
     .side-dock-container.expanded .peeking-tab-handle {
-      transform: translateX(0) rotate(180deg) scale(1.05) !important;
-      background: #FFFFFF !important;
+      transform: rotate(180deg) scale(1.1) !important;
     }
 
-    /* Slide-out Options */
+    /* Slide-out Options (Pop up vertically above bottom-right) */
     .dock-popout-options {
       position: absolute !important;
-      right: 56px !important;
+      bottom: 58px !important;
+      right: 0 !important;
       display: flex !important;
+      flex-direction: column !important;
       gap: 10px !important;
       opacity: 0 !important;
       pointer-events: none !important;
-      transform: translateX(20px) scale(0.9) !important;
+      transform: translateY(15px) scale(0.9) !important;
       transition: all 0.3s var(--spring-snap) !important;
     }
 
     .side-dock-container.expanded .dock-popout-options {
       opacity: 1 !important;
       pointer-events: auto !important;
-      transform: translateX(0) scale(1) !important;
+      transform: translateY(0) scale(1) !important;
     }
 
     .dock-opt-btn {
@@ -856,10 +856,10 @@
 
     .dock-opt-badge {
       position: absolute !important;
-      bottom: -20px !important;
+      right: 54px !important;
       background: #141316 !important;
       color: #FFFFFF !important;
-      padding: 2px 7px !important;
+      padding: 2px 8px !important;
       border-radius: 5px !important;
       font-size: 0.6rem !important;
       font-weight: 700 !important;
@@ -1153,10 +1153,11 @@
       }
 
       .hero-title {
-        font-size: 2.2rem !important;
-        line-height: 1.14 !important;
+        font-size: 1.95rem !important; /* Perfect 2-line fit for mobile */
+        line-height: 1.2 !important;
         text-align: center !important;
         margin: 0 auto;
+        letter-spacing: -0.02em;
       }
 
       .hero-desc {
@@ -1848,7 +1849,7 @@
     </a>
   </section>
 
-  <!-- 12. PURE TRANSPARENT ROBOT HEAD TRIGGER (NO BLACK BOX) -->
+  <!-- 12. BOTTOM-RIGHT PURE TRANSPARENT ROBOT HEAD TRIGGER -->
   <div class="side-dock-container" id="sideDock">
     <!-- Popout Options -->
     <div class="dock-popout-options">
@@ -1865,7 +1866,7 @@
       </button>
     </div>
 
-    <!-- Pure circular transparent robot head peeking from the side -->
+    <!-- Pure circular transparent robot head at bottom-right corner -->
     <div class="peeking-tab-handle" id="peekingHandle" title="VIP Concierge & ADA">
       🤖
     </div>
@@ -2188,7 +2189,6 @@
       adaModal.classList.remove('show');
       aiModal.classList.remove('show');
       sideDock.classList.remove('expanded');
-      document.body.classList.remove('ai-active', 'ada-active');
     }
 
     peekingHandle.addEventListener('click', (e) => {
