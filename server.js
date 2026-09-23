@@ -6,7 +6,7 @@ import dotenv from 'dotenv';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-// বিদ্যমান সব মডিউল
+// 1. এক্সপ্রেস রাউটার মডিউলসমূহ
 import leadsRouter from './modules/leads.js';
 import geminiRouter from './modules/geminiConcierge.js';
 import missedRouter from './modules/missedCall.js';
@@ -28,15 +28,13 @@ import broadcastRouter from './modules/broadcast.js';
 import smileSimulatorRouter from './modules/smileSimulator.js';
 import vectorKnowledgeRouter from './modules/vectorKnowledge.js';
 import whatsappRouter from './modules/whatsappIntegration.js';
-
-// আপগ্রেডেড ভয়েস ও অ্যালার্ট
 import voiceAgentRouter from './modules/voiceAgentBridge.js';
-import { sendStaffAlert } from './modules/staffAlert.js';
 
-// Recall ইঞ্জিন ও শিডিউলার
+// 2. হেল্পার এবং ব্যাকগ্রাউন্ড ইঞ্জিন
+import { sendStaffAlert } from './modules/staffAlert.js';
 import { initRecallEngine, scheduleAppointment } from './modules/recallEngine.js';
 
-// Beverly Hills Luxury মডিউলসমূহ
+// 3. Beverly Hills Luxury সার্ভিস মডিউলসমূহ (অবজেক্ট/ক্লাস)
 import NDAProtocol from './modules/ndaProtocol.js';
 import FlyInConcierge from './modules/flyInConcierge.js';
 import SpeedToLead from './modules/speedToLead.js';
@@ -56,7 +54,7 @@ app.use(helmet({
   crossOriginEmbedderPolicy: false
 }));
 
-// 2. CORS কনফিগারেশন (উন্মুক্ত করা হয়েছে যেন চ্যাট রিকোয়েস্ট ব্লক না হয়)
+// 2. CORS কনফিগারেশন (উন্মুক্ত করা হয়েছে যেন চ্যাট বা এপিআই রিকোয়েস্ট ব্লক না হয়)
 app.use(cors({
   origin: true,
   credentials: true
@@ -83,7 +81,7 @@ app.post('/api/booking/create', async (req, res) => {
     const clientName = fullName || name;
 
     if (!clientName || !phone) {
-      return res.status(400).json({ success: false, error: 'Missing required booking fields (Name and Phone are required).' });
+      return res.status(400).json({ success: false, error: 'Name and Phone are required.' });
     }
 
     const scheduledBooking = scheduleAppointment({ 
@@ -111,7 +109,7 @@ app.post('/api/booking/create', async (req, res) => {
       treatment: newAppointment.treatment
     });
 
-    console.log(`[AURA VIP Lead Automation] Confirmed & Staff Alert Sent for ${clientName} (${phone})`);
+    console.log(`[AURA VIP Lead Automation] Confirmed for ${clientName} (${phone})`);
 
     return res.status(200).json({ 
       success: true, 
@@ -126,7 +124,11 @@ app.post('/api/booking/create', async (req, res) => {
   }
 });
 
-// Luxury Funnel API Endpoints
+// ========================================================
+// Luxury Funnel Endpoints (সরাসরি মেথড কল)
+// ========================================================
+
+// Sequence 1: Speed To Lead (<45 Sec Trigger)
 app.post('/api/speed-to-lead', async (req, res) => {
   try {
     const result = await SpeedToLead.triggerIntakeRecovery(req.body);
@@ -136,6 +138,7 @@ app.post('/api/speed-to-lead', async (req, res) => {
   }
 });
 
+// Sequence 2: VIP NDA & Private Valet PIN Generation
 app.post('/api/issue-nda', async (req, res) => {
   try {
     const dossier = await NDAProtocol.issueMutualNDA(req.body);
@@ -145,6 +148,7 @@ app.post('/api/issue-nda', async (req, res) => {
   }
 });
 
+// Module 4: Fly-In Executive Chauffeur & Logistics
 app.post('/api/fly-in-logistics', async (req, res) => {
   try {
     const plan = await FlyInConcierge.scheduleArrival(req.body);
@@ -154,13 +158,16 @@ app.post('/api/fly-in-logistics', async (req, res) => {
   }
 });
 
+// Sequence 4: 90-Day Drip Nurture Asset Fetch
 app.get('/api/nurture/:week', (req, res) => {
   const weekNum = parseInt(req.params.week) || 1;
   const asset = LongTermNurture.getWeeklyAsset(weekNum);
   res.json({ success: true, asset });
 });
 
-// API Routes Mounting
+// ========================================================
+// এক্সপ্রেস রাউটারসমূহ মাউন্ট
+// ========================================================
 app.use('/api/leads', leadsRouter);
 app.use('/api/twilio', geminiRouter);
 app.use('/api/voice-missed', missedRouter);
