@@ -27,42 +27,46 @@ router.post('/chat', async (req, res) => {
         return res.status(500).json({ success: false, error: 'API key not configured.' });
     }
 
-    const genAI = new GoogleGenerativeAI(apiKey);
     const prompt = `${COSMETIC_SYSTEM_PROMPT}\n\nPatient Query: ${message}`;
+    const modelCandidates = ["gemini-1.5-flash", "gemini-1.5-pro"];
 
-    // 404 error thekate v1beta support shoho model list
-    const modelCandidates = [
-        "gemini-1.5-flash",
-        "gemini-1.5-flash-latest",
-        "gemini-pro"
-    ];
-
+    // 1. Prothome direct REST call (v1beta) diye cheshta kora hocche jate SDK version-er 404 bypass hoy
     for (const modelName of modelCandidates) {
         try {
-            const model = genAI.getGenerativeModel(
-                { 
-                    model: modelName,
-                    generationConfig: {
-                        maxOutputTokens: 100,
-                        temperature: 0.6
-                    }
-                },
-                { apiVersion: 'v1beta' }
-            );
-
-            const result = await model.generateContent(prompt);
-            const response = await result.response;
-            const aiResponse = response.text().trim();
-
-            console.log(`[AI Concierge Reply using ${modelName}] "${aiResponse}"`);
-
-            return res.status(200).json({
-                success: true,
-                reply: aiResponse
+            const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${apiKey}`;
+            const apiRes = await fetch(endpoint, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    contents: [{ role: 'user', parts: [{ text: prompt }] }],
+                    generationConfig: { maxOutputTokens: 100, temperature: 0.6 }
+                })
             });
+
+            const data = await apiRes.json();
+            if (data.candidates && data.candidates[0]?.content?.parts[0]?.text) {
+                const aiResponse = data.candidates[0].content.parts[0].text.trim();
+                console.log(`[AI Concierge Reply using REST ${modelName}] "${aiResponse}"`);
+                return res.status(200).json({ success: true, reply: aiResponse });
+            } else if (data.error) {
+                console.warn(`[Failover REST] ${modelName} error: ${data.error.message}`);
+            }
         } catch (err) {
-            console.warn(`[Failover] ${modelName} error: ${err.message}. Trying next model...`);
+            console.warn(`[Failover REST Fetch] ${modelName}: ${err.message}`);
         }
+    }
+
+    // 2. Fallback: SDK call with v1beta option
+    try {
+        const genAI = new GoogleGenerativeAI(apiKey);
+        const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" }, { apiVersion: 'v1beta' });
+        const result = await model.generateContent(prompt);
+        const response = await result.response;
+        const aiResponse = response.text().trim();
+
+        return res.status(200).json({ success: true, reply: aiResponse });
+    } catch (err) {
+        console.error(`[AI Final Fallback Error] ${err.message}`);
     }
 
     return res.status(500).json({ success: false, error: 'AI Concierge temporarily busy.' });
