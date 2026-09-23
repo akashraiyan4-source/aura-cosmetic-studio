@@ -334,39 +334,22 @@
       will-change: left;
     }
 
+    /* Completely invisible transparent grab handle (No white circle, no pink ring, no arrows covering nose/mouth) */
     .slider-knob {
       position: absolute;
       top: 50%;
       left: 50%;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      background: #FFFFFF;
-      border: 2px solid var(--rose-accent);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+      width: 60px;
+      height: 100%;
       z-index: 20;
       transform: translate(-50%, -50%);
-      cursor: grab;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      cursor: ew-resize;
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
       touch-action: none !important;
       will-change: left;
       pointer-events: auto;
-    }
-
-    .slider-knob:active {
-      cursor: grabbing;
-      transform: translate(-50%, -50%) scale(1.1);
-    }
-
-    .knob-arrows {
-      display: flex;
-      gap: 4px;
-      color: var(--rose-accent);
-      font-size: 12px;
-      font-weight: 800;
-      pointer-events: none;
     }
 
     .bottom-tags {
@@ -793,13 +776,13 @@
       height: 48px !important;
       border-radius: 50% !important;
       background: transparent !important;
-      border: none !important; /* Absolutely no border ring */
-      box-shadow: none !important; /* No shadow background box */
+      border: none !important;
+      box-shadow: none !important;
       display: flex !important;
       align-items: center !important;
       justify-content: center !important;
       cursor: pointer !important;
-      font-size: 1.95rem !important; /* Pure clean robot emoji */
+      font-size: 2.1rem !important;
       user-select: none !important;
       transition: transform 0.25s var(--spring-snap) !important;
     }
@@ -1153,8 +1136,8 @@
       }
 
       .hero-title {
-        font-size: 1.95rem !important; /* Perfect 2-line fit for mobile */
-        line-height: 1.2 !important;
+        font-size: 2.1rem !important; /* Perfect 2-line fit for mobile */
+        line-height: 1.15 !important;
         text-align: center !important;
         margin: 0 auto;
         letter-spacing: -0.02em;
@@ -1344,13 +1327,9 @@
           </video>
         </div>
 
+        <!-- Clean slim dividing line without any distracting circles or arrows covering the face -->
         <div class="slider-divider-bar" id="dividerLine"></div>
-        <div class="slider-knob" id="sliderKnob">
-          <div class="knob-arrows">
-            <span>&#10094;</span>
-            <span>&#10095;</span>
-          </div>
-        </div>
+        <div class="slider-knob" id="sliderKnob"></div>
 
         <div class="bottom-tags">
           <div class="b-tag">Pre-Treatment</div>
@@ -1358,7 +1337,7 @@
         </div>
 
       </div>
-      <div class="drag-hint">⟵ Drag Knob Left for Glow • Drag Right for Regret ⟶</div>
+      <div class="drag-hint">⟵ Drag Anywhere on Video Left for Glow • Right for Regret ⟶</div>
     </div>
   </section>
 
@@ -2014,7 +1993,7 @@
       }
     }
 
-    // STRICT: Only initiates drag when touching the central Knob
+    // STRICT: Only initiates drag when touching the transparent knob area
     knob.addEventListener('pointerdown', (e) => {
       e.stopPropagation();
       isDragging = true;
@@ -2189,6 +2168,7 @@
       adaModal.classList.remove('show');
       aiModal.classList.remove('show');
       sideDock.classList.remove('expanded');
+      document.body.classList.remove('ai-active', 'ada-active');
     }
 
     peekingHandle.addEventListener('click', (e) => {
